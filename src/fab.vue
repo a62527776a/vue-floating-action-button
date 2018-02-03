@@ -12,13 +12,13 @@
         </transition>
       </div>
     </transition>
-    <transition v-for="(item, idx) in menu" 
+    <transition v-for="(item, idx) in menu"
       :key="item.key"
       name="fab-child">
       <div v-show="active"
            @click.native="$emit(clickItem, item.key)"
-           :style="{ top: -50 - idx * 45 + 'px',
-           transitionDelay: active ? idx * .05 + 's' : '0s'}"
+           :style="{ top: -50 - idx * spacing + 'px',
+           transitionDelay: active ? idx * delay + 's' : '0s'}"
            class="fab-child fab-shadow">
         <i class="material-icons">{{item.icon}}</i>
       </div>
@@ -38,15 +38,17 @@ export default {
       type: String,
       default: 'add'
     },
-    fabClass: {
-      type: Object,
-      default: () => {
-        return {}
-      }
+    spacing: {
+      type: Number,
+      default: 45
     },
     hidden: {
       type: Boolean,
       default: true
+    },
+    delay: {
+      type: Number,
+      default: .05
     },
     menu: {
       type: Array,
@@ -62,6 +64,10 @@ export default {
           }
         ]
       }
+    },
+    fabAnimateBezier: {
+      type: String,
+      default: 'liner'
     }
   },
   data () {
@@ -73,6 +79,13 @@ export default {
     hidden: function (val) {
       if (!val && this.active) {
         this.active = false
+      }
+    }
+  },
+  computed: {
+    fabClass: function () {
+      return {
+        transitionTimingFunction: /,/.test(this.fabAnimateBezier) ? `cubic-bezier(${this.fabAnimateBezier})` : this.fabAnimateBezier
       }
     }
   }
@@ -96,7 +109,7 @@ export default {
     display: flex;
     color: white;
     padding: 8px;
-    transition: all .2s cubic-bezier(.3,.88,.65,.96);
+    transition: all .2s;
   }
 
   .fab-shadow {

@@ -1,11 +1,11 @@
 {
   "name": "vue-float-action-button",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "vue, float action button",
   "main": "/dist/vue-fab.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack ./build/webpack.config.js"
+    "build": "webpack ./webpack.config.js"
   },
   "repository": {
     "type": "git",
