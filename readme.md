@@ -1,8 +1,11 @@
-# Vue Fab
+# Vue Float Action Button
 
+
+##### 一个漂亮的 float action button
 ***
 
 # API
+
 
 ## Props
 
@@ -23,3 +26,20 @@
 | clickItem | 'add' | 当点击菜单项时，会返回该菜单项的Key值 该值由用户自定义 |
 
 ***
+
+## Installation and use
+
+```
+$ yarn add vue-float-action-button
+$ npm install vue-float-action-button
+```
+
+```
+import VueFab from 'vue-float-action-button'
+
+Vue.use(VueFab)
+```
+
+***
+## LICENSE
+MIT
