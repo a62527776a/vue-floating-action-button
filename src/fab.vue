@@ -1,28 +1,43 @@
 <template>
-  <div class="fab-container">
+  <div ref="fab" class="fab-container">
     <transition name="fab">
-      <div @click="active = !active"
+      <fab-cantainer @click.native="active = !active"
           v-show="hidden"
-          class="fab fab-shadow"
+          class="fab"
+          data-outside="true"
+          :class="{ 'fab-shadow' : shadow }"
           :style="fabClass">
         <transition :name="activeIcon === icon ? 'fab-icon' : active ? 'fab-icon' : 'fab-active-icon'">
-          <i :key="activeIcon === icon ? icon : active"
+          <i
+          data-outside="true"
+          :key="activeIcon === icon ? icon : active"
           :class="{ 'fab-active' : active }"
           class="material-icons">{{activeIcon === icon ? icon : active ? activeIcon : icon}}</i>
         </transition>
-      </div>
+      </fab-cantainer>
     </transition>
-    <transition v-for="(item, idx) in menu"
-      :key="item.key"
-      name="fab-child">
-      <div v-show="active"
-           @click.native="$emit(clickItem, item.key)"
-           :style="{ top: -50 - idx * spacing + 'px',
-           transitionDelay: active ? idx * delay + 's' : '0s'}"
-           class="fab-child fab-shadow">
-        <i class="material-icons">{{item.icon}}</i>
-      </div>
-    </transition>
+    <div v-click-outside="clickoutside">
+      <transition v-for="(item, idx) in menu"
+        :key="item.key"
+        name="fab-child">
+        <fab-cantainer 
+            v-show="active"
+            @click.native="clickItem(item)"
+            :style="{ top: -50 - idx * spacing + 'px',
+            transitionDelay: active ? idx * delay + 's' : '0s',
+            background: item.color}"
+            class="fab-child"
+            :class="{ 'fab-shadow' : !item.color }">
+          <div v-if="item.title" class="fab-item-title">
+            {{item.title}}
+          </div>
+          <i class="material-icons"
+            :style="{
+              color: item.color ? 'white' : '#999'
+            }">{{item.icon}}</i>
+        </fab-cantainer>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -41,6 +56,10 @@ export default {
     spacing: {
       type: Number,
       default: 45
+    },
+    shadow: {
+      type: Boolean,
+      default: true
     },
     hidden: {
       type: Boolean,
@@ -65,9 +84,17 @@ export default {
         ]
       }
     },
+    clickAutoHidden: {
+      type: Boolean,
+      default: true
+    },
     fabAnimateBezier: {
       type: String,
       default: 'liner'
+    },
+    zIndex: {
+      type: Number,
+      default: 5
     }
   },
   data () {
@@ -85,9 +112,24 @@ export default {
   computed: {
     fabClass: function () {
       return {
-        transitionTimingFunction: /,/.test(this.fabAnimateBezier) ? `cubic-bezier(${this.fabAnimateBezier})` : this.fabAnimateBezier
+        transitionTimingFunction: /,/.test(this.fabAnimateBezier) ? `cubic-bezier(${this.fabAnimateBezier})` : this.fabAnimateBezier,
+        zIndex: this.zIndex
       }
     }
+  },
+  methods: {
+    clickItem: function (item) {
+      setTimeout(() => {
+        this.active = !this.clickAutoHidden
+      }, 300)
+      this.$emit('clickItem', item.key)
+    },
+    clickoutside: function (e) {
+      this.active = false
+    }
+  },
+  created () {
+
   }
 }
 </script>
@@ -101,7 +143,6 @@ export default {
   }
 
   .fab {
-    z-index: 9999;
     height: 25px;
     width: 25px;
     border-radius: 50%;
@@ -109,7 +150,7 @@ export default {
     display: flex;
     color: white;
     padding: 8px;
-    transition: all .2s;
+    transition: all .2s, opacity .5s;
   }
 
   .fab-shadow {
@@ -122,26 +163,35 @@ export default {
 
   .fab-child {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     top: -50px;
     width: 80%;
     height: 80%;
     margin-left: 10%;
-    background: white;
     border-radius: 50%;
     transition: all .2s;
+    overflow: inherit;
+    i {
+      font-size: .8em;
+    }
   }
 
-  .fab-child > i {
-    color: #999;
+  .fab-item-title {
+    position: absolute;
+    right: 4em;
+    box-shadow: 0 1px .5px #CCC;
+    color: #666;
+    padding: 2px 5px;
+    font-size: .6em;
+    min-width: 3em;
+    white-space:nowrap;
+    border-radius: 2px;
+    text-align: center;
   }
 
   .material-icons {
-    font-size: 22px;
-    position: absolute;
-    top: 50%;
-    margin-top: -11px;
-    margin-left: -11px;
-    left: 50%;
     transition: all .2s ease;
   }
 
@@ -172,7 +222,7 @@ export default {
   .fab-icon-enter-to, .fab-icon-leave, .fab-active-icon-to, .fab-active-icon-leave {
     opacity: 1;
   }
-
+  
   .fab-child-enter {
     opacity: 0;
     transform: translate3D(0, 5px, 0) scale(.8);

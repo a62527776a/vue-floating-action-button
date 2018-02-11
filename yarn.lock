@@ -3477,6 +3477,10 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "http://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
+vue-touch-ripple@^3.0.0:
+  version "3.0.0"
+  resolved "http://registry.npm.taobao.org/vue-touch-ripple/download/vue-touch-ripple-3.0.0.tgz#aa2a65e6eee2996d2cdad830e9e1f62355428c35"
+
 watchpack@^1.4.0:
   version "1.4.0"
   resolved "http://registry.npm.taobao.org/watchpack/download/watchpack-1.4.0.tgz#4a1472bcbb952bd0a9bb4036801f954dfb39faac"

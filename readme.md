@@ -18,6 +18,8 @@
 |delay|Number|.05| 菜单项淡入淡出的延迟差 为上一个菜单项加该延迟的延迟 |
 |spacing| Number|45|每个菜单项的间距 单位 px|
 |fabAnimateBezier | String | liner | 主按钮显示消失(hidden)的贝塞尔曲线 如填入贝塞尔曲线 直接填入'n,n,n,n'或'liner'  |
+|z-index|Number|5|fab的层级|
+|shadow | Boolean | true | 主button的阴影|
 
 ## Event
 
