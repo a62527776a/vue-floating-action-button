@@ -1,11 +1,13 @@
 {
   "name": "vue-float-action-button",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "vue, float action button",
   "main": "/dist/vue-fab.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack ./webpack.config.js"
+    "build": "webpack ./webpack.config.js",
+    "demo-build": "webpack ./demo/webpack.config.js",
+    "dev": "cd demo && webpack-dev-server --content-base ./dist --inline --hot"
   },
   "repository": {
     "type": "git",
@@ -32,11 +34,14 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.9",
+    "html-webpack-plugin": "^2.30.1",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "transform-runtime": "^0.0.0",
+    "vue": "^2.5.13",
     "vue-loader": "^14.1.1",
     "vue-template-compiler": "^2.5.13",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
   }
 }

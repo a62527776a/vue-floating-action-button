@@ -1,10 +1,10 @@
 const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname + '/src/index.js')
+    main: path.resolve(__dirname + '/main.js')
   },
   output: {
     path: path.resolve(__dirname + '/dist'),
@@ -17,8 +17,7 @@ module.exports = {
     }, {
       test: /\.js$/,
       loader: 'babel-loader',
-      exclude: /node_modules/,
-      include: path.resolve(__dirname + '/src')
+      exclude: /node_modules/
     }, {
       test: /\.css$/,
       loader: 'style!css!autoprefixer'
@@ -27,7 +26,13 @@ module.exports = {
       loader: 'style!less'
     }]
   },
+  devServer: {
+    inline: true
+  },
   plugins: [
-    new UglifyJsPlugin()
+    new UglifyJsPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, './index.html')
+    })
   ]
 }

@@ -75,11 +75,13 @@ export default {
         return [
           {
             key: 'add',
-            icon: 'add'
+            icon: 'add',
+            title: 'add'
           },
           {
             key: 'https',
-            icon: 'https'
+            icon: 'https',
+            title: 'https'
           }
         ]
       }
@@ -135,6 +137,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  * {
+    user-select: none
+  }
   .fab-container {
     position: fixed;
     right: 10%;
@@ -193,6 +198,7 @@ export default {
 
   .material-icons {
     transition: all .2s ease;
+    position: absolute;
   }
 
   .fab-leave-to {
