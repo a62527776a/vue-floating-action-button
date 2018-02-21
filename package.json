@@ -1,6 +1,6 @@
 {
   "name": "vue-float-action-button",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "vue, float action button",
   "main": "/dist/vue-fab.js",
   "scripts": {
