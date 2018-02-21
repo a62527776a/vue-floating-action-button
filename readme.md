@@ -48,6 +48,14 @@ import VueFab from 'vue-float-action-button'
 Vue.use(VueFab)
 ```
 
+本组件使用了 Material Design 的图标 需要在网页中引入   
+
+本组件所有ICON皆可从https://material.io/icons/中查找
+```
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+``` 
+
+
 ***
 ## LICENSE
 MIT
