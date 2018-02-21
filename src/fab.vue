@@ -22,7 +22,7 @@
         name="fab-child">
         <fab-cantainer 
             v-show="active"
-            @click.native="clickItem(item)"
+            @click.native="clickItem(idx, item)"
             :style="{ top: -50 - idx * spacing + 'px',
             transitionDelay: active ? idx * delay + 's' : '0s',
             background: item.color}"
@@ -48,6 +48,10 @@ export default {
     icon: {
       type: String,
       default: 'add'
+    },
+    mainBtnColor: {
+      type: String,
+      default: '#E64C3B'
     },
     activeIcon: {
       type: String,
@@ -76,12 +80,14 @@ export default {
           {
             key: 'add',
             icon: 'add',
-            title: 'add'
+            title: 'add',
+            color: '#3599DB'
           },
           {
             key: 'https',
             icon: 'https',
-            title: 'https'
+            title: 'https',
+            color: '#9B5BB6'
           }
         ]
       }
@@ -115,16 +121,17 @@ export default {
     fabClass: function () {
       return {
         transitionTimingFunction: /,/.test(this.fabAnimateBezier) ? `cubic-bezier(${this.fabAnimateBezier})` : this.fabAnimateBezier,
-        zIndex: this.zIndex
+        zIndex: this.zIndex,
+        background: this.mainBtnColor
       }
     }
   },
   methods: {
-    clickItem: function (item) {
+    clickItem: function (idx, item) {
       setTimeout(() => {
         this.active = !this.clickAutoHidden
       }, 300)
-      this.$emit('clickItem', item.key)
+      this.$emit('clickItem', {idx, 'key': item.key})
     },
     clickoutside: function (e) {
       this.active = false
@@ -148,14 +155,18 @@ export default {
   }
 
   .fab {
-    height: 25px;
-    width: 25px;
+    height: 3em;
+    width: 3em;
     border-radius: 50%;
-    background: #FF0088;
     display: flex;
     color: white;
     padding: 8px;
     transition: all .2s, opacity .5s;
+    justify-content: center;
+    align-items: center;
+    i {
+      font-size: 1.5em;
+    }
   }
 
   .fab-shadow {
@@ -189,10 +200,11 @@ export default {
     box-shadow: 0 1px .5px #CCC;
     color: #666;
     padding: 2px 5px;
-    font-size: .6em;
+    font-size: .8em;
     min-width: 3em;
     white-space:nowrap;
     border-radius: 2px;
+    background: white;
     text-align: center;
   }
 

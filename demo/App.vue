@@ -1,21 +1,30 @@
 <template>
-  <div>
-    <button @click="hidden = !hidden">hidden: {{hidden}}</button> <br />
-    icon: <input v-model="icon" /> <br />
-    activeIcon: <input v-model="activeIcon" /> <br />
-    <hr />
-    menu:
-    <p v-for="(item, idx) in menu">
-      key<input v-model="item.key" /> <br />
-      icon<input v-model="item.icon" /> <br />
-      title<input v-model="item.title" /> <br />
-      <button @click="menu.splice(idx, 1)">删除</button>
-    </p>
-    <button @click="menu.push({key: '', icon: '', title: 'default'})">新增</button>
+  <div class="main">
+    <div class="form-group">
+      <h6 for="mainIcon">主ICON</h6>
+      <input v-model="icon" class="form-control" id="mainIcon">
+    </div>
+    <div class="form-group">
+      <h6 for="mainIcon">主按钮颜色</h6>
+      <input v-model="mainBtnColor" class="form-control" id="mainBtnColor">
+    </div>
+    <div class="form-group">
+      <h6 for="spacing">子菜单间距</h6>
+      <input v-model="spacing" class="form-control" id="spacing">
+    </div>
+    <div class="form-group">
+      <h6 for="fabAnimateBezier">主按钮显示隐藏动画曲线</h6>
+      <input v-model="fabAnimateBezier" class="form-control" id="fabAnimateBezier">
+    </div>
+    <div class="btn btn-lg btn-block btn-sm btn-info" @click="hidden = !hidden">是否隐藏: {{hidden}}</div> <br />
     <vue-fab 
+      @clickItem="clickItem"
       :hidden="!hidden"
       :icon="icon"
+      :mainBtnColor="mainBtnColor"
+      :spacing="spacing"
       :activeIcon="activeIcon"
+      :fabAnimateBezier="fabAnimateBezier"
       :menu="menu"  />
   </div>
 </template>
@@ -25,20 +34,30 @@
     data () {
       return {
         hidden: false,
-        icon: 'https',
+        icon: 'share',
         activeIcon: 'add',
+        mainBtnColor: '#E64C3B',
+        spacing: 45,
+        fabAnimateBezier: 'liner',
         menu: [
           {
             key: 'add',
             icon: 'add',
-            title: 'add'
+            title: 'add',
+            color: '#3599DB'
           },
           {
             key: 'https',
             icon: 'https',
-            title: 'https'
+            title: 'https',
+            color: '#9B5BB6'
           }
         ]
+      }
+    },
+    methods: {
+      clickItem: function (params) {
+        // window.alert('idx: ' + params.idx + ' key: ' + params.key)
       }
     },
     created () {
@@ -46,3 +65,9 @@
     }
   }
 </script>
+
+<style lang="less" scoped>
+.main {
+  padding: 15px;
+}
+</style>
