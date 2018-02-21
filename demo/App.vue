@@ -17,6 +17,24 @@
       <input v-model="fabAnimateBezier" class="form-control" id="fabAnimateBezier">
     </div>
     <div class="btn btn-lg btn-block btn-sm btn-info" @click="hidden = !hidden">是否隐藏: {{hidden}}</div> <br />
+    <form v-for="(item, idx) in menu" class="form-horizontal">
+      <label for="inputEmail3" class="control-label btn-block">子菜单{{idx}}
+        <button type="button" @click="menu.splice(idx, 1)" class="btn btn-danger btn-xs pull-right">DELETE</button>
+      </label>
+      <div class="form-group" v-for="(value, key) in item">
+        <h6 for="inputEmail3" class="col-xs-2 control-label">{{key}}</h6>
+        <div class="col-xs-10">
+          <input v-model="item[key]" class="form-control" id="inputEmail3" :placeholder="key">
+        </div>
+      </div>
+    </form>
+    <div class="btn btn-lg btn-block btn-sm btn-info" 
+         @click="menu.push({
+           key: '',
+           icon: '',
+           title: '',
+           color: ''
+         })">新增子菜单</div> <br />
     <vue-fab 
       @clickItem="clickItem"
       :hidden="!hidden"

@@ -25,7 +25,7 @@
             @click.native="clickItem(idx, item)"
             :style="{ top: -50 - idx * spacing + 'px',
             transitionDelay: active ? idx * delay + 's' : '0s',
-            background: item.color}"
+            background: item.color ? item.color : '#FFF'}"
             class="fab-child"
             :class="{ 'fab-shadow' : !item.color }">
           <div v-if="item.title" class="fab-item-title">
