@@ -3,7 +3,8 @@
 
 ##### 一个漂亮的 float action button
 
-![yulan.gif](http://upload-images.jianshu.io/upload_images/5738345-b97a517b5fe5f794.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![yulan.gif](http://upload-images.jianshu.io/upload_images/5738345-b97a517b5fe5f794.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+
 [demo page](http://htmlpreview.github.io/?https://github.com/a62527776a/vue-fab/blob/dev/demo/dist/index.html)
 
 ***
