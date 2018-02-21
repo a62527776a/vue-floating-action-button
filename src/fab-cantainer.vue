@@ -1,6 +1,9 @@
 <template>
   <div @touchstart="startAnimate" 
        @touchend="endAnimate"
+       @mousedown="startAnimate"
+       @mouseup="endAnimate"
+       @mouseleave="endAnimate"
        class="fab-cantainer" :class="{ 'touchStyle' : touching }">
     <slot></slot>
   </div>
