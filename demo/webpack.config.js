@@ -30,7 +30,11 @@ module.exports = {
     inline: true
   },
   plugins: [
-    new UglifyJsPlugin(),
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        warnings: false
+      }
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, './index.html')
     })

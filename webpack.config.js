@@ -28,6 +28,10 @@ module.exports = {
     }]
   },
   plugins: [
-    new UglifyJsPlugin()
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        warnings: false
+      }
+    })
   ]
 }

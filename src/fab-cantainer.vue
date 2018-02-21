@@ -44,6 +44,6 @@ export default {
 
 <style lang="less">
 .touchStyle {
-  opacity: .6;
+  opacity: .8;
 }
 </style>
