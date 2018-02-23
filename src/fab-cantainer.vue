@@ -4,7 +4,8 @@
        @mousedown="startAnimate"
        @mouseup="endAnimate"
        @mouseleave="endAnimate"
-       class="fab-cantainer" :class="{ 'touchStyle' : touching }">
+       class="fab-cantainer">
+    <div :class="{ 'touchStyle' : touching }" class="fabMask"></div>
     <slot></slot>
   </div>
 </template>
@@ -43,7 +44,18 @@ export default {
 </script>
 
 <style lang="less">
+.fabMask {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: #FFF;
+  opacity: 0;
+  transition: all .3s;
+}
 .touchStyle {
-  opacity: .8;
+  opacity: .2 !important;
 }
 </style>
