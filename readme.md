@@ -10,7 +10,9 @@
 ![支持自定义贝塞尔曲线动画.gif](http://upload-images.jianshu.io/upload_images/5738345-963113e1b2d33fa2.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-[demo page](http://htmlpreview.github.io/?https://github.com/a62527776a/vue-fab/blob/master/demo/dist/index.html)
+[在线预览](http://htmlpreview.github.io/?https://github.com/a62527776a/vue-fab/blob/master/demo/dist/index.html)
+
+[doc page](https://a62527776a.github.io/vue-fab/)
 
 ***
 
@@ -37,7 +39,7 @@
 |    Name   |   Param   | Description |
 | ----      | -------  | ----------- |
 | clickItem | {idx, key} | 当菜单项不为空且点击菜单项时，会返回该菜单项的下标以及Key值 key值由用户自定义 |
-| clickMainBtn | - | 当菜单项为空时点击主fab 会触发该事件 |
+| clickMainBtn | / | 当菜单项为空时点击主fab 会触发该事件 |
 ***
 
 ## Installation and use
