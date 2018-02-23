@@ -1,7 +1,7 @@
 <template>
   <div ref="fab" class="fab-container">
     <transition name="fab">
-      <fab-cantainer @click.native="active = !active"
+      <fab-cantainer @click.native="openMenu"
           v-show="hidden"
           class="fab"
           data-outside="true"
@@ -135,6 +135,14 @@ export default {
     },
     clickoutside: function (e) {
       this.active = false
+    },
+    /**
+     * @method openMenu 打开菜单
+     * 当当前子菜单项为空时 则传递一个clickMainBtn事件
+     * 当当前子菜单不为空时 则打开或关闭子菜单
+     */
+    openMenu: function () {
+      this.menu.length > 0 ? this.active = !this.active : this.$emit('clickMainBtn')
     }
   },
   created () {

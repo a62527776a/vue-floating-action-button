@@ -15,7 +15,7 @@
       <input v-model="spacing" class="form-control" id="spacing">
     </div>
     <div class="form-group">
-      <h6 for="fabAnimateBezier">主按钮显示隐藏动画曲线</h6>
+      <h6 for="fabAnimateBezier">主按钮显示隐藏动画曲线(可根据http://cubic-bezier.com自由配置 注意如果为自定义曲线 只需填入n, n, n, n格式如.12,.6,.49,1.29即可</h6>
       <input v-model="fabAnimateBezier" class="form-control" id="fabAnimateBezier">
     </div>
     <div class="btn btn-lg btn-block btn-sm btn-info" @click="hidden = !hidden">是否隐藏: {{hidden}}</div>
@@ -40,6 +40,7 @@
     </div>
     <vue-fab 
       @clickItem="clickItem"
+      @clickMainBtn="clickMainBtn"
       :hidden="!hidden"
       :icon="icon"
       :mainBtnColor="mainBtnColor"
@@ -59,7 +60,7 @@
         activeIcon: 'add',
         mainBtnColor: '#E64C3B',
         spacing: 45,
-        fabAnimateBezier: 'liner',
+        fabAnimateBezier: 'ease',
         isEdit: false,
         menu: [
           {
@@ -80,6 +81,9 @@
     methods: {
       clickItem: function (params) {
         window.alert('idx: ' + params.idx + ' key: ' + params.key)
+      },
+      clickMainBtn: function () {
+        window.alert('主菜单为空时点击主Fab会触发clickMainBtn事件')
       }
     },
     created () {

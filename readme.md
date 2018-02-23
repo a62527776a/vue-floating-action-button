@@ -31,8 +31,8 @@
 
 |    Name   |   Param   | Description |
 | ----      | -------  | ----------- |
-| clickItem | {idx, key} | 当点击菜单项时，会返回该菜单项的下标以及Key值 key值由用户自定义 |
-
+| clickItem | {idx, key} | 当菜单项不为空且点击菜单项时，会返回该菜单项的下标以及Key值 key值由用户自定义 |
+| clickMainBtn | - | 当菜单项为空时点击主fab 会触发该事件 |
 ***
 
 ## Installation and use
