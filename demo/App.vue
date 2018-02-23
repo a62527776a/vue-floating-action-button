@@ -19,6 +19,7 @@
       <input v-model="fabAnimateBezier" class="form-control" id="fabAnimateBezier">
     </div>
     <div class="btn btn-lg btn-block btn-sm btn-info" @click="hidden = !hidden">是否隐藏: {{hidden}}</div>
+    <br />
     <form v-for="(item, idx) in menu" class="form-horizontal">
       <label for="inputEmail3" class="btn-block">子菜单{{idx}}
         <button type="button" @click="menu.splice(idx, 1)" class="btn btn-danger btn-xs pull-right">DELETE</button>
