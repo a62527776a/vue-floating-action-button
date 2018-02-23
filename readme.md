@@ -3,7 +3,12 @@
 
 ##### 一个漂亮的 float action button
 
-![yulan.gif](http://upload-images.jianshu.io/upload_images/5738345-b97a517b5fe5f794.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+![支持自定义二级菜单样式.gif](http://upload-images.jianshu.io/upload_images/5738345-b9c4a94efee18577.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![支持自定义二级菜单标题.gif](http://upload-images.jianshu.io/upload_images/5738345-757bf24e27c84b8f.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![支持自定义贝塞尔曲线动画.gif](http://upload-images.jianshu.io/upload_images/5738345-963113e1b2d33fa2.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 [demo page](http://htmlpreview.github.io/?https://github.com/a62527776a/vue-fab/blob/master/demo/dist/index.html)
 
