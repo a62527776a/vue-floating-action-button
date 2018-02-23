@@ -143,7 +143,6 @@ export default {
      * 当当前子菜单不为空时 则打开或关闭子菜单
      */
     openMenu: function () {
-      console.log(12)
       this.menu.length > 0 ? this.active = !this.active : this.$emit('clickMainBtn')
     }
   },
@@ -221,6 +220,11 @@ export default {
   .material-icons {
     transition: all .2s ease;
     position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
   }
 
   .fab-leave-to {
