@@ -33,6 +33,11 @@
 |fabAnimateBezier | String | liner | 主按钮显示消失(hidden)的贝塞尔曲线 如填入贝塞尔曲线 直接填入'n,n,n,n'或'liner'  |
 |z-index|Number|5|fab的层级|
 |shadow | Boolean | true | 主button的阴影|
+|clickAutoClose| Boolean | true | 点击子菜单项后是否关闭菜单 |
+|titleColor| String | #666 | 子菜单标题字体颜色 |
+| titleBg | String | #FFF | 子菜单背景颜色 |
+
+
 
 ## Event
 

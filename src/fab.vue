@@ -29,7 +29,7 @@
             background: item.color ? item.color : '#FFF'}"
             class="fab-child"
             :class="{ 'fab-shadow' : !item.color }">
-          <div v-if="item.title" class="fab-item-title">
+          <div v-if="item.title" :style="titleStyle" class="fab-item-title">
             {{item.title}}
           </div>
           <i class="material-icons"
@@ -66,13 +66,17 @@ export default {
       type: Boolean,
       default: true
     },
-    hidden: {
-      type: Boolean,
-      default: true
-    },
     delay: {
       type: Number,
       default: .05
+    },
+    titleColor: {
+      type: String,
+      default: '#666'
+    },
+    titleBg: {
+      type: String,
+      default: '#FFF'
     },
     menu: {
       type: Array,
@@ -93,7 +97,7 @@ export default {
         ]
       }
     },
-    clickAutoHidden: {
+    clickAutoClose: {
       type: Boolean,
       default: true
     },
@@ -108,7 +112,11 @@ export default {
   },
   data () {
     return {
-      active: false
+      active: false,
+      scrollTop: 0,
+      hidden: true,
+      scrollDirection: null, // 滚动方向
+      changeDirectionScrollTop: 0 // 改变滚动方向时距离顶部的位置
     }
   },
   watch: {
@@ -125,13 +133,21 @@ export default {
         zIndex: this.zIndex,
         background: this.mainBtnColor
       }
+    },
+    titleStyle: function () {
+      return {
+        color: this.titleColor,
+        background: this.titleBg
+      }
     }
   },
   methods: {
     clickItem: function (idx, item) {
-      setTimeout(() => {
-        this.active = !this.clickAutoHidden
-      }, 300)
+      if (this.clickAutoClose) {
+        setTimeout(() => {
+          this.active = false
+        }, 300)
+      }
       this.$emit('clickItem', {idx, 'key': item.key})
     },
     clickoutside: function (e) {
@@ -144,10 +160,33 @@ export default {
      */
     openMenu: function () {
       this.menu.length > 0 ? this.active = !this.active : this.$emit('clickMainBtn')
+    },
+    /**
+     * @method scrollerEventListener 监听滚动事件
+     */
+    scrollerEventListener: function () {
+      let _scrollTop = document.documentElement.scrollTop
+      if (this.scrollDirection !== this.checkDirection()) {
+        this.changeDirectionScrollTop = _scrollTop
+      }
+      this.scrollDirection = this.checkDirection()
+      this.scrollTop = _scrollTop
+      if (!this.changeDirectionScrollTop) return
+      let offset = Math.abs(_scrollTop - this.changeDirectionScrollTop)
+      if (offset > 20) {
+        this.scrollDirection ? this.hidden = true : this.hidden = false
+      }
+    },
+    /**
+     * @method checkDirection 检测滚动方向
+     */
+    checkDirection: function () {
+      let _scrollTop = document.documentElement.scrollTop
+      return this.scrollTop > _scrollTop
     }
   },
-  created () {
-
+  mounted () {
+    document.addEventListener('scroll', this.scrollerEventListener)
   }
 }
 </script>
@@ -207,13 +246,11 @@ export default {
     position: absolute;
     right: 4em;
     box-shadow: 0 1px .5px #CCC;
-    color: #666;
     padding: 2px 5px;
     font-size: .8em;
     min-width: 3em;
     white-space:nowrap;
     border-radius: 2px;
-    background: white;
     text-align: center;
   }
 

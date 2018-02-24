@@ -50,7 +50,6 @@
     <vue-fab 
       @clickItem="clickItem"
       @clickMainBtn="clickMainBtn"
-      :hidden="!hidden"
       :icon="icon"
       :mainBtnColor="mainBtnColor"
       :spacing="spacing"
