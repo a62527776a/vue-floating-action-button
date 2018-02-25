@@ -19,7 +19,7 @@
       <h6 for="fabAnimateBezier">主按钮显示隐藏动画曲线(可根据http://cubic-bezier.com自由配置 注意如果为自定义曲线 只需填入n, n, n, n格式如.12,.6,.49,1.29即可</h6>
       <input v-model="fabAnimateBezier" class="form-control" id="fabAnimateBezier">
     </div>
-    <div class="btn btn-lg btn-block btn-sm btn-info" @click="hidden = !hidden">是否隐藏: {{hidden}}</div>
+    <div class="btn btn-lg btn-block btn-sm btn-info" @click="hidenFab">隐藏Fab</div>
     <br />
     <transition-group name="list-complete" tag="div">
       <form v-for="(item, idx) in menu" :key="idx" class="form-horizontal">
@@ -46,8 +46,10 @@
     </transition>
     <br />
     </div>
+    <div v-else style="height: 1500px"></div>
     </transition>
     <vue-fab 
+      ref="vuefab"
       @clickItem="clickItem"
       @clickMainBtn="clickMainBtn"
       :icon="icon"
@@ -55,7 +57,10 @@
       :spacing="spacing"
       :activeIcon="activeIcon"
       :fabAnimateBezier="fabAnimateBezier"
+      :fabAutoHideAnimateModel="'alive'"
       :menu="menu"  />
+    <vue-fab v-show="!isEdit" :mainBtnColor="'#3599DB'" style="right: 40%"  />
+    <vue-fab v-show="!isEdit" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 70%"  />
   </div>
 </template>
 
@@ -74,15 +79,26 @@
         addChildMenuTiming: null,
         menu: [
           {
-            key: 'add',
-            icon: 'add',
-            title: 'add',
-            color: '#3599DB'
+            key: 'done',
+            icon: 'done',
+            title: '',
+            color: '#ff9900'
           },
           {
-            key: 'https',
-            icon: 'https',
-            title: 'https',
+            key: 'toc',
+            icon: 'toc',
+            title: '',
+            color: '#999'
+          },
+          {
+            key: 'home',
+            icon: 'home',
+            title: ''
+          },
+          {
+            key: 'create',
+            icon: 'create',
+            title: '',
             color: '#9B5BB6'
           }
         ]
@@ -105,6 +121,9 @@
       },
       clickMainBtn: function () {
         window.alert('主菜单为空时点击主Fab会触发clickMainBtn事件')
+      },
+      hidenFab: function () {
+        this.$refs.vuefab.onOffFab(false)
       }
     },
     created () {

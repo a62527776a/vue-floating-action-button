@@ -1,9 +1,9 @@
 <template>
   <div ref="fab" class="fab-container">
-    <transition name="fab">
+    <transition :name="'fab-' + fabAutoHideAnimateModel">
       <fab-cantainer 
           @click.native="openMenu"
-          v-show="hidden"
+          v-if="hidden"
           class="fab"
           data-outside="true"
           :class="{ 'fab-shadow' : shadow }"
@@ -78,6 +78,14 @@ export default {
       type: String,
       default: '#FFF'
     },
+    autoHideThreshold: { // 滚动触发自动隐藏阈值
+      type: Number,
+      default: 20
+    },
+    fabAutoHideAnimateModel: {
+      type: String,
+      default: 'default'
+    },
     menu: {
       type: Array,
       default: () => {
@@ -108,6 +116,10 @@ export default {
     zIndex: {
       type: Number,
       default: 5
+    },
+    scrollAutoHide: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -115,7 +127,7 @@ export default {
       active: false,
       scrollTop: 0,
       hidden: true,
-      scrollDirection: null, // 滚动方向
+      scrollDirection: null, // 滚动方向 up/down
       changeDirectionScrollTop: 0 // 改变滚动方向时距离顶部的位置
     }
   },
@@ -142,6 +154,13 @@ export default {
     }
   },
   methods: {
+    /**
+     * @method onOffFab 显示隐藏Fab
+     * @param { Boolean } onOff 是否显示Fab
+     */
+    onOffFab: function (onOff) {
+      this.hidden = onOff
+    },
     clickItem: function (idx, item) {
       if (this.clickAutoClose) {
         setTimeout(() => {
@@ -166,27 +185,42 @@ export default {
      */
     scrollerEventListener: function () {
       let _scrollTop = document.documentElement.scrollTop
-      if (this.scrollDirection !== this.checkDirection()) {
-        this.changeDirectionScrollTop = _scrollTop
-      }
-      this.scrollDirection = this.checkDirection()
+      let direction = this.checkDirection()
       this.scrollTop = _scrollTop
-      if (!this.changeDirectionScrollTop) return
+      // 如果方向发生改变 则记录改变时滚动距离
+      if (this.scrollDirection !== direction) {
+        this.changeDirectionScrollTop = _scrollTop
+        this.scrollDirection = direction
+      }
+      // 偏移量等于当前距离顶部距离与改变方向时记录距离顶部距离值的差
       let offset = Math.abs(_scrollTop - this.changeDirectionScrollTop)
-      if (offset > 20) {
-        this.scrollDirection ? this.hidden = true : this.hidden = false
+      // 偏移量
+      if ((this.scrollDirection === 'up' && this.hidden === true) ||
+      (this.scrollDirection === 'down' && this.hidden === false)) return
+      if (offset > this.autoHideThreshold) {
+        this.scrollDirection === 'up' ? this.hidden = true : this.hidden = false
       }
     },
     /**
      * @method checkDirection 检测滚动方向
+     * @return { String } up/down
      */
     checkDirection: function () {
       let _scrollTop = document.documentElement.scrollTop
-      return this.scrollTop > _scrollTop
+      return _scrollTop > this.scrollTop ? 'up' : 'down'
+    },
+    removeScrollAutoHideListener: function () {
+      document.removeEventListener(this.scrollerEventListener)
     }
   },
   mounted () {
-    document.addEventListener('scroll', this.scrollerEventListener)
+    if (this.scrollAutoHide) document.addEventListener('scroll', this.scrollerEventListener)
+  },
+  destroyed () {
+    this.removeScrollAutoHideListener()
+  },
+  deactivated () {
+    this.removeScrollAutoHideListener()
   }
 }
 </script>
@@ -264,12 +298,26 @@ export default {
     width: 100%;
   }
 
-  .fab-leave-to {
+  .fab-default-leave-to {
     transform: scale(0);
   }
 
-  .fab-enter {
+  .fab-default-enter {
     transform: scale(0) rotate(-45deg);
+  }
+
+  .fab-alive-leave-to {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+
+  .fab-alive-leave-active, .fab-alive-enter-active {
+    transition: all .3s;
+  }
+
+  .fab-alive-enter {
+    transform: translateY(60px);
+    opacity: 0;
   }
 
   /* 如果激活菜单的icon和未激活的icon不一样时切换icon的动画 */
