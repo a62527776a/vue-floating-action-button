@@ -1,9 +1,9 @@
 <template>
   <div ref="fab" class="fab-container">
-    <transition name="fab">
+    <transition :name="'fab-' + fabAutoHideAnimateModel">
       <fab-cantainer 
           @click.native="openMenu"
-          v-show="hidden"
+          v-if="hidden"
           class="fab"
           data-outside="true"
           :class="{ 'fab-shadow' : shadow }"
@@ -29,7 +29,7 @@
             background: item.color ? item.color : '#FFF'}"
             class="fab-child"
             :class="{ 'fab-shadow' : !item.color }">
-          <div v-if="item.title" class="fab-item-title">
+          <div v-if="item.title" :style="titleStyle" class="fab-item-title">
             {{item.title}}
           </div>
           <i class="material-icons"
@@ -66,13 +66,25 @@ export default {
       type: Boolean,
       default: true
     },
-    hidden: {
-      type: Boolean,
-      default: true
-    },
     delay: {
       type: Number,
       default: .05
+    },
+    titleColor: {
+      type: String,
+      default: '#666'
+    },
+    titleBg: {
+      type: String,
+      default: '#FFF'
+    },
+    autoHideThreshold: { // 滚动触发自动隐藏阈值
+      type: Number,
+      default: 20
+    },
+    fabAutoHideAnimateModel: {
+      type: String,
+      default: 'default'
     },
     menu: {
       type: Array,
@@ -93,7 +105,7 @@ export default {
         ]
       }
     },
-    clickAutoHidden: {
+    clickAutoClose: {
       type: Boolean,
       default: true
     },
@@ -104,11 +116,19 @@ export default {
     zIndex: {
       type: Number,
       default: 5
+    },
+    scrollAutoHide: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
     return {
-      active: false
+      active: false,
+      scrollTop: 0,
+      hidden: true,
+      scrollDirection: null, // 滚动方向 up/down
+      changeDirectionScrollTop: 0 // 改变滚动方向时距离顶部的位置
     }
   },
   watch: {
@@ -125,13 +145,28 @@ export default {
         zIndex: this.zIndex,
         background: this.mainBtnColor
       }
+    },
+    titleStyle: function () {
+      return {
+        color: this.titleColor,
+        background: this.titleBg
+      }
     }
   },
   methods: {
+    /**
+     * @method onOffFab 显示隐藏Fab
+     * @param { Boolean } onOff 是否显示Fab
+     */
+    onOffFab: function (onOff) {
+      this.hidden = onOff
+    },
     clickItem: function (idx, item) {
-      setTimeout(() => {
-        this.active = !this.clickAutoHidden
-      }, 300)
+      if (this.clickAutoClose) {
+        setTimeout(() => {
+          this.active = false
+        }, 300)
+      }
       this.$emit('clickItem', {idx, 'key': item.key})
     },
     clickoutside: function (e) {
@@ -144,10 +179,48 @@ export default {
      */
     openMenu: function () {
       this.menu.length > 0 ? this.active = !this.active : this.$emit('clickMainBtn')
+    },
+    /**
+     * @method scrollerEventListener 监听滚动事件
+     */
+    scrollerEventListener: function () {
+      let _scrollTop = document.documentElement.scrollTop
+      let direction = this.checkDirection()
+      this.scrollTop = _scrollTop
+      // 如果方向发生改变 则记录改变时滚动距离
+      if (this.scrollDirection !== direction) {
+        this.changeDirectionScrollTop = _scrollTop
+        this.scrollDirection = direction
+      }
+      // 偏移量等于当前距离顶部距离与改变方向时记录距离顶部距离值的差
+      let offset = Math.abs(_scrollTop - this.changeDirectionScrollTop)
+      // 偏移量
+      if ((this.scrollDirection === 'up' && this.hidden === true) ||
+      (this.scrollDirection === 'down' && this.hidden === false)) return
+      if (offset > this.autoHideThreshold) {
+        this.scrollDirection === 'up' ? this.hidden = true : this.hidden = false
+      }
+    },
+    /**
+     * @method checkDirection 检测滚动方向
+     * @return { String } up/down
+     */
+    checkDirection: function () {
+      let _scrollTop = document.documentElement.scrollTop
+      return _scrollTop > this.scrollTop ? 'up' : 'down'
+    },
+    removeScrollAutoHideListener: function () {
+      document.removeEventListener(this.scrollerEventListener)
     }
   },
-  created () {
-
+  mounted () {
+    if (this.scrollAutoHide) document.addEventListener('scroll', this.scrollerEventListener)
+  },
+  destroyed () {
+    this.removeScrollAutoHideListener()
+  },
+  deactivated () {
+    this.removeScrollAutoHideListener()
   }
 }
 </script>
@@ -207,13 +280,11 @@ export default {
     position: absolute;
     right: 4em;
     box-shadow: 0 1px .5px #CCC;
-    color: #666;
     padding: 2px 5px;
     font-size: .8em;
     min-width: 3em;
     white-space:nowrap;
     border-radius: 2px;
-    background: white;
     text-align: center;
   }
 
@@ -227,12 +298,26 @@ export default {
     width: 100%;
   }
 
-  .fab-leave-to {
+  .fab-default-leave-to {
     transform: scale(0);
   }
 
-  .fab-enter {
+  .fab-default-enter {
     transform: scale(0) rotate(-45deg);
+  }
+
+  .fab-alive-leave-to {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+
+  .fab-alive-leave-active, .fab-alive-enter-active {
+    transition: all .3s;
+  }
+
+  .fab-alive-enter {
+    transform: translateY(60px);
+    opacity: 0;
   }
 
   /* 如果激活菜单的icon和未激活的icon不一样时切换icon的动画 */
