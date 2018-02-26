@@ -17,6 +17,7 @@
         <animate fill="freeze" attributeName="stroke-dasharray" values="2000; 0" begin="1s" dur="3s" repeatCount="1" />
       </text>
     </svg>
+    <a href="https://github.com/a62527776a/vue-fab" target="_blank" class="btn btn-lg btn-block btn-sm btn-info">View on GitHub</a>
     <div class="btn btn-lg btn-block btn-sm btn-info" @click="isEdit = !isEdit">配置项</div>
     <transition name="fade">
     <div v-if="isEdit">
