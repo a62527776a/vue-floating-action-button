@@ -7,8 +7,9 @@ const install = (Vue) => {
   Vue.directive('click-outside', {
     bind: (el, binding, vnode) => {
       const listenClick = (e) => {
+        window.alert(el.contains)
         if (el.contains(e.target) || e.target.dataset.outside) {
-          return false
+          return false 
         }
         binding.value()
       }

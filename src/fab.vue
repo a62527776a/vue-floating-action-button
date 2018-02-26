@@ -184,7 +184,7 @@ export default {
      * @method scrollerEventListener 监听滚动事件
      */
     scrollerEventListener: function () {
-      let _scrollTop = document.documentElement.scrollTop
+      let _scrollTop = document.documentElement.scrollTop || document.body.scrollTop
       let direction = this.checkDirection()
       this.scrollTop = _scrollTop
       // 如果方向发生改变 则记录改变时滚动距离
