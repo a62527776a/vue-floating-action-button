@@ -80,7 +80,7 @@ export default {
     },
     autoHideThreshold: { // 滚动触发自动隐藏阈值
       type: Number,
-      default: 20
+      default: 10
     },
     fabAutoHideAnimateModel: {
       type: String,
@@ -254,8 +254,6 @@ export default {
         this.hidden = true
         this.touchEventInfo.offsetY = 0
       }
-      console.log(this.touchEventInfo.offsetY)
-      
     },
     // 根据PC还是移动端以及是否启用自动隐藏来卸载不同的事件监听函数
     unloadEvent: function () {
