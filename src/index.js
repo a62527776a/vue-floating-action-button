@@ -14,10 +14,12 @@ const install = (Vue) => {
         binding.value()
       }
       el.__clickOutside__ = listenClick
-      document.addEventListener('click', listenClick)
+      let body = document.body || document.documentElement
+      body.addEventListener('click', listenClick)
     },
     unbind: (el, binding) => {
-      document.removeEventListener('click', el.__clickOutside__)
+      let body = document.body || document.documentElement
+      body.removeEventListener('click', el.__clickOutside__)
     }
   })
 }
