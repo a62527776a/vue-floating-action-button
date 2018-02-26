@@ -7,9 +7,7 @@
 
 ![支持自定义二级菜单标题.gif](http://upload-images.jianshu.io/upload_images/5738345-757bf24e27c84b8f.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![支持自定义贝塞尔曲线动画.gif](http://upload-images.jianshu.io/upload_images/5738345-963113e1b2d33fa2.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-![支持滚动自动隐藏.gif](http://upload-images.jianshu.io/upload_images/5738345-77255a56352ea2f8.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![6.gif](https://i.loli.net/2018/02/26/5a93e1fc49b77.gif)
 
 
 [在线预览](http://htmlpreview.github.io/?https://github.com/a62527776a/vue-fab/blob/master/demo/dist/index.html)
