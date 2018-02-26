@@ -12,6 +12,7 @@ const install = (Vue) => {
           return false 
         }
         binding.value()
+        window.alert('执行outside后')
       }
       el.__clickOutside__ = listenClick
       document.addEventListener('click', listenClick)

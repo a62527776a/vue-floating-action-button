@@ -170,6 +170,7 @@ export default {
       this.$emit('clickItem', {idx, 'key': item.key})
     },
     clickoutside: function (e) {
+      window.alert('执行outside中')
       this.active = false
     },
     /**
