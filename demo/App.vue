@@ -72,13 +72,14 @@
       @clickMainBtn="clickMainBtn"
       :icon="icon"
       :mainBtnColor="mainBtnColor"
-      :spacing="spacing"
+      :spacing="spacing" 
+      size="big"
       :activeIcon="activeIcon"
       :fabAnimateBezier="fabAnimateBezier"
       :fabAutoHideAnimateModel="'alive'"
       :menu="menu"  />
-    <vue-fab v-show="!isEdit" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#3599DB'" style="right: 40%"  />
-    <vue-fab v-show="!isEdit" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 70%"  />
+    <vue-fab size="normal" v-show="!isEdit" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#3599DB'" style="right: 40%"  />
+    <vue-fab size="small" v-show="!isEdit" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 70%"  />
   </div>
 </template>
 
@@ -90,7 +91,7 @@
         icon: 'share',
         activeIcon: 'add',
         mainBtnColor: '#E64C3B',
-        spacing: 45,
+        spacing: 50,
         fabAnimateBezier: 'ease-out',
         isEdit: false,
         isAddChildMenuBtn: true,

@@ -86,6 +86,10 @@ export default {
       type: String,
       default: 'default'
     },
+    size: { // 尺寸 big/normal/small
+      type: String,
+      default: 'normal'
+    },
     menu: {
       type: Array,
       default: () => {
@@ -132,6 +136,11 @@ export default {
       touchEventInfo: {
         startY: 0,
         offsetY: 0
+      },
+      fabSize: {
+        big: 48,
+        normal: 40,
+        small: 32
       }
     }
   },
@@ -147,7 +156,9 @@ export default {
       return {
         transitionTimingFunction: /,/.test(this.fabAnimateBezier) ? `cubic-bezier(${this.fabAnimateBezier})` : this.fabAnimateBezier,
         zIndex: this.zIndex,
-        background: this.mainBtnColor
+        background: this.mainBtnColor,
+        height: this.fabSize[this.size] + 'px',
+        width: this.fabSize[this.size] + 'px'
       }
     },
     titleStyle: function () {
@@ -297,8 +308,8 @@ export default {
   }
 
   .fab {
-    height: 3em;
-    width: 3em;
+    height: 48px;
+    width: 48px;
     border-radius: 50%;
     display: flex;
     color: white;
