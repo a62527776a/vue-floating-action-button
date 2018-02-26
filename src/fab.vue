@@ -128,7 +128,11 @@ export default {
       scrollTop: 0,
       hidden: true,
       scrollDirection: null, // 滚动方向 up/down
-      changeDirectionScrollTop: 0 // 改变滚动方向时距离顶部的位置
+      changeDirectionScrollTop: 0, // 改变滚动方向时距离顶部的位置
+      touchEventInfo: {
+        startY: 0,
+        offsetY: 0
+      }
     }
   },
   watch: {
@@ -173,6 +177,24 @@ export default {
       this.active = false
     },
     /**
+     * @method testPCMobile 判断用户设备信息 PC/Mobile
+     * @return { Boolean } true(Mobile)/false(PC)
+     */
+    testPCMobile: function () {
+      if( navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i)
+      ) {
+        return true
+      } else {
+        return false
+      }
+    },
+    /**
      * @method openMenu 打开菜单
      * 当当前子菜单项为空时 则传递一个clickMainBtn事件
      * 当当前子菜单不为空时 则打开或关闭子菜单
@@ -211,16 +233,52 @@ export default {
     },
     removeScrollAutoHideListener: function () {
       document.removeEventListener(this.scrollerEventListener)
+    },
+    listenTouchEvent: function () {
+      document.addEventListener('touchstart', this.listenTouchStart)
+      document.addEventListener('touchmove', this.listenTouchMove)
+    },
+    removeTouchEvent: function () {
+      document.removeEventListener(this.listenTouchStart)
+      document.removeEventListener(this.listenTouchMove)
+    },
+    listenTouchStart: function (e) {
+      this.touchEventInfo.startY = e.touches[0].clientY
+    },
+    listenTouchMove: function (e) {
+      this.touchEventInfo.offsetY = e.touches[0].clientY - this.touchEventInfo.startY
+      if (this.touchEventInfo.offsetY > this.autoHideThreshold) {
+        this.hidden = false
+      } else if (this.touchEventInfo.offsetY < -this.autoHideThreshold) {
+        this.hidden = true
+      }
+    },
+    // 根据PC还是移动端以及是否启用自动隐藏来卸载不同的事件监听函数
+    unloadEvent: function () {
+      if (this.scrollAutoHide) {
+        if (this.testPCMobile()) {
+          this.removeTouchEvent()
+        } else {
+          this.removeScrollAutoHideListener()
+        }
+      }
     }
   },
   mounted () {
-    if (this.scrollAutoHide) document.addEventListener('scroll', this.scrollerEventListener)
+    // 区分PC和移动端 使用不同的动画交互方式
+    if (this.scrollAutoHide) {
+      if (this.testPCMobile()) {
+        this.listenTouchEvent()
+      } else {
+        document.addEventListener('scroll', this.scrollerEventListener)
+      }
+    }
   },
   destroyed () {
-    this.removeScrollAutoHideListener()
+    this.unloadEvent()
   },
   deactivated () {
-    this.removeScrollAutoHideListener()
+    this.unloadEvent()
   }
 }
 </script>

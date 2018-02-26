@@ -14,9 +14,8 @@ const install = (Vue) => {
       }
       el.__clickOutside__ = listenClick
       // 处理safari浏览器body对象无法响应click事件
-      window.alert(navigator.userAgent.indexOf("Safari"))
-      if (navigator.userAgent.indexOf("Safari") > -1) {
-        window.alert(String(document.body.style))
+      if (navigator.userAgent.indexOf("iPhone") > -1) {
+        document.querySelector('body').setAttribute('class', 'setCursor')
       }
       document.body.addEventListener('click', listenClick)
     },
