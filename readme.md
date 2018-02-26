@@ -38,8 +38,8 @@
 | clickAutoClose| Boolean | true | 点击子菜单项后是否关闭菜单 |
 | titleColor| String | #666 | 子菜单标题字体颜色 |
 | titleBg | String | #FFF | 子菜单背景颜色 |
-| scrollAutoHide | Boolean | true | 滚动是否触发自动隐藏 |
-| autoHideThreshold | Number | 20 | 滚动触发自动隐藏的阈值 单位px |
+| scrollAutoHide | Boolean | true | 滚动是否触发自动隐藏 (PC端和Mobile端实现方式有所不同 分别根据scroll事件和touchmove事件实现) |
+| autoHideThreshold | Number | 10 | 滚动触发自动隐藏的阈值 单位px |
 | fabAutoHideAnimateModel | String | 'alive' | fab滚动触发自动隐藏动画 分为 'default' ( 缩小隐藏 ) 以及 'alive' (向下滚动隐藏) |
 
 

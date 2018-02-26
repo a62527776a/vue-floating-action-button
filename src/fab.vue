@@ -332,7 +332,7 @@ export default {
     transition: all .2s;
     overflow: inherit;
     i {
-      font-size: .8em;
+      font-size: 1em;
     }
   }
 

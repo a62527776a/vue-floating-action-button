@@ -1,5 +1,22 @@
 <template>
   <div class="main">
+    <svg style="margin-bottom: 50px" height="120px" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" version="1.1">
+      <text stroke-dasharray="2000" stroke-dashoffset="-200" opacity="0" x="0" y="50"  fill="rgb(255, 153, 0)" stroke="rgb(255, 153, 0)" stroke-width="1" font-size="55" transform="">F
+        <animate fill="freeze" attributeName="opacity" values="0; 1" begin="0s" dur="3s" repeatCount="1" /> 
+        <animate fill="freeze" attributeName="stroke-dashoffset" values="-200; 0" begin="1s" dur="3s" repeatCount="1" />      
+        <animate fill="freeze" attributeName="stroke-dasharray" values="2000; 0" begin="1s" dur="3s" repeatCount="1" />      
+      </text>
+      <text stroke-dasharray="2000" stroke-dashoffset="-200" opacity="0" x="35" y="50" fill="rgb(53, 153, 219)" stroke="rgb(53, 153, 219)" stroke-width="1" font-size="55" transform="">A
+        <animate fill="freeze" attributeName="opacity" values="0; 1" begin="0s" dur="3s" repeatCount="1" /> 
+        <animate fill="freeze" attributeName="stroke-dashoffset" values="-200; 0" begin="1s" dur="3s" repeatCount="1" />
+        <animate fill="freeze" attributeName="stroke-dasharray" values="2000; 0" begin="1s" dur="3s" repeatCount="1" />
+      </text>
+      <text stroke-dasharray="2000" stroke-dashoffset="-200" opacity="0" x="75" y="50" fill="rgb(230, 76, 59)" stroke="rgb(230, 76, 59)" stroke-width="1" font-size="55" transform="">B
+        <animate fill="freeze" attributeName="opacity" values="0; 1" begin="0s" dur="3s" repeatCount="1" /> 
+        <animate fill="freeze" attributeName="stroke-dashoffset" values="-200; 0" begin="1s" dur="3s" repeatCount="1" />
+        <animate fill="freeze" attributeName="stroke-dasharray" values="2000; 0" begin="1s" dur="3s" repeatCount="1" />
+      </text>
+    </svg>
     <div class="btn btn-lg btn-block btn-sm btn-info" @click="isEdit = !isEdit">配置项</div>
     <transition name="fade">
     <div v-if="isEdit">
@@ -59,7 +76,7 @@
       :fabAnimateBezier="fabAnimateBezier"
       :fabAutoHideAnimateModel="'alive'"
       :menu="menu"  />
-    <vue-fab v-show="!isEdit" :mainBtnColor="'#3599DB'" style="right: 40%"  />
+    <vue-fab v-show="!isEdit" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#3599DB'" style="right: 40%"  />
     <vue-fab v-show="!isEdit" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 70%"  />
   </div>
 </template>
@@ -73,7 +90,7 @@
         activeIcon: 'add',
         mainBtnColor: '#E64C3B',
         spacing: 45,
-        fabAnimateBezier: 'ease',
+        fabAnimateBezier: 'ease-out',
         isEdit: false,
         isAddChildMenuBtn: true,
         addChildMenuTiming: null,
