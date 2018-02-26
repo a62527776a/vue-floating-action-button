@@ -19,6 +19,7 @@
     </svg>
     <a href="https://github.com/a62527776a/vue-fab" target="_blank" class="btn btn-lg btn-block btn-sm btn-info">View on GitHub</a>
     <div class="btn btn-lg btn-block btn-sm btn-info" @click="isEdit = !isEdit">配置项</div>
+    <p style="margin-top: 55px;padding: 2px;text-align: center">向下来回滑动查看自动隐藏演示</p>
     <transition name="fade">
     <div v-if="isEdit">
     <div class="form-group">
