@@ -206,7 +206,7 @@ export default {
      * @return { String } up/down
      */
     checkDirection: function () {
-      let _scrollTop = document.documentElement.scrollTop
+      let _scrollTop = document.documentElement.scrollTop || document.body.scrollTop
       return _scrollTop > this.scrollTop ? 'up' : 'down'
     },
     removeScrollAutoHideListener: function () {
