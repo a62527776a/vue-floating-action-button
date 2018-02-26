@@ -16,11 +16,6 @@ const install = (Vue) => {
       // 处理safari浏览器body对象无法响应click事件
       window.alert(navigator.userAgent.indexOf("Safari"))
       if (navigator.userAgent.indexOf("Safari") > -1) {
-        document.body.style = {
-          background: '#F4F4F4',
-          cursor: 'pointer',
-          '-webkit-tap-highlight-color': 'transparent'
-        }
         window.alert(String(document.body.style))
       }
       document.body.addEventListener('click', listenClick)
