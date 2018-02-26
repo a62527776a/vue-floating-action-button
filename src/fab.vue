@@ -249,9 +249,13 @@ export default {
       this.touchEventInfo.offsetY = e.touches[0].clientY - this.touchEventInfo.startY
       if (this.touchEventInfo.offsetY > this.autoHideThreshold) {
         this.hidden = false
+        this.touchEventInfo.offsetY = 0
       } else if (this.touchEventInfo.offsetY < -this.autoHideThreshold) {
         this.hidden = true
+        this.touchEventInfo.offsetY = 0
       }
+      console.log(this.touchEventInfo.offsetY)
+      
     },
     // 根据PC还是移动端以及是否启用自动隐藏来卸载不同的事件监听函数
     unloadEvent: function () {
