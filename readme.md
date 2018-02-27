@@ -3,9 +3,7 @@
 
 ##### 一个漂亮的 float action button
 
-![支持自定义二级菜单样式.gif](http://upload-images.jianshu.io/upload_images/5738345-b9c4a94efee18577.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-![支持自定义二级菜单标题.gif](http://upload-images.jianshu.io/upload_images/5738345-757bf24e27c84b8f.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![7.gif](http://upload-images.jianshu.io/upload_images/5738345-a13b5b7b511f8484.gif?imageMogr2/auto-orient/strip)
 
 ![6.gif](https://i.loli.net/2018/02/26/5a93e1fc49b77.gif)
 
