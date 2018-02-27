@@ -1,7 +1,7 @@
 <template>
   <div ref="fab" class="fab-container">
     <transition :name="'fab-' + fabAutoHideAnimateModel">
-      <fab-cantainer 
+      <fab-cantainer
           @click.native="openMenu"
           v-if="hidden"
           class="fab"
@@ -17,16 +17,14 @@
         </transition>
       </fab-cantainer>
     </transition>
-    <div v-click-outside="clickoutside">
+    <div v-click-outside="clickoutside" class="fab-menu-container" :style="{ height: fabSize[size] + 'px', width: fabSize[size] + 'px' }">
       <transition v-for="(item, idx) in menu"
         :key="item.key"
-        name="fab-child">
+        :name="'fab-child-' + fabMenuAnimate">
         <fab-cantainer 
-            v-show="active"
+            v-show="(fabMenuAnimate === 'alive' || active) && hidden"
             @click.native="clickItem(idx, item)"
-            :style="{ top: -50 - idx * spacing + 'px',
-            transitionDelay: active ? idx * delay + 's' : '0s',
-            background: item.color ? item.color : '#FFF'}"
+            :style="fabChildStyle(idx, item)"
             class="fab-child"
             :class="{ 'fab-shadow' : !item.color }">
           <div v-if="item.title" :style="titleStyle" class="fab-item-title">
@@ -60,7 +58,7 @@ export default {
     },
     spacing: {
       type: Number,
-      default: 45
+      default: 40
     },
     shadow: {
       type: Boolean,
@@ -83,6 +81,10 @@ export default {
       default: 10
     },
     fabAutoHideAnimateModel: {
+      type: String,
+      default: 'default'
+    },
+    fabMenuAnimate: {
       type: String,
       default: 'default'
     },
@@ -169,6 +171,27 @@ export default {
     }
   },
   methods: {
+    /**
+     * 根据不同的动画模式处理不同的css
+     */
+    fabChildStyle: function (idx, item) {
+      let animateModel = {
+        default: {
+          top: -40 - idx * this.spacing + 'px',
+          transitionDelay: this.active ? idx * this.delay + 's' : '0s',
+          background: item.color ? item.color : '#FFF'
+        },
+        alive: {
+          transition: 'all .4s',
+          top: 0,
+          opacity: this.active ? 1 : 0,
+          background: item.color ? item.color : '#FFF',
+          transform: this.active ? 'translate3D(0, -' + (idx + 1) * this.spacing + 'px, 0)' : 'translate3D(0, 0, 0)',
+          zIndex: -idx
+        }
+      }
+      return animateModel[this.fabMenuAnimate]
+    },
     /**
      * @method onOffFab 显示隐藏Fab
      * @param { Boolean } onOff 是否显示Fab
@@ -302,7 +325,7 @@ export default {
   }
   .fab-container {
     position: fixed;
-    right: 10%;
+    right: 20%;
     bottom: 10%;
     overflow: initial;
   }
@@ -313,6 +336,9 @@ export default {
     border-radius: 50%;
     display: flex;
     color: white;
+    position: absolute;
+    left: 0;
+    top: 0;
     padding: 8px;
     transition: all .2s, opacity .5s;
     justify-content: center;
@@ -379,6 +405,10 @@ export default {
 
   .fab-alive-leave-to {
     transform: translateY(60px);
+  }
+
+  .fab-child-alive-leave-to {
+    transform: translateY(180px) !important;
     opacity: 0;
   }
 
@@ -386,9 +416,17 @@ export default {
     transition: all .3s;
   }
 
-  .fab-alive-enter {
-    transform: translateY(60px);
+  .fab-child-alive-enter-active {
+    transition: all .6s;
     opacity: 0;
+  }
+
+  .fab-child-alive-leave-active {
+
+  }
+
+  .fab-alive-enter, .fab-child-alive-enter {
+    transform: translateY(60px) !important;
   }
 
   /* 如果激活菜单的icon和未激活的icon不一样时切换icon的动画 */
@@ -411,13 +449,21 @@ export default {
     opacity: 1;
   }
   
-  .fab-child-enter {
+  .fab-child-default-enter {
     opacity: 0;
     transform: translate3D(0, 5px, 0) scale(.8);
   }
 
-  .fab-child-leave-to {
+  .fab-child-default-leave-to {
     opacity: 0;
+  }
+
+  .fab-menu-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
   }
 
 </style>

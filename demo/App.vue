@@ -40,9 +40,10 @@
       :activeIcon="activeIcon"
       :fabAnimateBezier="fabAnimateBezier"
       :fabAutoHideAnimateModel="'alive'"
+      fabMenuAnimate="alive"
       :menu="menu"  />
-    <vue-fab :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#3599DB'" style="right: 40%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)"  />
-    <vue-fab :style="{ transform: democode[0].isShow ? 'translateY(-30px)' : ''}" size="small" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 70%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)"  />
+    <vue-fab fabMenuAnimate="default" :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#3599DB'" style="right: 40%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)"  />
+    <vue-fab :style="{ transform: democode[0].isShow ? 'translateY(-30px)' : ''}" size="small" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 60%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)"  />
   </div>
 </template>
 
@@ -193,9 +194,10 @@ data () {
     :mainBtnColor="mainBtnColor"
     :spacing="spacing" 
     size="big"
+    fabMenuAnimate="alive"
     :activeIcon="activeIcon"
     :fabAnimateBezier="fabAnimateBezier"
-    :fabAutoHideAnimateModel="'alive'"
+    fabAutoHideAnimateModel="alive"
     :menu="menu" /&gt;
 &lt;/template&gt;
 &lt;script&gt;
@@ -259,7 +261,8 @@ data () {
   size="big"
   :activeIcon="activeIcon"
   :fabAnimateBezier="fabAnimateBezier"
-  :fabAutoHideAnimateModel="'alive'"
+  fabAutoHideAnimateModel="alive"
+  fabMenuAnimate="alive"
   :menu="menu"
   />
 data () {
