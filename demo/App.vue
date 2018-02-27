@@ -18,69 +18,31 @@
       </text>
     </svg>
     <a href="https://github.com/a62527776a/vue-fab" target="_blank" class="btn btn-lg btn-block btn-sm btn-info">View on GitHub</a>
-    <div class="btn btn-lg btn-block btn-sm btn-info" @click="isEdit = !isEdit">配置项</div>
-    <p style="margin-top: 55px;padding: 2px;text-align: center">向下来回滑动查看自动隐藏演示</p>
-    <transition name="fade">
-    <div v-if="isEdit">
-    <div class="form-group">
-      <h6 for="mainIcon">主ICON (本组件所有ICON皆可从https://material.io/icons/中查找)</h6>
-      <input v-model="icon" class="form-control" id="mainIcon">
+    <a href="https://a62527776a.github.io/vue-fab/" target="_blank" class="btn btn-lg btn-block btn-sm btn-info">Api文档</a>
+    <div class="btn btn-lg btn-block btn-sm btn-info" v-for="(code, idx) in democode" @click="showCode(code)">实例代码{{idx}}</div>
+    <textarea ref="textarea" value="" style="position: absolute; top: -500px" />
+    <div style="position: relative" v-for="code in democode" v-show="code.isShow">
+      <button type="button" @click="copyCode(code.output)" class="btn btn-info btn-xs copy-code-btn">拷贝代码</button>
+      <pre v-html="code.code">
+      </pre>
     </div>
-    <div class="form-group">
-      <h6 for="mainIcon">主按钮颜色</h6>
-      <input v-model="mainBtnColor" class="form-control" id="mainBtnColor">
-    </div>
-    <div class="form-group">
-      <h6 for="spacing">子菜单间距</h6>
-      <input v-model="spacing" class="form-control" id="spacing">
-    </div>
-    <div class="form-group">
-      <h6 for="fabAnimateBezier">主按钮显示隐藏动画曲线(可根据http://cubic-bezier.com自由配置 注意如果为自定义曲线 只需填入n, n, n, n格式如.12,.6,.49,1.29即可</h6>
-      <input v-model="fabAnimateBezier" class="form-control" id="fabAnimateBezier">
-    </div>
-    <div class="btn btn-lg btn-block btn-sm btn-info" @click="hidenFab">隐藏Fab</div>
-    <br />
-    <transition-group name="list-complete" tag="div">
-      <form v-for="(item, idx) in menu" :key="idx" class="form-horizontal">
-        <b style="margin-bottom: 15px" class="text-primary btn-block">子菜单{{idx}}
-          <button type="button" @click="menu.splice(idx, 1)" class="btn btn-danger btn-xs pull-right">DELETE</button>
-        </b>
-        <div class="form-group" v-for="(value, key) in item">
-          <h6 class="col-xs-2 col-lg-1 text-left">{{key}}</h6>
-          <div class="col-xs-10 col-lg-11">
-            <input v-model="item[key]" class="form-control" :placeholder="key">
-          </div>
-        </div>
-      </form>
-    </transition-group>
-    <transition name="fade">
-      <div v-show="isAddChildMenuBtn" class="btn btn-lg btn-block btn-sm btn-info" 
-          @click="menu.push({
-            key: '',
-            icon: '',
-            title: '',
-            color: ''
-          })">新增子菜单
-      </div>
-    </transition>
-    <br />
-    </div>
-    <div v-else style="height: 1500px"></div>
     </transition>
     <vue-fab 
+      :style="{ transform: democode[2].isShow ? 'translateY(-30px)' : ''}"
       ref="vuefab"
       @clickItem="clickItem"
       @clickMainBtn="clickMainBtn"
       :icon="icon"
       :mainBtnColor="mainBtnColor"
       :spacing="spacing" 
+      style="transition: all .5s cubic-bezier(.18,.89,.58,1.26)"
       size="big"
       :activeIcon="activeIcon"
       :fabAnimateBezier="fabAnimateBezier"
       :fabAutoHideAnimateModel="'alive'"
       :menu="menu"  />
-    <vue-fab size="normal" v-show="!isEdit" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#3599DB'" style="right: 40%"  />
-    <vue-fab size="small" v-show="!isEdit" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 70%"  />
+    <vue-fab :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#3599DB'" style="right: 40%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)"  />
+    <vue-fab :style="{ transform: democode[0].isShow ? 'translateY(-30px)' : ''}" size="small" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 70%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)"  />
   </div>
 </template>
 
@@ -121,6 +83,232 @@
             title: '',
             color: '#9B5BB6'
           }
+        ],
+        democode: [
+          {
+            isShow: false,
+            code: `
+&lt;template&gt;
+  &lt;vue-fab
+  size="normal" 
+  fabAnimateBezier=".24,.97,.81,1.2" 
+  :mainBtnColor="'#3599DB'" 
+  @clickMainBtn="clickMainBtn"
+  :menu="[]"  
+&lt;/template&gt;
+&lt;script&gt;
+  export default {
+    name: 'example',
+    methods: {
+      clickMainBtn: function () {
+        window.alert('主菜单为空时点击主Fab会触发clickMainBtn事件')
+      },
+    }
+  }
+&lt;/script&gt;
+            `,
+            output: `
+<vue-fab
+  size="normal" 
+  fabAnimateBezier=".24,.97,.81,1.2" 
+  :mainBtnColor="'#3599DB'" 
+  @clickMainBtn="clickMainBtn"
+  :menu="[]"
+  />
+methods: {
+  clickMainBtn: function () {
+    window.alert('主菜单为空时点击主Fab会触发clickMainBtn事件')
+  },
+}
+
+            `
+          },
+          {
+            isShow: false,
+            code: `
+&lt;template&gt;
+  &lt;vue-fab
+  size="small" 
+  mainBtnColor="#ff9900" 
+  icon="navigate_next" 
+  @clickMainBtn="clickMainBtn" 
+&lt;/template&gt;
+&lt;script&gt;
+  export default {
+    name: 'example',
+    data () {
+      return {
+        menu: [
+          {
+            key: 'add',
+            icon: 'add',
+            title: 'add',
+            color: '#3599DB'
+          },
+          {
+            key: 'https',
+            icon: 'https',
+            title: 'https',
+            color: '#9B5BB6'
+          }
+        ]
+    }
+  }
+&lt;/script&gt;
+            `,
+            output: `
+<vue-fab 
+  size="small" 
+  mainBtnColor="#ff9900" 
+  icon="navigate_next" 
+  />
+data () {
+  return {
+    menu: [
+      {
+        key: 'add',
+        icon: 'add',
+        title: 'add',
+        color: '#3599DB'
+      },
+      {
+        key: 'https',
+        icon: 'https',
+        title: 'https',
+        color: '#9B5BB6'
+      }
+    ]
+}
+            `
+          },
+          {
+            isShow: false,
+            code: `
+&lt;template&gt;
+  &lt;vue-fab
+    ref="vuefab"
+    @clickItem="clickItem"
+    @clickMainBtn="clickMainBtn"
+    :icon="icon"
+    :mainBtnColor="mainBtnColor"
+    :spacing="spacing" 
+    size="big"
+    :activeIcon="activeIcon"
+    :fabAnimateBezier="fabAnimateBezier"
+    :fabAutoHideAnimateModel="'alive'"
+    :menu="menu" /&gt;
+&lt;/template&gt;
+&lt;script&gt;
+  export default {
+    name: 'example',
+    data () {
+      return {
+        hidden: false,
+        icon: 'share',
+        activeIcon: 'add',
+        mainBtnColor: '#E64C3B',
+        spacing: 50,
+        fabAnimateBezier: 'ease-out',
+        isEdit: false,
+        isAddChildMenuBtn: true,
+        addChildMenuTiming: null,
+        menu: [
+          {
+            key: 'done',
+            icon: 'done',
+            title: '',
+            color: '#ff9900'
+          },
+          {
+            key: 'toc',
+            icon: 'toc',
+            title: '',
+            color: '#999'
+          },
+          {
+            key: 'home',
+            icon: 'home',
+            title: ''
+          },
+          {
+            key: 'create',
+            icon: 'create',
+            title: '',
+            color: '#9B5BB6'
+          }
+        ]
+    },
+    methods: {
+      clickItem: function (params) {
+        console.log('idx: ' + params.idx + ' key: ' + params.key)
+      }
+      clickMainBtn: function () {
+        console.log('clickMainBtn')
+      }
+    }
+  }
+&lt;/script&gt;
+            `,
+            output: `
+<vue-fab 
+  @clickItem="clickItem"
+  @clickMainBtn="clickMainBtn"
+  :icon="icon"
+  :mainBtnColor="mainBtnColor"
+  :spacing="spacing" 
+  size="big"
+  :activeIcon="activeIcon"
+  :fabAnimateBezier="fabAnimateBezier"
+  :fabAutoHideAnimateModel="'alive'"
+  :menu="menu"
+  />
+data () {
+  return {
+    hidden: false,
+    icon: 'share',
+    activeIcon: 'add',
+    mainBtnColor: '#E64C3B',
+    spacing: 50,
+    fabAnimateBezier: 'ease-out',
+    isEdit: false,
+    isAddChildMenuBtn: true,
+    addChildMenuTiming: null,
+    menu: [
+      {
+        key: 'done',
+        icon: 'done',
+        title: '',
+        color: '#ff9900'
+      },
+      {
+        key: 'toc',
+        icon: 'toc',
+        title: '',
+        color: '#999'
+      },
+      {
+        key: 'home',
+        icon: 'home',
+        title: ''
+      },
+      {
+        key: 'create',
+        icon: 'create',
+        title: '',
+        color: '#9B5BB6'
+      }
+    ]
+},
+methods: {
+  clickItem: function (params) {
+    console.log('idx: ' + params.idx + ' key: ' + params.key)
+  }
+  clickMainBtn: function () {
+    console.log('clickMainBtn')
+  }
+}
+            `
+          }
         ]
       }
     },
@@ -144,6 +332,23 @@
       },
       hidenFab: function () {
         this.$refs.vuefab.onOffFab(false)
+      },
+      copyCode: function (code) {
+        this.$refs.textarea.value = code
+        this.$refs.textarea.select()
+        document.execCommand('Copy')
+        this.$refs.textarea.value = ''
+        window.alert('复制成功')
+      },
+      showCode: function (item) {
+        if (item.isShow) {
+          item.isShow = false
+          return
+        }
+        this.democode.forEach((item) => {
+          item.isShow = false
+        })
+        item.isShow = !item.isShow
       }
     },
     created () {
@@ -181,5 +386,10 @@
   transition: all 1s;
   display: block;
   margin-right: 10px;
+}
+.copy-code-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 </style>
