@@ -76,7 +76,7 @@ export default {
       type: String,
       default: '#FFF'
     },
-    autoHideThreshold: { // 滚动触发自动隐藏阈值
+    autoHideThreshold: { // 滚动触发自动隐藏阈值s
       type: Number,
       default: 10
     },
