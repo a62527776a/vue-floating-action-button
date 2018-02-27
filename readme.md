@@ -1,7 +1,7 @@
-# Vue Float Action Button
+# Vue Floating Action Button
 
 
-##### 一个漂亮的 float action button
+##### a beautiful Floating Action Button
 
 ![7.gif](http://upload-images.jianshu.io/upload_images/5738345-a13b5b7b511f8484.gif?imageMogr2/auto-orient/strip)
 
@@ -12,6 +12,15 @@
 
 [doc page](https://a62527776a.github.io/vue-fab/)
 
+
+***
+
+## Features
+
+* **支持多种动画**
+* **支持自定义贝塞尔曲线**
+* **动画流畅复刻Material Design**
+* **支持滚动自动隐藏**
 
 ***
 
