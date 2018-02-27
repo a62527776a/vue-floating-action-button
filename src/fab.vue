@@ -423,6 +423,7 @@ export default {
 
   .fab-alive-enter, .fab-child-alive-enter {
     transform: translateY(60px) !important;
+    opacity: 0;
   }
 
   /* 如果激活菜单的icon和未激活的icon不一样时切换icon的动画 */
