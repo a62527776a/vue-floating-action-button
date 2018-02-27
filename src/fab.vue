@@ -266,7 +266,7 @@ export default {
         this.touchEventInfo.offsetY = 0
       }
     },
-    // 根据PC还是移动端以及是否启用自动隐藏来卸载不同的事件监听函数
+    // 根据PC还是移动端以及是否启用自动 隐藏来卸载不同的事件监听函数
     unloadEvent: function () {
       if (this.scrollAutoHide) {
         if (this.testPCMobile()) {
