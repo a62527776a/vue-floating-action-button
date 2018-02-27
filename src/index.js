@@ -27,10 +27,10 @@ const install = (Vue) => {
       el.__clickOutside__ = listenClick
       // 处理safari浏览器body对象无法响应click事件
       if (testSafariBrower()) document.querySelector('body').setAttribute('class', 'setCursor')
-      document.body.addEventListener('click', listenClick)
+      window.addEventListener('click', listenClick)
     },
     unbind: (el, binding) => {
-      document.body.removeEventListener('click', el.__clickOutside__)
+      window.removeEventListener('click', el.__clickOutside__)
     }
   })
 }
