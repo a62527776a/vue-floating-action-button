@@ -4,6 +4,6 @@ import Vue from 'vue'
 
 Vue.use(Fab)
 
-const app = new Vue({
+new Vue({
   render: h => h(App)
 }).$mount('#app')

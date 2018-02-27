@@ -20,7 +20,7 @@ const install = (Vue) => {
     bind: (el, binding, vnode) => {
       const listenClick = (e) => {
         if (el.contains(e.target) || e.target.dataset.outside) {
-          return false 
+          return false
         }
         binding.value()
       }

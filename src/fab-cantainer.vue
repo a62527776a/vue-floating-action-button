@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     startAnimate: function () {
-      this.touching = true,
+      this.touching = true
       this.animating = true
       this.mousedown = true
       this.timing = setTimeout(() => {
