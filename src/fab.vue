@@ -403,12 +403,8 @@ export default {
     transform: scale(0) rotate(-45deg);
   }
 
-  .fab-alive-leave-to {
-    transform: translateY(60px);
-  }
-
-  .fab-child-alive-leave-to {
-    transform: translateY(180px) !important;
+  .fab-alive-leave-to, .fab-child-alive-leave-to {
+    transform: translateY(60px) !important;
     opacity: 0;
   }
 
