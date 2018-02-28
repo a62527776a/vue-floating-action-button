@@ -165,7 +165,8 @@ export default {
       return {
         transitionTimingFunction: /,/.test(this.fabAnimateBezier) ? `cubic-bezier(${this.fabAnimateBezier})` : this.fabAnimateBezier,
         zIndex: this.zIndex,
-        background: this.mainBtnColor
+        background: this.mainBtnColor,
+        boxShadow: this.shadow ? '0px 2px 8px #666' : ''
       }
     },
     titleStyle: function () {
