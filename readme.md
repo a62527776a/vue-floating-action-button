@@ -3,10 +3,9 @@
 
 ##### a beautiful Floating Action Button
 
+![8.gif](http://upload-images.jianshu.io/upload_images/5738345-8348ec8f54f0d160.gif?imageMogr2/auto-orient/strip)
+
 ![7.gif](http://upload-images.jianshu.io/upload_images/5738345-a13b5b7b511f8484.gif?imageMogr2/auto-orient/strip)
-
-![6.gif](https://i.loli.net/2018/02/26/5a93e1fc49b77.gif)
-
 
 [在线预览](http://htmlpreview.github.io/?https://github.com/a62527776a/vue-fab/blob/master/demo/dist/index.html)
 
@@ -20,7 +19,7 @@
 * **支持多种动画**
 * **支持自定义贝塞尔曲线**
 * **动画流畅复刻Material Design**
-* **支持手势滚动自动隐藏**
+* **支持滚动/手势自动隐藏**
 
 ***
 
@@ -123,13 +122,13 @@ Vue.use(VueFab)
 | autoHideThreshold | Number | 10 | / | 滚动触发自动隐藏的阈值 单位px |
 | fabAutoHideAnimateModel | String | 'alive' | 'default' / 'alive' | fab滚动触发自动隐藏动画 分为 'default' ( 缩小隐藏 ) 以及 'alive' (向下滚动隐藏) |
 | fabMenuAnimate | String | 'default' | 'default' / 'alive' | 打开关闭子菜单时过渡动画 分为 'default' (各自过渡) 'alive' (分裂过渡) |
-
+| fabAliveAnimateBezier | String' | '.16,1.01,.61,1.2' | 'ease' / 'linear' / 'ease-in' / 'ease-out' / 'ease-in-out' / '.18,.89,.91,.17' | 子菜单列表在alive动画模式下的贝塞尔曲线 注：仅fabMenuAnimate为alive时生效 |
 ## Event
 
 |    Name   |   Param   | Description |
 | ----      | -------   | ----------- |
 | clickItem | {idx, key} | 当菜单项不为空且点击菜单项时，会返回该菜单项的下标以及Key值 key值由用户自定义 |
-| clickMainBtn | / | 当菜单项为空时点击主fab 会触发该事件 |  
+| clickMainBtn | / | 当菜单项为空时点击主fab 会触发该事件 |
 
 ## Methods
 

@@ -6,9 +6,9 @@
           v-if="hidden"
           class="fab"
           data-outside="true"
-          :class="{ 'fab-shadow' : shadow }"
+          :class="'fab-size-' + size"
           :style="fabClass">
-        <transition :name="activeIcon === icon ? 'fab-icon' : active ? 'fab-icon' : 'fab-active-icon'">
+        <transition :name="activeIcon === icon ? 'fab-icon' : active ? 'fab-active-icon' : 'fab-icon'">
           <i
           data-outside="true"
           :key="activeIcon === icon ? icon : active"
@@ -17,7 +17,9 @@
         </transition>
       </fab-cantainer>
     </transition>
-    <div v-click-outside="clickoutside" class="fab-menu-container" :style="{ height: fabSize[size] + 'px', width: fabSize[size] + 'px' }">
+    <div v-click-outside="clickoutside"
+         class="fab-menu-container"
+         :class="'fab-size-' + size">
       <transition v-for="(item, idx) in menu"
         :key="item.key"
         :name="'fab-child-' + fabMenuAnimate">
@@ -76,9 +78,9 @@ export default {
       type: String,
       default: '#FFF'
     },
-    autoHideThreshold: { // 滚动触发自动隐藏阈值s
+    autoHideThreshold: { // 滚动触发自动隐藏阈值
       type: Number,
-      default: 10
+      default: 50
     },
     fabAutoHideAnimateModel: {
       type: String,
@@ -107,6 +109,12 @@ export default {
             icon: 'https',
             title: 'https',
             color: '#9B5BB6'
+          },
+          {
+            key: 'done',
+            icon: 'done',
+            title: 'done',
+            color: ''
           }
         ]
       }
@@ -117,7 +125,11 @@ export default {
     },
     fabAnimateBezier: {
       type: String,
-      default: 'liner'
+      default: 'linear'
+    },
+    fabAliveAnimateBezier: {
+      type: String,
+      default: '.16,1.01,.61,1.2'
     },
     zIndex: {
       type: Number,
@@ -138,11 +150,6 @@ export default {
       touchEventInfo: {
         startY: 0,
         offsetY: 0
-      },
-      fabSize: {
-        big: 48,
-        normal: 40,
-        small: 32
       }
     }
   },
@@ -158,9 +165,7 @@ export default {
       return {
         transitionTimingFunction: /,/.test(this.fabAnimateBezier) ? `cubic-bezier(${this.fabAnimateBezier})` : this.fabAnimateBezier,
         zIndex: this.zIndex,
-        background: this.mainBtnColor,
-        height: this.fabSize[this.size] + 'px',
-        width: this.fabSize[this.size] + 'px'
+        background: this.mainBtnColor
       }
     },
     titleStyle: function () {
@@ -183,7 +188,9 @@ export default {
         },
         alive: {
           transition: 'all .4s',
+          transitionTimingFunction: /,/.test(this.fabAliveAnimateBezier) ? `cubic-bezier(${this.fabAliveAnimateBezier})` : this.fabAliveAnimateBezier,
           top: 0,
+          transitionDelay: this.active ? idx * (this.delay / 3) + 's' : '0s',
           opacity: this.active ? 1 : 0,
           background: item.color ? item.color : '#FFF',
           transform: this.active ? 'translate3D(0, -' + (idx + 1) * this.spacing + 'px, 0)' : 'translate3D(0, 0, 0)',
@@ -320,6 +327,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  @import './styles/index.less';
+
   * {
     user-select: none
   }
@@ -331,18 +340,13 @@ export default {
   }
 
   .fab {
-    height: 48px;
-    width: 48px;
+    .flex-center();
+    .absolute();
     border-radius: 50%;
-    display: flex;
     color: white;
-    position: absolute;
-    left: 0;
-    top: 0;
+    cursor: pointer;
     padding: 8px;
-    transition: all .2s, opacity .5s;
-    justify-content: center;
-    align-items: center;
+    .transition();
     i {
       font-size: 1.5em;
     }
@@ -357,16 +361,15 @@ export default {
   }
 
   .fab-child {
+    .flex-center();
+    .transition();
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    cursor: pointer;
     top: -50px;
     width: 80%;
     height: 80%;
     margin-left: 10%;
     border-radius: 50%;
-    transition: all .2s;
     overflow: inherit;
     i {
       font-size: 1em;
@@ -386,81 +389,15 @@ export default {
   }
 
   .material-icons {
-    transition: all .2s ease;
+    .flex-center();
+    .transition(.2s, ease);
     position: absolute;
-    justify-content: center;
-    align-items: center;
-    display: flex;
     height: 100%;
     width: 100%;
-  }
-
-  .fab-default-leave-to {
-    transform: scale(0);
-  }
-
-  .fab-default-enter {
-    transform: scale(0) rotate(-45deg);
-  }
-
-  .fab-alive-leave-to, .fab-child-alive-leave-to {
-    transform: translateY(60px) !important;
-    opacity: 0;
-  }
-
-  .fab-alive-leave-active, .fab-alive-enter-active {
-    transition: all .3s;
-  }
-
-  .fab-child-alive-enter-active {
-    transition: all .6s;
-    opacity: 0;
-  }
-
-  .fab-child-alive-leave-active {
-
-  }
-
-  .fab-alive-enter, .fab-child-alive-enter {
-    transform: translateY(60px) !important;
-    opacity: 0;
-  }
-
-  /* 如果激活菜单的icon和未激活的icon不一样时切换icon的动画 */
-  .fab-active-icon-leave, .fab-icon-enter-to {
-    transform: rotate(45deg);
-  }
-
-  .fab-icon-leave-to, .fab-active-icon-enter {
-    transform: rotate(90deg);
-  }
-
-  .fab-icon-leave, .fab-icon-enter, .fab-active-icon-enter-to, .fab-active-icon-leave-to {
-    transform: rotate(0deg)
-  }
-
-  .fab-icon-enter, .fab-icon-leave-to, .fab-active-icon-enter, .fab-active-icon-leave-to {
-    opacity: 0;
-  }
-  .fab-icon-enter-to, .fab-icon-leave, .fab-active-icon-to, .fab-active-icon-leave {
-    opacity: 1;
-  }
-  
-  .fab-child-default-enter {
-    opacity: 0;
-    transform: translate3D(0, 5px, 0) scale(.8);
-  }
-
-  .fab-child-default-leave-to {
-    opacity: 0;
   }
 
   .fab-menu-container {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
+    .absolute()
   }
 
 </style>
