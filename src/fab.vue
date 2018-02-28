@@ -287,6 +287,7 @@ export default {
       this.touchEventInfo.startY = e.touches[0].clientY
     },
     listenTouchMove: function (e) {
+      e.preventDefault()
       this.touchEventInfo.offsetY = e.touches[0].clientY - this.touchEventInfo.startY
       if (this.touchEventInfo.offsetY > this.autoHideThreshold) {
         this.hidden = false
