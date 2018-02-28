@@ -109,6 +109,12 @@ export default {
             icon: 'https',
             title: 'https',
             color: '#9B5BB6'
+          },
+          {
+            key: 'done',
+            icon: 'done',
+            title: 'done',
+            color: ''
           }
         ]
       }

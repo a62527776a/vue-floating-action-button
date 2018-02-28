@@ -1,0 +1,112 @@
+@import './mixins.less';
+
+// #根据不同的动画模式 分类
+
+// ## default 动画模式
+
+// 1. 主Fab
+
+.fab-default-leave-to {
+  transform: scale(0);
+}
+
+.fab-default-enter {
+  transform: scale(0) rotate(-45deg);
+}
+
+// 2. Fab子菜单
+
+.fab-child-default-enter {
+  opacity: 0;
+  transform: translate3D(0, 5px, 0) scale(.0);
+}
+
+.fab-child-default-leave-to {
+  opacity: 0;
+}
+
+// 3. Fab被激活的Icon动画
+
+.fab-active-icon-leave {
+  transform: rotate(0deg) !important;
+}
+
+.fab-active-icon-leave-to {
+  transform: rotate(45deg) !important;
+  opacity: 0 !important;
+}
+
+.fab-active-icon-enter {
+  opacity: 0;
+  transform: rotate(0deg) !important;
+}
+
+.fab-active-icon-enter-to {
+  transform: rotate(45deg) !important;
+  opacity: 1;
+}
+
+// 4. Fab 未被激活的Icon动画
+
+.fab-icon-enter {
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+.fab-icon-enter-to {
+  transform: rotate(0deg)
+}
+
+.fab-icon-leave {
+  transform: rotate(45deg);
+  opacity: 1;
+}
+
+.fab-icon-leave-to {
+  transform: rotate(0deg) !important;
+  opacity: 0;
+}
+
+.fab-icon-enter, .fab-icon-leave-to {
+  opacity: 0;
+}
+
+.fab-icon-to, .fab-icon-leave {
+  opacity: 1;
+}
+
+
+// alive 动画模式
+
+// 1. 主Fab
+
+.fab-alive-leave-to {
+  transform: translateY(60px) !important;
+  opacity: 0;
+}
+
+.fab-alive-leave-active, .fab-alive-enter-active {
+  .transition(.3s);  
+}
+
+.fab-alive-enter {
+  transform: translateY(60px) !important;
+  opacity: 0;
+}
+
+// 2. Fab子菜单
+
+.fab-child-alive-leave-to {
+  transform: translateY(60px) !important;
+  opacity: 0;
+}
+
+.fab-child-alive-enter-active {
+  .transition(.6s);
+  opacity: 0;
+}
+
+.fab-child-alive-enter {
+  transform: translateY(60px) !important;
+  opacity: 0;
+}

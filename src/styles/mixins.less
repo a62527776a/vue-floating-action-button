@@ -1,0 +1,22 @@
+@import './vars.less';
+
+.fab-size (@size: @normal) {
+  height: @size;
+  width: @size;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.transition (@delay: .2s, @timingFunc: linear) {
+  transition: all @delay @timingFunc;
+}
+
+.absolute {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
