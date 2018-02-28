@@ -123,13 +123,13 @@ Vue.use(VueFab)
 | autoHideThreshold | Number | 10 | / | 滚动触发自动隐藏的阈值 单位px |
 | fabAutoHideAnimateModel | String | 'alive' | 'default' / 'alive' | fab滚动触发自动隐藏动画 分为 'default' ( 缩小隐藏 ) 以及 'alive' (向下滚动隐藏) |
 | fabMenuAnimate | String | 'default' | 'default' / 'alive' | 打开关闭子菜单时过渡动画 分为 'default' (各自过渡) 'alive' (分裂过渡) |
-
+| fabAliveAnimateBezier | String' | '.16,1.01,.61,1.2' | 'ease' / 'linear' / 'ease-in' / 'ease-out' / 'ease-in-out' / '.18,.89,.91,.17' | 子菜单列表在alive动画模式下的贝塞尔曲线 注：仅fabMenuAnimate为alive时生效 |
 ## Event
 
 |    Name   |   Param   | Description |
 | ----      | -------   | ----------- |
 | clickItem | {idx, key} | 当菜单项不为空且点击菜单项时，会返回该菜单项的下标以及Key值 key值由用户自定义 |
-| clickMainBtn | / | 当菜单项为空时点击主fab 会触发该事件 |  
+| clickMainBtn | / | 当菜单项为空时点击主fab 会触发该事件 |
 
 ## Methods
 

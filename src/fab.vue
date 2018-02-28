@@ -8,7 +8,7 @@
           data-outside="true"
           :class="'fab-size-' + size"
           :style="fabClass">
-        <transition :name="activeIcon === icon ? 'fab-icon' : active ? 'fab-icon' : 'fab-active-icon'">
+        <transition :name="activeIcon === icon ? 'fab-icon' : active ? 'fab-active-icon' : 'fab-icon'">
           <i
           data-outside="true"
           :key="activeIcon === icon ? icon : active"
@@ -119,7 +119,11 @@ export default {
     },
     fabAnimateBezier: {
       type: String,
-      default: 'liner'
+      default: 'linear'
+    },
+    fabAliveAnimateBezier: {
+      type: String,
+      default: '.16,1.01,.61,1.2'
     },
     zIndex: {
       type: Number,
@@ -178,7 +182,9 @@ export default {
         },
         alive: {
           transition: 'all .4s',
+          transitionTimingFunction: /,/.test(this.fabAliveAnimateBezier) ? `cubic-bezier(${this.fabAliveAnimateBezier})` : this.fabAliveAnimateBezier,
           top: 0,
+          transitionDelay: this.active ? idx * (this.delay / 3) + 's' : '0s',
           opacity: this.active ? 1 : 0,
           background: item.color ? item.color : '#FFF',
           transform: this.active ? 'translate3D(0, -' + (idx + 1) * this.spacing + 'px, 0)' : 'translate3D(0, 0, 0)',
@@ -329,11 +335,10 @@ export default {
 
   .fab {
     .flex-center();
+    .absolute();
     border-radius: 50%;
     color: white;
-    position: absolute;
-    left: 0;
-    top: 0;
+    cursor: pointer;
     padding: 8px;
     transition: all .2s, opacity .5s;
     i {
@@ -353,6 +358,7 @@ export default {
     .flex-center();
     .transition();
     position: absolute;
+    cursor: pointer;
     top: -50px;
     width: 80%;
     height: 80%;
@@ -385,9 +391,7 @@ export default {
   }
 
   .fab-menu-container {
-    position: absolute;
-    left: 0;
-    top: 0;
+    .absolute()
   }
 
 </style>

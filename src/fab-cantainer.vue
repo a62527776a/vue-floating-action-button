@@ -44,17 +44,18 @@ export default {
 </script>
 
 <style lang="less">
+@import './styles/index.less';
+
 .fabMask {
+  .absolute();
   height: 100%;
   width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
   border-radius: 50%;
   background: #FFF;
   opacity: 0;
   transition: all .3s;
 }
+
 .touchStyle {
   opacity: .2 !important;
 }
