@@ -287,7 +287,6 @@ export default {
       this.touchEventInfo.startY = e.touches[0].clientY
     },
     listenTouchMove: function (e) {
-      e.preventDefault()
       this.touchEventInfo.offsetY = e.touches[0].clientY - this.touchEventInfo.startY
       if (this.touchEventInfo.offsetY > this.autoHideThreshold) {
         this.hidden = false
@@ -347,7 +346,7 @@ export default {
     color: white;
     cursor: pointer;
     padding: 8px;
-    transition: all .2s, opacity .5s;
+    .transition();
     i {
       font-size: 1.5em;
     }
