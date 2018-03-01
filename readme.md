@@ -24,6 +24,7 @@
 ## TODO List
 
 * **支持hover click切换**
+* **支持自定义ICON**
 
 ***
 
