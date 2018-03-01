@@ -12,6 +12,9 @@
 [doc page](https://a62527776a.github.io/vue-fab/)
 
 
+求职 有意者查看简历
+https://github.com/a62527776a/jianli/blob/master/readme.md
+
 ***
 
 ## Features
@@ -98,7 +101,6 @@ Vue.use(VueFab)
 </script>
 
 ```
-
 
 ***
 
