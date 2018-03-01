@@ -52,7 +52,7 @@
     data () {
       return {
         hidden: false,
-        icon: 'share',
+        icon: 'explore',
         activeIcon: 'add',
         mainBtnColor: '#E64C3B',
         spacing: 50,
