@@ -26,11 +26,20 @@ const install = (Vue) => {
       }
       el.__clickOutside__ = listenClick
       // 处理safari浏览器body对象无法响应click事件
-      if (testSafariBrower()) document.querySelector('body').setAttribute('class', 'setCursor')
-      window.addEventListener('click', listenClick)
+      if (testSafariBrower()) {
+        let html = document.querySelector('html')
+        html.setAttribute('class', 'setCursor')
+        html.addEventListener('click', listenClick)
+      } else {
+        window.addEventListener('click', listenClick)
+      }
     },
     unbind: (el, binding) => {
-      window.removeEventListener('click', el.__clickOutside__)
+      if (testSafariBrower()) {
+        document.removeEventListener('click', el.__clickOutside__)
+      } else {
+        document.querySelector('html').removeEventListener('click', el.__clickOutside__)
+      }
     }
   })
 }
