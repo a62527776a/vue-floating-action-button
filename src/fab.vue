@@ -20,19 +20,6 @@
     <div v-click-outside="clickoutside"
          class="fab-item-container"
          :class="'fab-size-' + size">
-      <!--<transition
-        v-for="(item, idx) in menu"
-        :key="item.key"
-        :name="'fab-item-' + fabItemAnimate"> -->
-          <!--<fab-item
-            v-show="(fabItemAnimate === 'alive' || active) && hidden"
-            @click.native="clickItem(idx, item)"
-            :style="fabItemStyle(idx, item)"
-            :idx="idx"
-            :title="item.title"
-            :color="item.color"
-            :icon="item.icon">
-          </fab-item> -->
           <slot></slot>
       </transition>
     </div>
@@ -55,17 +42,9 @@ export default {
       type: String,
       default: 'add'
     },
-    spacing: {
-      type: Number,
-      default: 40
-    },
     shadow: {
       type: Boolean,
       default: true
-    },
-    delay: {
-      type: Number,
-      default: 0.05
     },
     autoHideThreshold: { // 滚动触发自动隐藏阈值
       type: Number,
@@ -82,31 +61,6 @@ export default {
     size: { // 尺寸 big/normal/small
       type: String,
       default: 'normal'
-    },
-    menu: {
-      type: Array,
-      default: () => {
-        return [
-          {
-            key: 'add',
-            icon: 'add',
-            title: 'add',
-            color: '#3599DB'
-          },
-          {
-            key: 'https',
-            icon: 'https',
-            title: 'https',
-            color: '#9B5BB6'
-          },
-          {
-            key: 'done',
-            icon: 'done',
-            title: 'done',
-            color: ''
-          }
-        ]
-      }
     },
     clickAutoClose: {
       type: Boolean,
@@ -160,44 +114,6 @@ export default {
     }
   },
   methods: {
-    /**
-     * 根据不同的动画模式处理不同的css
-     */
-    fabItemStyle: function (idx, item) {
-      let animateModel = {
-        default: {
-          top: -40 - idx * this.spacing + 'px',
-          transitionDelay: this.active ? idx * this.delay + 's' : '0s',
-          background: item.color ? item.color : '#FFF'
-        },
-        alive: {
-          transition: 'all .4s',
-          transitionTimingFunction: /,/.test(this.fabAliveAnimateBezier) ? `cubic-bezier(${this.fabAliveAnimateBezier})` : this.fabAliveAnimateBezier,
-          top: 0,
-          transitionDelay: this.active ? idx * (this.delay / 3) + 's' : '0s',
-          opacity: this.active ? 1 : 0,
-          background: item.color ? item.color : '#FFF',
-          transform: this.active ? 'translate3D(0, -' + (idx + 1) * this.spacing + 'px, 0)' : 'translate3D(0, 0, 0)',
-          zIndex: -idx
-        }
-      }
-      return animateModel[this.fabItemAnimate]
-    },
-    /**
-     * @method onOffFab 显示隐藏Fab
-     * @param { Boolean } onOff 是否显示Fab
-     */
-    onOffFab: function (onOff) {
-      this.hidden = onOff
-    },
-    clickItem: function (idx, item) {
-      if (this.clickAutoClose) {
-        setTimeout(() => {
-          this.active = false
-        }, 300)
-      }
-      this.$emit('clickItem', {idx, 'key': item.key})
-    },
     clickoutside: function (e) {
       this.active = false
     },
@@ -220,12 +136,10 @@ export default {
       }
     },
     /**
-     * @method openMenu 打开菜单
-     * 当当前子菜单项为空时 则传递一个clickMainBtn事件
-     * 当当前子菜单不为空时 则打开或关闭子菜单
+     * @method openMenu 打开或关闭菜单
      */
     openMenu: function () {
-      this.menu.length > 0 ? this.active = !this.active : this.$emit('clickMainBtn')
+      this.active = !this.active
     },
     /**
      * @method scrollerEventListener 监听滚动事件

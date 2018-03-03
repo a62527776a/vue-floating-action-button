@@ -34,7 +34,6 @@
       @clickMainBtn="clickMainBtn"
       :icon="icon"
       :mainBtnColor="mainBtnColor"
-      :spacing="spacing" 
       style="transition: all .5s cubic-bezier(.18,.89,.58,1.26)"
       size="big"
       :activeIcon="activeIcon"
@@ -44,12 +43,15 @@
       <fab-item
         v-for="(item, idx) in menu"
         :idx="idx"
+        :spacing="spacing"
         :title="item.title"
         :color="item.color"
         :icon="item.icon">
       </fab-item>
     </vue-fab>
-    <vue-fab fabItemAnimate="default" fabAliveAnimateBezier="ease" :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#3599DB'" style="right: 40%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)"  />
+    <vue-fab fabItemAnimate="default" fabAliveAnimateBezier="ease" :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#3599DB'" style="right: 40%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
+      <fab-item />
+    </vue-fab>
     <vue-fab :style="{ transform: democode[0].isShow ? 'translateY(-30px)' : ''}" size="small" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 60%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)"  />
   </div>
 </template>

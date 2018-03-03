@@ -1,8 +1,10 @@
 <template>
   <transition
-    :name="'fab-item-' + 'alive'">
-    <fab-cantainer 
-      class="fab-item" 
+    :name="'fab-item-' + $parent.fabItemAnimate">
+    <fab-cantainer
+      @click.native="clickItem"
+      class="fab-item"
+      v-show="($parent.fabMenuAnimate === 'alive' || $parent.active) && $parent.hidden"
       :style="fabItemStyle"
       :class="{ 'fab-shadow' : !color }">
         <div v-if="title" :style="titleStyle" class="fab-item-title">
@@ -36,9 +38,21 @@ export default {
       type: String,
       default: ''
     },
+    spacing: {
+      type: Number,
+      default: 40
+    },
+    delay: {
+      type: Number,
+      default: 0.05
+    },
     titleColor: {
       type: String,
       default: '#666'
+    },
+    bgColor: {
+      type: String,
+      default: 'white'
     }
   },
   computed: {
@@ -48,29 +62,38 @@ export default {
     fabItemStyle: function () {
       let animateModel = {
         default: {
-          top: -40 - this.idx * this.$parent.spacing + 'px',
-          transitionDelay: this.$parent.active ? this.idx * this.$parent.delay + 's' : '0s',
+          top: -40 - this.idx * this.spacing + 'px',
+          transitionDelay: this.$parent.active ? this.idx * this.delay + 's' : '0s',
           background: this.color ? this.color : '#FFF'
         },
         alive: {
           transition: 'all .4s',
           transitionTimingFunction: 'cubic-bezier(.16,1.01,.61,1.2)',
           top: 0,
-          transitionDelay: this.$parent.active ? this.idx * (this.$parent.delay / 3) + 's' : '0s',
+          transitionDelay: this.$parent.active ? this.idx * (this.delay / 3) + 's' : '0s',
           opacity: this.$parent.active ? 1 : 0,
           background: this.color ? this.color : '#FFF',
-          transform: this.$parent.active ? 'translate3D(0, -' + (this.idx + 1) * this.$parent.spacing + 'px, 0)' : 'translate3D(0, 0, 0)',
+          transform: this.$parent.active ? 'translate3D(0, -' + (this.idx + 1) * this.spacing + 'px, 0)' : 'translate3D(0, 0, 0)',
           zIndex: -this.idx
         }
       }
-      // return animateModel[this.fabItemAnimate]
-      return animateModel.alive
+      return animateModel[this.$parent.fabItemAnimate]
     },
     titleStyle: function () {
       return {
         color: this.titleColor,
-        background: this.color
+        background: this.bgColor
       }
+    }
+  },
+  methods: {
+    clickItem: function () {
+      if (this.$parent.clickAutoClose) {
+        setTimeout(() => {
+          this.$parent.active = false
+        }, 300)
+      }
+      this.$emit('clickItem', {idx: this.idx})
     }
   }
 }
