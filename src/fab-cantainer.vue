@@ -46,6 +46,11 @@ export default {
 <style lang="less">
 @import './styles/index.less';
 
+.fab-cantainer {
+  height: 100%;
+  width: 100%;
+}
+
 .fabMask {
   .absolute();
   height: 100%;

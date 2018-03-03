@@ -1,5 +1,5 @@
 <template>
-  <div ref="fab" class="fab-container">
+  <div ref="fab" class="fab-main-container">
     <transition :name="'fab-' + fabAutoHideAnimateModel">
       <fab-cantainer
           @click.native="openMenu"
@@ -18,25 +18,22 @@
       </fab-cantainer>
     </transition>
     <div v-click-outside="clickoutside"
-         class="fab-menu-container"
+         class="fab-item-container"
          :class="'fab-size-' + size">
-      <transition v-for="(item, idx) in menu"
+      <!--<transition
+        v-for="(item, idx) in menu"
         :key="item.key"
-        :name="'fab-child-' + fabMenuAnimate">
-        <fab-cantainer 
-            v-show="(fabMenuAnimate === 'alive' || active) && hidden"
+        :name="'fab-item-' + fabItemAnimate"> -->
+          <!--<fab-item
+            v-show="(fabItemAnimate === 'alive' || active) && hidden"
             @click.native="clickItem(idx, item)"
-            :style="fabChildStyle(idx, item)"
-            class="fab-child"
-            :class="{ 'fab-shadow' : !item.color }">
-          <div v-if="item.title" :style="titleStyle" class="fab-item-title">
-            {{item.title}}
-          </div>
-          <i class="material-icons"
-            :style="{
-              color: item.color ? 'white' : '#999'
-            }">{{item.icon}}</i>
-        </fab-cantainer>
+            :style="fabItemStyle(idx, item)"
+            :idx="idx"
+            :title="item.title"
+            :color="item.color"
+            :icon="item.icon">
+          </fab-item> -->
+          <slot></slot>
       </transition>
     </div>
   </div>
@@ -70,14 +67,6 @@ export default {
       type: Number,
       default: 0.05
     },
-    titleColor: {
-      type: String,
-      default: '#666'
-    },
-    titleBg: {
-      type: String,
-      default: '#FFF'
-    },
     autoHideThreshold: { // 滚动触发自动隐藏阈值
       type: Number,
       default: 50
@@ -86,7 +75,7 @@ export default {
       type: String,
       default: 'default'
     },
-    fabMenuAnimate: {
+    fabItemAnimate: {
       type: String,
       default: 'default'
     },
@@ -168,19 +157,13 @@ export default {
         background: this.mainBtnColor,
         boxShadow: this.shadow ? '0px 2px 8px #666' : ''
       }
-    },
-    titleStyle: function () {
-      return {
-        color: this.titleColor,
-        background: this.titleBg
-      }
     }
   },
   methods: {
     /**
      * 根据不同的动画模式处理不同的css
      */
-    fabChildStyle: function (idx, item) {
+    fabItemStyle: function (idx, item) {
       let animateModel = {
         default: {
           top: -40 - idx * this.spacing + 'px',
@@ -198,7 +181,7 @@ export default {
           zIndex: -idx
         }
       }
-      return animateModel[this.fabMenuAnimate]
+      return animateModel[this.fabItemAnimate]
     },
     /**
      * @method onOffFab 显示隐藏Fab
@@ -333,7 +316,7 @@ export default {
   * {
     user-select: none
   }
-  .fab-container {
+  .fab-main-container {
     position: fixed;
     right: 20%;
     bottom: 10%;
@@ -353,51 +336,11 @@ export default {
     }
   }
 
-  .fab-shadow {
-    box-shadow: 0px 2px 8px #666;
-  }
-
   .fab-active {
     transform: rotate(45deg)
   }
 
-  .fab-child {
-    .flex-center();
-    .transition();
-    position: absolute;
-    cursor: pointer;
-    top: -50px;
-    width: 80%;
-    height: 80%;
-    margin-left: 10%;
-    border-radius: 50%;
-    overflow: inherit;
-    i {
-      font-size: 1em;
-    }
-  }
-
-  .fab-item-title {
-    position: absolute;
-    right: 4em;
-    box-shadow: 0 1px .5px #CCC;
-    padding: 2px 5px;
-    font-size: .8em;
-    min-width: 3em;
-    white-space:nowrap;
-    border-radius: 2px;
-    text-align: center;
-  }
-
-  .material-icons {
-    .flex-center();
-    .transition(.2s, ease);
-    position: absolute;
-    height: 100%;
-    width: 100%;
-  }
-
-  .fab-menu-container {
+  .fab-item-container {
     .absolute()
   }
 
