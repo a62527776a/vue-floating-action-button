@@ -1,0 +1,106 @@
+<template>
+  <transition
+    :name="'fab-item-' + 'alive'">
+    <fab-cantainer 
+      class="fab-item" 
+      :style="fabItemStyle"
+      :class="{ 'fab-shadow' : !color }">
+        <div v-if="title" :style="titleStyle" class="fab-item-title">
+          {{title}}
+        </div>
+        <i class="material-icons"
+          :style="{
+            color: color ? 'white' : '#999'
+      }">{{icon}}</i>
+    </fab-cantainer>
+  </transition>
+</template>
+
+<script>
+export default {
+  name: 'fab-item',
+  props: {
+    idx: {
+      type: Number,
+      default: 0
+    },
+    title: {
+      type: String,
+      default: 'add'
+    },
+    icon: {
+      type: String,
+      default: 'add'
+    },
+    color: {
+      type: String,
+      default: ''
+    },
+    titleColor: {
+      type: String,
+      default: '#666'
+    }
+  },
+  computed: {
+    /**
+     * 根据不同的动画模式处理不同的css
+     */
+    fabItemStyle: function () {
+      let animateModel = {
+        default: {
+          top: -40 - this.idx * this.$parent.spacing + 'px',
+          transitionDelay: this.$parent.active ? this.idx * this.$parent.delay + 's' : '0s',
+          background: this.color ? this.color : '#FFF'
+        },
+        alive: {
+          transition: 'all .4s',
+          transitionTimingFunction: 'cubic-bezier(.16,1.01,.61,1.2)',
+          top: 0,
+          transitionDelay: this.$parent.active ? this.idx * (this.$parent.delay / 3) + 's' : '0s',
+          opacity: this.$parent.active ? 1 : 0,
+          background: this.color ? this.color : '#FFF',
+          transform: this.$parent.active ? 'translate3D(0, -' + (this.idx + 1) * this.$parent.spacing + 'px, 0)' : 'translate3D(0, 0, 0)',
+          zIndex: -this.idx
+        }
+      }
+      // return animateModel[this.fabItemAnimate]
+      return animateModel.alive
+    },
+    titleStyle: function () {
+      return {
+        color: this.titleColor,
+        background: this.color
+      }
+    }
+  }
+}
+</script>
+
+<style lang="less">
+@import './styles/index.less';
+
+.fab-item {
+  .flex-center();
+  .transition();
+  position: absolute;
+  cursor: pointer;
+  top: -50px;
+  width: 80%;
+  height: 80%;
+  margin-left: 10%;
+  border-radius: 50%;
+  overflow: inherit;
+}
+
+.fab-item-title {
+  position: absolute;
+  right: 4em;
+  box-shadow: 0 1px .5px #CCC;
+  padding: 2px 5px;
+  font-size: .8em;
+  min-width: 3em;
+  white-space:nowrap;
+  border-radius: 2px;
+  text-align: center;
+}
+</style>
