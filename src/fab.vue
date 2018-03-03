@@ -136,6 +136,13 @@ export default {
       }
     },
     /**
+     * @method onOffFab 显示隐藏Fab
+     * @param { Boolean } onOff 是否显示Fab
+     */
+    onOffFab: function (onOff) {
+      this.hidden = onOff
+    },
+    /**
      * @method openMenu 打开或关闭菜单
      */
     openMenu: function () {

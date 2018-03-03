@@ -24,19 +24,21 @@ export default {
   props: {
     idx: {
       type: Number,
-      default: 0
+      default: 0,
+      required: true
     },
     title: {
       type: String,
-      default: 'add'
+      default: ''
     },
     icon: {
       type: String,
-      default: 'add'
+      default: 'add',
+      required: true
     },
     color: {
       type: String,
-      default: ''
+      default: null
     },
     spacing: {
       type: Number,
@@ -50,7 +52,7 @@ export default {
       type: String,
       default: '#666'
     },
-    bgColor: {
+    titleBgColor: {
       type: String,
       default: 'white'
     }
@@ -82,7 +84,7 @@ export default {
     titleStyle: function () {
       return {
         color: this.titleColor,
-        background: this.bgColor
+        background: this.titleBgColor
       }
     }
   },
