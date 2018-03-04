@@ -30,9 +30,8 @@
     <vue-fab 
       :style="{ transform: democode[2].isShow ? 'translateY(-30px)' : ''}"
       ref="vuefab"
-      @clickItem="clickItem"
       @clickMainBtn="clickMainBtn"
-      :icon="icon"
+      icon="share"
       :mainBtnColor="mainBtnColor"
       style="transition: all .5s cubic-bezier(.18,.89,.58,1.26)"
       size="big"
@@ -40,6 +39,7 @@
       :fabAnimateBezier="fabAnimateBezier"
       :fabAutoHideAnimateModel="'alive'"
       fabItemAnimate="alive">
+      <!--<i slot="icon" style="color: white" class="iconfont icon-guanbi2fill" />-->
       <fab-item
         v-for="(item, idx) in menu"
         :idx="idx"
@@ -47,12 +47,16 @@
         :title="item.title"
         :color="item.color"
         :icon="item.icon">
+        <i v-if="idx === 1" slot="icon" style="color: white" class="iconfont icon-guanbi2fill" />
       </fab-item>
     </vue-fab>
     <vue-fab fabItemAnimate="default" fabAliveAnimateBezier="ease" :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#3599DB'" style="right: 40%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
-      <fab-item />
+      <fab-item @clickItem="clickItem" :idx="0" title="add" icon="add" />
+      <fab-item @clickItem="clickItem" :idx="1" title="https" icon="https" />
+      <fab-item @clickItem="clickItem" :idx="2" title="edit" icon="edit" />
     </vue-fab>
-    <vue-fab :style="{ transform: democode[0].isShow ? 'translateY(-30px)' : ''}" size="small" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 60%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)"  />
+    <vue-fab :style="{ transform: democode[0].isShow ? 'translateY(-30px)' : ''}" size="small" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 60%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
+    </vue-fab>
   </div>
 </template>
 
@@ -78,8 +82,8 @@
           },
           {
             key: 'toc',
-            icon: 'toc',
             title: '',
+            icon: '',
             color: '#999'
           },
           {
@@ -251,7 +255,7 @@ data () {
     },
     methods: {
       clickItem: function (params) {
-        console.log('idx: ' + params.idx + ' key: ' + params.key)
+        console.log('idx: ' + params.idx)
       }
       clickMainBtn: function () {
         console.log('clickMainBtn')
@@ -262,18 +266,24 @@ data () {
             `,
             output: `
 <vue-fab 
-  @clickItem="clickItem"
   @clickMainBtn="clickMainBtn"
   :icon="icon"
   :mainBtnColor="mainBtnColor"
-  :spacing="spacing" 
   size="big"
   :activeIcon="activeIcon"
   :fabAnimateBezier="fabAnimateBezier"
   fabAutoHideAnimateModel="alive"
-  fabMenuAnimate="alive"
-  :menu="menu"
-  />
+  fabItemAnimate="alive"
+  >
+  <fab-item
+    v-for="(item, idx) in menu"
+    :color="item.color"
+    :icon="item.icon"
+    :idx="idx"
+    :spacing="spacing"
+    @clickItem="clickItem"
+     />
+</vue-fab>
 data () {
   return {
     hidden: false,
@@ -313,7 +323,7 @@ data () {
 },
 methods: {
   clickItem: function (params) {
-    console.log('idx: ' + params.idx + ' key: ' + params.key)
+    console.log('idx: ' + params.idx)
   }
   clickMainBtn: function () {
     console.log('clickMainBtn')
@@ -337,7 +347,7 @@ methods: {
     },
     methods: {
       clickItem: function (params) {
-        window.alert('idx: ' + params.idx + ' key: ' + params.key)
+        window.alert('idx: ' + params.idx)
       },
       clickMainBtn: function () {
         window.alert('主菜单为空时点击主Fab会触发clickMainBtn事件')

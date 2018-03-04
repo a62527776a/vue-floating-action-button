@@ -9,12 +9,16 @@
           :class="'fab-size-' + size"
           :style="fabClass">
         <transition :name="activeIcon === icon ? 'fab-icon' : active ? 'fab-active-icon' : 'fab-icon'">
-          <i
+        <i
+          v-if="icon"
           data-outside="true"
           :key="activeIcon === icon ? icon : active"
           :class="{ 'fab-active' : active }"
           class="material-icons">{{activeIcon === icon ? icon : active ? activeIcon : icon}}</i>
         </transition>
+        <i class="icons">
+          <slot name="icon"></slot>
+        </i>
       </fab-cantainer>
     </transition>
     <div v-click-outside="clickoutside"
@@ -146,7 +150,7 @@ export default {
      * @method openMenu 打开或关闭菜单
      */
     openMenu: function () {
-      this.active = !this.active
+      this.$children.length > 1 ? this.active = !this.active : this.$emit('clickMainBtn')
     },
     /**
      * @method scrollerEventListener 监听滚动事件

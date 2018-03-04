@@ -30,10 +30,6 @@ https://github.com/a62527776a/jianli/blob/master/readme.md
 * **支持子菜单标题hover click切换显示**
 * **支持自定义ICON**
 
-## 日志
-
-* **2018.03.03 重构代码 将主按钮与菜单按钮分离**
-
 ***
 
 ## 注意
@@ -73,10 +69,15 @@ Vue.use(VueFab)
 ```
 <template>
   <vue-fab
-    :menu="menu"
     :mainBtnColor="mainBtnColor"
-    @clickItem="clickItem"
     @clickMainBtn="clickMainBtn">
+    <fab-item 
+      v-for="(item, idx) in menu"
+      :idx="idx"
+      :title="item.title"
+      :color="item.color"
+      :icon="item.icon"
+      @clickItem="clickItem" />
 </template>
 
 <script>
@@ -86,13 +87,11 @@ Vue.use(VueFab)
       return {
         menu: [
           {
-            key: 'done',
             icon: 'done',
             title: 'good job!',
             color: '#ff9900'
           },
           {
-            key: 'toc',
             icon: 'toc',
             title: '',
             color: '#999'
@@ -102,8 +101,8 @@ Vue.use(VueFab)
       }
     },
     methods: {
-      clickItem: function (params) {
-        console.log('idx: ' + params.idx + ' key: ' + params.key)
+      clickItem: function (idx) {
+        console.log('idx: ' + idx)
       }
       clickMainBtn: function () {
         console.log('clickMainBtn')
@@ -139,6 +138,11 @@ Vue.use(VueFab)
 | fabItemAnimate | String | 'default' | 'default' / 'alive' | 打开关闭子菜单时过渡动画 分为 'default' (各自过渡) 'alive' (分裂过渡) |
 | fabAliveAnimateBezier | String' | '.16,1.01,.61,1.2' | 'ease' / 'linear' / 'ease-in' / 'ease-out' / 'ease-in-out' / '.18,.89,.91,.17' | 子菜单列表在alive动画模式下的贝塞尔曲线 注：仅fabMenuAnimate为alive时生效 |
 
+## Slot
+| Option | Description |
+| ------ | ----------- 
+|  icon  | 用来放置自定义的icon 推荐使用iconfont |
+
 ## Methods
 
 | Name | Param | Type | Default | Description |
@@ -155,17 +159,23 @@ Vue.use(VueFab)
 | title | String | '' | / | 菜单项标题 如果不填 将不显示title框 |
 | icon | String | 'add' | / | 子菜单项icon 仅支持[Material Icon](https://material.io/icons/)的icon |
 | color | String | '#FFF' | / | 支持css颜色标准 默认为白色 不填写该值将自动拥有一个值为0px 2px 8px #666的阴影 |
-| delay | Number | .05 | / | 菜单项淡入淡出的延迟差 为上一个菜单项加该延迟的延迟(单位 s) (fabItemAnimate为alive情况下改值会自动 除以 3) |
+| delay | Number | .05 | / | 菜单项淡入淡出的延迟差 为上一个菜单项加该延迟的延迟(单位 s) (fabItemAnimate为alive情况下该值会自动 除以 3) |
 | spacing | Number|45 | / |每个菜单项的间距 单位 px|
 | titleColor| String | #666 | / | 子菜单标题字体颜色 |
 | titleBgColor | String | #FFF | / | 子菜单背景颜色 |
 
+## Slot
+| Option | Description |
+| ------ | ----------- 
+|  icon  | 用来放置自定义的icon 推荐使用iconfont |
 
 ## Event
 
 |    Name   |   Param   | Description |
 | ----      | -------   | ----------- |
-| clickItem | {idx, key} | 当菜单项不为空且点击菜单项时，会返回该菜单项的下标以及Key值 key值由用户自定义 |
+| clickItem | {idx} | 当菜单项不为空且点击菜单项时，会返回该菜单项传入的idx值 |
+
+## 
 
 ***
 ## LICENSE

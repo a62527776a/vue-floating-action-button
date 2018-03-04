@@ -10,10 +10,13 @@
         <div v-if="title" :style="titleStyle" class="fab-item-title">
           {{title}}
         </div>
-        <i class="material-icons"
+        <i v-if="icon" class="material-icons"
           :style="{
             color: color ? 'white' : '#999'
       }">{{icon}}</i>
+        <i class="icons">
+          <slot name="icon"></slot>
+        </i>
     </fab-cantainer>
   </transition>
 </template>
@@ -33,8 +36,7 @@ export default {
     },
     icon: {
       type: String,
-      default: 'add',
-      required: true
+      default: 'add'
     },
     color: {
       type: String,
