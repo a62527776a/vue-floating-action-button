@@ -88,6 +88,15 @@ export default {
     scrollAutoHide: {
       type: Boolean,
       default: true
+    },
+    globalOptions: {
+      type: Object,
+      default: () => {
+        return {
+          spacing: 40,
+          delay: 0.1
+        }
+      }
     }
   },
   data () {

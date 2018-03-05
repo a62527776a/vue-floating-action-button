@@ -49,7 +49,11 @@ $ npm install vue-float-action-button
 ```
 import VueFab from 'vue-float-action-button'
 
-Vue.use(VueFab)
+Vue.use(VueFab, /* {
+  // default global options
+  spacing: 40, // 子菜单间距
+  delay: 0.1 // 子菜单动画延迟
+} */)
 ```
 
 本组件使用了 Material Design 的图标 需要在网页中引入   
@@ -137,6 +141,9 @@ Vue.use(VueFab)
 | fabAutoHideAnimateModel | String | 'alive' | 'default' / 'alive' | fab滚动触发自动隐藏动画 分为 'default' ( 缩小隐藏 ) 以及 'alive' (向下滚动隐藏) |
 | fabItemAnimate | String | 'default' | 'default' / 'alive' | 打开关闭子菜单时过渡动画 分为 'default' (各自过渡) 'alive' (分裂过渡) |
 | fabAliveAnimateBezier | String' | '.16,1.01,.61,1.2' | 'ease' / 'linear' / 'ease-in' / 'ease-out' / 'ease-in-out' / '.18,.89,.91,.17' | 子菜单列表在alive动画模式下的贝塞尔曲线 注：仅fabMenuAnimate为alive时生效 |
+| globalOptions | Object | {spacing: 40, delay: 0.05} | / | 每个fab-item的动画延迟和间距 |
+* **delay**: 菜单项淡入淡出的延迟差 为上一个菜单项加该延迟的延迟(单位 s) (fabItemAnimate为alive情况下该值会自动 除以 3)
+* **spacing** 每个菜单项的间距 单位 px
 
 ## Slot
 | Option | Description |
@@ -159,8 +166,6 @@ Vue.use(VueFab)
 | title | String | '' | / | 菜单项标题 如果不填 将不显示title框 |
 | icon | String | 'add' | / | 子菜单项icon 仅支持[Material Icon](https://material.io/icons/)的icon |
 | color | String | '#FFF' | / | 支持css颜色标准 默认为白色 不填写该值将自动拥有一个值为0px 2px 8px #666的阴影 |
-| delay | Number | .05 | / | 菜单项淡入淡出的延迟差 为上一个菜单项加该延迟的延迟(单位 s) (fabItemAnimate为alive情况下该值会自动 除以 3) |
-| spacing | Number|45 | / |每个菜单项的间距 单位 px|
 | titleColor| String | #666 | / | 子菜单标题字体颜色 |
 | titleBgColor | String | #FFF | / | 子菜单背景颜色 |
 

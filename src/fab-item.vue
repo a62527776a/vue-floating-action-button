@@ -42,14 +42,6 @@ export default {
       type: String,
       default: null
     },
-    spacing: {
-      type: Number,
-      default: 40
-    },
-    delay: {
-      type: Number,
-      default: 0.05
-    },
     titleColor: {
       type: String,
       default: '#666'
@@ -66,18 +58,18 @@ export default {
     fabItemStyle: function () {
       let animateModel = {
         default: {
-          top: -40 - this.idx * this.spacing + 'px',
-          transitionDelay: this.$parent.active ? this.idx * this.delay + 's' : '0s',
+          top: -40 - this.idx * this.$parent.globalOptions.spacing + 'px',
+          transitionDelay: this.$parent.active ? this.idx * this.$parent.globalOptions.delay + 's' : '0s',
           background: this.color ? this.color : '#FFF'
         },
         alive: {
           transition: 'all .4s',
           transitionTimingFunction: 'cubic-bezier(.16,1.01,.61,1.2)',
           top: 0,
-          transitionDelay: this.$parent.active ? this.idx * (this.delay / 3) + 's' : '0s',
+          transitionDelay: this.$parent.active ? this.idx * (this.$parent.globalOptions.delay / 3) + 's' : '0s',
           opacity: this.$parent.active ? 1 : 0,
           background: this.color ? this.color : '#FFF',
-          transform: this.$parent.active ? 'translate3D(0, -' + (this.idx + 1) * this.spacing + 'px, 0)' : 'translate3D(0, 0, 0)',
+          transform: this.$parent.active ? 'translate3D(0, -' + (this.idx + 1) * this.$parent.globalOptions.spacing + 'px, 0)' : 'translate3D(0, 0, 0)',
           zIndex: -this.idx
         }
       }

@@ -14,7 +14,10 @@ let testSafariBrower = () => {
   }
 }
 
-const install = (Vue) => {
+const install = (Vue, options) => {
+  if (options) {
+    FAB.props.globalOptions.default = () => options
+  }
   Vue.component(FAB.name, FAB)
   Vue.component(FABItem.name, FABItem)
   Vue.component(FABCantainer.name, FABCantainer)

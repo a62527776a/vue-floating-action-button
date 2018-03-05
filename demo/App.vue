@@ -35,6 +35,7 @@
       :mainBtnColor="mainBtnColor"
       style="transition: all .5s cubic-bezier(.18,.89,.58,1.26)"
       size="big"
+      :globalOptions="{spacing: 50,delay: 0.1}"
       :activeIcon="activeIcon"
       :fabAnimateBezier="fabAnimateBezier"
       :fabAutoHideAnimateModel="'alive'"
@@ -43,7 +44,6 @@
       <fab-item
         v-for="(item, idx) in menu"
         :idx="idx"
-        :spacing="spacing"
         :title="item.title"
         :color="item.color"
         :icon="item.icon">
