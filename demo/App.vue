@@ -19,7 +19,7 @@
     </svg>
     <a href="https://github.com/a62527776a/vue-fab" target="_blank" class="btn btn-lg btn-block btn-sm btn-info">View on GitHub</a>
     <a href="https://a62527776a.github.io/vue-fab/" target="_blank" class="btn btn-lg btn-block btn-sm btn-info">Api文档</a>
-    <div class="btn btn-lg btn-block btn-sm btn-info" v-for="(code, idx) in democode" @click="showCode(code)">实例代码{{idx}}</div>
+    <!--<div class="btn btn-lg btn-block btn-sm btn-info" v-for="(code, idx) in democode" @click="showCode(code)">实例代码{{idx}}</div>-->
     <textarea ref="textarea" value="" style="position: absolute; top: -500px" />
     <div style="position: relative" v-for="code in democode" v-show="code.isShow">
       <button type="button" @click="copyCode(code.output)" class="btn btn-info btn-xs copy-code-btn">拷贝代码</button>

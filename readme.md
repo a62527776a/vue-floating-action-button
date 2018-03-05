@@ -57,19 +57,20 @@ Vue.use(VueFab, /* {
 } */)
 ```
 
-本组件使用了 Material Design 的图标 需要在网页中引入   
-
-本组件所有ICON皆可从https://material.io/icons/中查找
+本组件默认支持 Material Design 的图标 需要在网页中引入
 ```
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 ``` 
+所有ICON皆可从https://material.io/icons/中查找
+
+如需使用自定义icon 可使用slot属性 推荐使用iconfont形式 如使用此方式 无需引入 Material Design 的图标
 
 
 ***
 
 ## Examples
 
-注意 仅支持 [Material Icon](https://material.io/icons/)
+注意 如需使用 Material Icon 请登录 [Material Icon](https://material.io/icons/) 查找
 
 ```
 <template>
