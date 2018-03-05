@@ -9,14 +9,17 @@
           :class="'fab-size-' + size"
           :style="fabClass">
         <transition :name="activeIcon === icon ? 'fab-icon' : active ? 'fab-active-icon' : 'fab-icon'">
-        <i
+          <i
           v-if="icon"
           data-outside="true"
           :key="activeIcon === icon ? icon : active"
           :class="{ 'fab-active' : active }"
           class="material-icons">{{activeIcon === icon ? icon : active ? activeIcon : icon}}</i>
         </transition>
-        <i class="icons">
+        <i v-if="!icon" @click.stop="openMenu"
+           class="icons material-icons"
+           :class="{ 'fab-active' : active }"
+           data-outside="true">
           <slot name="icon"></slot>
         </i>
       </fab-cantainer>

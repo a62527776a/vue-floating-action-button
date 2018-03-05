@@ -24,11 +24,11 @@ https://github.com/a62527776a/jianli/blob/master/readme.md
 * **动画流畅复刻Material Design**
 * **支持滚动/手势自动显示/隐藏**
 * **支持点击空白处自动隐藏**
+* **支持自定义ICON**
 
 ## TODO List
 
 * **支持子菜单标题hover click切换显示**
-* **支持自定义ICON**
 
 ***
 
