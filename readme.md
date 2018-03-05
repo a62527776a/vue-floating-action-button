@@ -38,6 +38,7 @@ https://github.com/a62527776a/jianli/blob/master/readme.md
   如若出现**点击空白区域无法自动关闭子菜单的情况** 请检查html高度是否100% 
   如果没有100% 请单独给html标签设置css属性 min-height: 100%
   项目对safari浏览器做了单独处理 在safari浏览器中将点击事件挂载在了HTML标签上，除iOS系统外的浏览器挂载在window上
+* 2018.03.05 本次更新主要集中在代码重构，API不向下兼容
 
 ## Installation and use
 
