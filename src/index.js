@@ -6,8 +6,10 @@ import FABCantainer from './fab-cantainer.vue'
  * @method testSafariBrower 处理safari浏览器body无法响应click事件
  * @return { Boolean } true / false
  */
-let testSafariBrower = () => {
-  if (navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/Mac/i)) {
+let testSafariBrower = (userAgent = null) => {
+  let UA = null
+  userAgent ? UA = userAgent : UA = window.navigator.userAgent
+  if (UA.match(/iPad/i) || UA.match(/iPhone/i) || UA.match(/Mac/i)) {
     return true
   } else {
     return false
@@ -50,5 +52,6 @@ const install = (Vue, options) => {
 }
 
 export default {
-  install
+  install,
+  testSafariBrower
 }
