@@ -43,6 +43,7 @@
       <!--<i slot="icon" style="color: white" class="iconfont icon-guanbi2fill" />-->
       <fab-item
         v-for="(item, idx) in menu"
+        :key="idx"
         :idx="idx"
         :title="item.title"
         :color="item.color"
