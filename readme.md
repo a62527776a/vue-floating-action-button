@@ -1,6 +1,4 @@
 # Vue Floating Action Button
-[![](https://travis-ci.org/a62527776a/vue-fab.svg?branch=master)](https://travis-ci.org/Alamofire/Alamofire)
-
 
 ##### a beautiful Floating Action Button
 
