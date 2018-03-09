@@ -1,4 +1,5 @@
 # Vue Floating Action Button
+[![](https://travis-ci.org/a62527776a/vue-fab.svg?branch=master)](https://travis-ci.org/Alamofire/Alamofire)
 
 
 ##### a beautiful Floating Action Button
@@ -11,9 +12,6 @@
 
 [demo代码](https://github.com/a62527776a/vue-fab/blob/dev/demo/App.vue)
 
-
-求职 有意者查看简历
-https://github.com/a62527776a/jianli/blob/master/readme.md
 
 ***
 
