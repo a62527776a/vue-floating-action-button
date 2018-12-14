@@ -16,7 +16,7 @@ let testSafariBrower = (userAgent = null) => {
   }
 }
 
-const install = (Vue, options) => {
+function install (Vue, options) {
   if (options) {
     FAB.props.globalOptions.default = () => options
   }
@@ -51,5 +51,4 @@ const install = (Vue, options) => {
   })
 }
 
-exports.install = install
-exports.testSafariBrower = testSafariBrower
+module.exports = install

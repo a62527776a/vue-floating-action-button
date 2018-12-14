@@ -8,7 +8,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname + '/dist'),
-    filename: 'vue-fab.js'
+    filename: 'vue-fab.js',
+    libraryTarget: 'umd'
   },
   module: {
     loaders: [{
