@@ -51,7 +51,5 @@ const install = (Vue, options) => {
   })
 }
 
-export default {
-  install,
-  testSafariBrower
-}
+exports.install = install
+exports.testSafariBrower = testSafariBrower
