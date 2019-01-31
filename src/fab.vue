@@ -256,6 +256,7 @@ export default {
   .fab-main-container {
     position: fixed;
     right: 20%;
+    z-index: 9999;
     bottom: 10%;
     overflow: initial;
   }
