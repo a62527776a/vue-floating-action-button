@@ -10,7 +10,7 @@
         <div v-if="title" :style="titleStyle" class="fab-item-title">
           {{title}}
         </div>
-        <i v-if="icon" class="material-icons"
+        <i v-if="icon" class="material-icons vue-fab-material-icons"
           :style="{
             color: color ? 'white' : '#999'
       }">{{icon}}</i>

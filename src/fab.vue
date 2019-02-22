@@ -14,10 +14,10 @@
           data-outside="true"
           :key="activeIcon === icon ? icon : active"
           :class="{ 'fab-active' : active }"
-          class="material-icons">{{activeIcon === icon ? icon : active ? activeIcon : icon}}</i>
+          class="material-icons vue-fab-material-icons">{{activeIcon === icon ? icon : active ? activeIcon : icon}}</i>
         </transition>
         <i v-if="!icon" @click.stop="openMenu"
-           class="icons material-icons"
+           class="icons material-icons vue-fab-material-icons"
            :class="{ 'fab-active' : active }"
            data-outside="true">
           <slot name="icon"></slot>
