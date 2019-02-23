@@ -43,13 +43,8 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import './styles/index.less';
-
-.fab-cantainer {
-  height: 100%;
-  width: 100%;
-}
 
 .fabMask {
   .absolute();

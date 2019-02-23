@@ -14,7 +14,7 @@
           :style="{
             color: color ? 'white' : '#999'
       }">{{icon}}</i>
-        <i class="icons">
+        <i class="icons vue-fab-icons">
           <slot name="icon"></slot>
         </i>
     </fab-cantainer>
@@ -95,7 +95,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import './styles/index.less';
 
 .fab-item {
