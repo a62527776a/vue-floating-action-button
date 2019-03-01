@@ -60,14 +60,14 @@ Vue.use(VueFab, /* {
 ``` 
 所有ICON皆可从https://material.io/icons/中查找
 
-如需使用自定义icon 可使用slot属性 推荐使用https://www.iconfont.cn/形式 如使用此方式 无需引入 Material Design 的图标
+如需使用自定义icon 可使用slot属性 推荐使用https://www.iconfont.cn/ 形式 如使用此方式 无需引入 Material Design 的图标
 
 
 ***
 
 ## Examples
 
-注意 如需使用 Material Icon 请登录 [Material Icon](https://material.io/icons/) 查找
+注意 如需使用 Material Icon 请登录 [Material Icon](https://material.io/icons/) 查找  
 注意 如需使用 Icon Font 请登录 [IconFont](https://www.iconfont.cn/) 查找
 
 ```
