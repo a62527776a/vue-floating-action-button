@@ -20,7 +20,8 @@
 * **动画流畅复刻Material Design**
 * **支持滚动/手势自动显示/隐藏**
 * **支持点击空白处自动隐藏**
-* **支持自定义ICON**
+* **支持Material Design ICON**
+* **支持阿里巴巴ICONFONT**
 
 ## TODO List
 
@@ -59,7 +60,7 @@ Vue.use(VueFab, /* {
 ``` 
 所有ICON皆可从https://material.io/icons/中查找
 
-如需使用自定义icon 可使用slot属性 推荐使用iconfont形式 如使用此方式 无需引入 Material Design 的图标
+如需使用自定义icon 可使用slot属性 推荐使用https://www.iconfont.cn/形式 如使用此方式 无需引入 Material Design 的图标
 
 
 ***
@@ -67,6 +68,7 @@ Vue.use(VueFab, /* {
 ## Examples
 
 注意 如需使用 Material Icon 请登录 [Material Icon](https://material.io/icons/) 查找
+注意 如需使用 Icon Font 请登录 [IconFont](https://www.iconfont.cn/) 查找
 
 ```
 <template>
