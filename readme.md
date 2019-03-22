@@ -7,7 +7,7 @@
 		<img src="https://img.shields.io/npm/dm/vue-float-action-button.svg" alt="Monthly downloads">
 	</a>
 	<a href="https://www.npmjs.com/package/vue-float-action-button">
-		<img src="https://img.shields.io/npm/v/vue-float-action-button" alt="Version">
+		<img src="https://img.shields.io/npm/v/vue-float-action-button.svg" alt="Version">
 	</a>
 	<img src="https://img.shields.io/badge/min+gzip-16_kB-blue.svg" alt="5.8 kB min+gzip">
 </p>
