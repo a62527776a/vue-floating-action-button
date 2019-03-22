@@ -10,6 +10,15 @@
 
 [demo代码](https://github.com/a62527776a/vue-fab/blob/dev/demo/App.vue)
 
+<p align="center">
+	<a href="https://www.npmjs.com/package/vue-fab">
+		<img src="https://img.shields.io/npm/dm/vue-fab.svg" alt="Monthly downloads">
+	</a>
+	<a href="https://www.npmjs.com/package/vue-fab">
+		<img src="https://img.shields.io/npm/v/vue-fab.svg" alt="Version">
+	</a>
+	<img src="https://img.shields.io/badge/min+gzip-16_kB-blue.svg" alt="5.8 kB min+gzip">
+</p>
 
 ***
 
