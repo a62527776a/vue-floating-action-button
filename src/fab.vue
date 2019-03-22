@@ -194,15 +194,15 @@ export default {
       return _scrollTop > this.scrollTop ? 'up' : 'down'
     },
     removeScrollAutoHideListener: function () {
-      document.removeEventListener(this.scrollerEventListener)
+      document.removeEventListener('scroll', this.scrollerEventListener)
     },
     listenTouchEvent: function () {
       document.addEventListener('touchstart', this.listenTouchStart)
       document.addEventListener('touchmove', this.listenTouchMove)
     },
     removeTouchEvent: function () {
-      document.removeEventListener(this.listenTouchStart)
-      document.removeEventListener(this.listenTouchMove)
+      document.removeEventListener('touchstart', this.listenTouchStart)
+      document.removeEventListener('touchmove', this.listenTouchMove)
     },
     listenTouchStart: function (e) {
       this.touchEventInfo.startY = e.touches[0].clientY
@@ -279,7 +279,8 @@ export default {
   }
 
   .fab-item-container {
-    .absolute()
+    .absolute();
+    left: 8px;
   }
 
 </style>

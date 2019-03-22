@@ -106,7 +106,7 @@ export default {
   top: -50px;
   width: 80%;
   height: 80%;
-  margin-left: 10%;
+  margin-left: 5%;
   border-radius: 50%;
   overflow: inherit;
 }
