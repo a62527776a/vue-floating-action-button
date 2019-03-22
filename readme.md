@@ -9,7 +9,7 @@
 	<a href="https://www.npmjs.com/package/vue-float-action-button">
 		<img src="https://img.shields.io/npm/v/vue-float-action-button.svg" alt="Version">
 	</a>
-	<img src="https://img.shields.io/badge/min+gzip-16_kB-blue.svg" alt="5.8 kB min+gzip">
+	<img src="https://img.shields.io/badge/min+gzip-5.8_kB-blue.svg" alt="5.8 kB min+gzip">
 </p>
 
 ![8.gif](http://upload-images.jianshu.io/upload_images/5738345-8348ec8f54f0d160.gif?imageMogr2/auto-orient/strip)
