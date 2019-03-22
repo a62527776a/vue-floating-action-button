@@ -259,9 +259,11 @@ export default {
     z-index: 9999;
     bottom: 10%;
     overflow: initial;
+    box-sizing: border-box;
   }
 
   .fab {
+    box-sizing: border-box;
     .flex-center();
     .absolute();
     border-radius: 50%;
@@ -279,8 +281,8 @@ export default {
   }
 
   .fab-item-container {
+    box-sizing: border-box;
     .absolute();
-    left: 8px;
   }
 
 </style>
