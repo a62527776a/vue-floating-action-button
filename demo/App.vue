@@ -56,6 +56,11 @@
       <fab-item @clickItem="clickItem" :idx="1" title="https" icon="https" />
       <fab-item @clickItem="clickItem" :idx="2" title="edit" icon="edit" />
     </vue-fab>
+    <vue-fab fabItemAnimate="default" fabAliveAnimateBezier="ease" :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#3599DB'" style="right: 40%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
+      <fab-item @clickItem="clickItem" :idx="0" title="add" icon="add" />
+      <fab-item @clickItem="clickItem" :idx="1" title="https" icon="https" />
+      <fab-item @clickItem="clickItem" :idx="2" title="edit" icon="edit" />
+    </vue-fab>
     <vue-fab :style="{ transform: democode[0].isShow ? 'translateY(-30px)' : ''}" size="small" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 60%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
     </vue-fab>
   </div>

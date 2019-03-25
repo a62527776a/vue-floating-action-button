@@ -23,10 +23,6 @@
 * **支持Material Design ICON**
 * **支持阿里巴巴ICONFONT**
 
-## TODO List
-
-* **支持子菜单标题hover click切换显示**
-
 ***
 
 ## 注意
@@ -35,7 +31,6 @@
   如若出现**点击空白区域无法自动关闭子菜单的情况** 请检查html高度是否100% 
   如果没有100% 请单独给html标签设置css属性 min-height: 100%
   项目对safari浏览器做了单独处理 在safari浏览器中将点击事件挂载在了HTML标签上，除iOS系统外的浏览器挂载在window上
-* 2018.03.05 本次更新主要集中在代码重构，API不向下兼容
 
 ## Installation and use
 
