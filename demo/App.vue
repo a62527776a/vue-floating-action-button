@@ -57,12 +57,15 @@
       <fab-item @clickItem="clickItem" :idx="1" title="https" icon="https" />
       <fab-item @clickItem="clickItem" :idx="2" title="edit" icon="edit" />
     </vue-fab>
-    <vue-fab fabItemAnimate="default" fabAliveAnimateBezier="ease" :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#3599DB'" style="right: 40%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
-      <fab-item @clickItem="clickItem" :idx="0" title="add" icon="add" />
-      <fab-item @clickItem="clickItem" :idx="1" title="https" icon="https" />
-      <fab-item @clickItem="clickItem" :idx="2" title="edit" icon="edit" />
+    <vue-fab icon-type="iconfont" icon="icon-jia" fabItemAnimate="default" fabAliveAnimateBezier="ease" :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#16C2C2'" style="right: 60%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
+      <fab-item @clickItem="clickBABA" icon="icon-Rxing" :idx="0" title="iconfont.cn">
+      </fab-item>
+      <fab-item @clickItem="clickBABA" icon="icon-huanyihuan1" :idx="1" title="交换">
+      </fab-item>
+      <fab-item @clickItem="clickBABA" icon="icon-fangda1" :idx="2" title="聚焦">
+      </fab-item>
     </vue-fab>
-    <vue-fab :style="{ transform: democode[0].isShow ? 'translateY(-30px)' : ''}" size="small" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 60%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
+    <vue-fab :style="{ transform: democode[0].isShow ? 'translateY(-30px)' : ''}" size="small" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 80%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
     </vue-fab>
   </div>
 </template>
@@ -356,6 +359,9 @@ methods: {
       clickItem: function (params) {
         window.alert('idx: ' + params.idx)
       },
+      clickBABA: function () {
+        window.open('https://www.iconfont.cn/')
+      },
       clickMainBtn: function () {
         window.alert('主菜单为空时点击主Fab会触发clickMainBtn事件')
       },
@@ -420,5 +426,13 @@ methods: {
   position: absolute;
   right: 10px;
   top: 10px;
+}
+
+.icon-style {
+  font-size: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 10px;
 }
 </style>

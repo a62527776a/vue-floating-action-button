@@ -1,7 +1,6 @@
 # Vue Floating Action Button
 
 ##### a beautiful Floating Action Button
-
 <p align="center">
 	<a href="https://www.npmjs.com/package/vue-float-action-button">
 		<img src="https://img.shields.io/npm/dm/vue-float-action-button.svg" alt="Monthly downloads">
@@ -19,6 +18,7 @@
 [live demo](http://htmlpreview.github.io/?https://github.com/a62527776a/vue-fab/blob/master/demo/dist/index.html)
 
 [demo代码](https://github.com/a62527776a/vue-fab/blob/dev/demo/App.vue)
+
 
 ***
 
@@ -58,11 +58,14 @@ Vue.use(VueFab, /* {
 } */)
 ```
 
-本组件默认支持 Material Design 的图标 需要在网页中引入
+本组件支持两种图标 
+一种为 Material Design 的图标 需要在网页中引入
 ```
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 ``` 
-所有ICON皆可从https://material.io/icons/中查找
+所有ICON皆可从https://material.io/icons/ 中查找
+
+
 
 如需使用自定义icon 可使用slot属性 推荐使用https://www.iconfont.cn/ 形式 如使用此方式 无需引入 Material Design 的图标
 

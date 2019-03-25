@@ -17,8 +17,8 @@ let testSafariBrower = (userAgent = null) => {
 }
 
 function install (Vue, options) {
-  if (options) {
-    FAB.props.globalOptions.default = () => options
+  if (options && options.iconType) {
+    FAB.props.iconType.default = options.iconType
   }
   Vue.component(FAB.name, FAB)
   Vue.component(FABItem.name, FABItem)

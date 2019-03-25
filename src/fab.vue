@@ -10,17 +10,17 @@
           :style="fabClass">
         <transition :name="activeIcon === icon ? 'fab-icon' : active ? 'fab-active-icon' : 'fab-icon'">
           <i
-          v-if="icon"
+          v-if="iconType === 'MaterialDesign'"
           data-outside="true"
           :key="activeIcon === icon ? icon : active"
           :class="{ 'fab-active' : active }"
-          class="material-icons vue-fab-material-icons">{{activeIcon === icon ? icon : active ? activeIcon : icon}}</i>
+          class="vue-fab-material-icons material-icons">{{activeIcon === icon ? icon : active ? activeIcon : icon}}</i>
         </transition>
-        <i v-if="!icon" @click.stop="openMenu"
-           class="icons material-icons vue-fab-material-icons"
-           :class="{ 'fab-active' : active }"
+        <i v-if="iconType === 'iconfont'" @click.stop="openMenu"
+           class="icons iconfont vue-fab-material-icons vue-fab-iconfont-icons"
+           style="font-size: 15px"
+           :class="[active ? 'fab-active' : '', icon ]"
            data-outside="true">
-          <slot name="icon"></slot>
         </i>
       </fab-cantainer>
     </transition>
@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import handleClass from './util'
+
 export default {
   name: 'vue-fab',
   props: {
@@ -48,6 +50,10 @@ export default {
     activeIcon: {
       type: String,
       default: 'add'
+    },
+    iconType: {
+      type: String,
+      default: 'MaterialDesign'
     },
     shadow: {
       type: Boolean,
@@ -101,6 +107,7 @@ export default {
   },
   data () {
     return {
+      handleClass: handleClass,
       active: false,
       scrollTop: 0,
       hidden: true,

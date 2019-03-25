@@ -10,12 +10,13 @@
         <div v-if="title" :style="titleStyle" class="fab-item-title">
           {{title}}
         </div>
-        <i v-if="icon" class="material-icons vue-fab-material-icons"
+        <i v-if="$parent.iconType === 'MaterialDesign'" class="material-icons vue-fab-material-icons"
           :style="{
             color: color ? 'white' : '#999'
       }">{{icon}}</i>
-        <i class="icons vue-fab-icons">
-          <slot name="icon"></slot>
+        <i v-else class="vue-fab-material-icons iconfont" :class="icon" style="font-size: 10px" :style="{
+            color: color ? 'white' : '#999'
+      }">
         </i>
     </fab-cantainer>
   </transition>
@@ -91,6 +92,9 @@ export default {
       }
       this.$emit('clickItem', {idx: this.idx})
     }
+  },
+  created () {
+    console.log(this)
   }
 }
 </script>
