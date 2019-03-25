@@ -156,7 +156,7 @@ new Vue({
 ## options
 
 | Option |  Type  | Params | Description |
-| ------ | ------ | --------  | ------ | ----------  |
+| ------ | --------  | ------ | ----------  |
 |  iconType  | String |'MaterialDesign'/'iconfont' |  根据您的使用习惯或开发依赖来决定使用哪种图标     |
 
 ```
