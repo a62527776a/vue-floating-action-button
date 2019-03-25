@@ -25,12 +25,11 @@
 ## Features
 
 * **支持多种动画**
-* **支持自定义贝塞尔曲线**
-* **动画流畅复刻Material Design**
 * **支持滚动/手势自动显示/隐藏**
-* **支持点击空白处自动隐藏**
 * **支持Material Design ICON**
-* **支持阿里巴巴ICONFONT**
+* **支持阿里巴巴iconfont.cn**
+* **支持点击空白处自动隐藏**
+* **动画流畅复刻Material Design**
 
 ***
 
@@ -49,33 +48,59 @@ $ npm install vue-float-action-button
 ```
 
 ```
+import App from './App.vue'
 import VueFab from 'vue-float-action-button'
+import Vue from 'vue'
 
 Vue.use(VueFab, /* {
-  // default global options
-  spacing: 40, // 子菜单间距
-  delay: 0.1 // 子菜单动画延迟
+  ----------------------
+  // opitons 可选iconfont图标或MaterialIcons
+  iconType: 'MaterialDesign'
+  // iconType: 'iconfont'
 } */)
+
+new Vue({
+  render: h => h(App)
+}).$mount('#app')
 ```
 
 本组件支持两种图标 
 一种为 Material Design 的图标 需要在网页中引入
 ```
+// index.html
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+// App.vue
+<vue-fab mainBtnColor="#3599DB">
+  <fab-item @clickItem="clickItem" :idx="0" title="add" icon="add" />
+  <fab-item @clickItem="clickItem" :idx="1" title="https" icon="https" />
+  <fab-item @clickItem="clickItem" :idx="2" title="edit" icon="edit" />
+</vue-fab>
+
 ``` 
-所有ICON皆可从https://material.io/icons/ 中查找
+所有ICON皆可从 https://material.io/icons/ 中查找
 
+如使用**阿里巴巴矢量图标库** https://www.iconfont.cn 则按提示引入
+```
+<vue-fab icon="icon-jia" 
+  fabItemAnimate="default" 
+  mainBtnColor="#16C2C2">
+  <fab-item @clickItem="clickBABA" icon="icon-Rxing" :idx="0" title="iconfont.cn">
+  </fab-item>
+  <fab-item @clickItem="clickBABA" icon="icon-huanyihuan1" :idx="1" title="交换">
+  </fab-item>
+  <fab-item @clickItem="clickBABA" icon="icon-fangda1" :idx="2" title="聚焦">
+  </fab-item>
+</vue-fab>
+```
 
-
-如需使用自定义icon 可使用slot属性 推荐使用https://www.iconfont.cn/ 形式 如使用此方式 无需引入 Material Design 的图标
+#### Vue-Fab在底层已抹平两者使用区别 引入后仅需使用icon属性传入即可
 
 
 ***
 
 ## Examples
 
-注意 如需使用 Material Icon 请登录 [Material Icon](https://material.io/icons/) 查找  
-注意 如需使用 Icon Font 请登录 [IconFont](https://www.iconfont.cn/) 查找
 
 ```
 <template>
@@ -128,12 +153,28 @@ Vue.use(VueFab, /* {
 
 # API
 
+## options
+
+| Option |  Type  | Params | Description |
+| ------ | ------ | --------  | ------ | ----------  |
+|  iconType  | String |'MaterialDesign'/'iconfont' |  根据您的使用习惯或开发依赖来决定使用哪种图标     |
+
+```
+Vue.use(VueFab, /* {
+  ----------------------
+  // opitons 可选iconfont图标或MaterialIcons
+  iconType: 'MaterialDesign'
+  // iconType: 'iconfont'
+} */)
+```
+
 **vue-fab API**
 
 ## Props
 
 | Option |  Type  |  Default  | Params | Description |
 | ------ | ------ | --------  | ------ | ----------  |
+|  iconType  | String |  'MaterialDesign' | 'MaterialDesign'/'iconfont' |  根据您的使用习惯或开发依赖来决定使用哪种图标     |
 |  icon  | String |  'add' | / |  未激活的icon     |
 | activeIcon | String | 'add' | / | 激活后的icon |
 | size | String | 'Normal' | 'big' / 'normal' / 'small' | 主Fab的尺寸 子菜单会随之变化 |
@@ -151,11 +192,6 @@ Vue.use(VueFab, /* {
 | globalOptions | Object | {spacing: 40, delay: 0.05} | / | 每个fab-item的动画延迟和间距 |
 * **delay**: 菜单项淡入淡出的延迟差 为上一个菜单项加该延迟的延迟(单位 s) (fabItemAnimate为alive情况下该值会自动 除以 3)
 * **spacing** 每个菜单项的间距 单位 px
-
-## Slot
-| Option | Description |
-| ------ | ----------- 
-|  icon  | 用来放置自定义的icon 推荐使用iconfont |
 
 ## Methods
 
@@ -175,11 +211,6 @@ Vue.use(VueFab, /* {
 | color | String | '#FFF' | / | 支持css颜色标准 默认为白色 不填写该值将自动拥有一个值为0px 2px 8px #666的阴影 |
 | titleColor| String | #666 | / | 子菜单标题字体颜色 |
 | titleBgColor | String | #FFF | / | 子菜单背景颜色 |
-
-## Slot
-| Option | Description |
-| ------ | ----------- 
-|  icon  | 用来放置自定义的icon 推荐使用iconfont |
 
 ## Event
 
