@@ -32,6 +32,7 @@
       ref="vuefab"
       @clickMainBtn="clickMainBtn"
       icon="share"
+      :scrollAutoHide="false"
       :mainBtnColor="mainBtnColor"
       style="transition: all .5s cubic-bezier(.18,.89,.58,1.26)"
       size="big"
