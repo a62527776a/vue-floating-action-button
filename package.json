@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/a62527776a/vue-fab.git"
+    "url": "git+https://github.com/a62527776a/vue-floating-action-button.git"
   },
   "keywords": [
     "vue",
@@ -20,9 +20,9 @@
   "author": "chenyu <a13868300128a@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/a62527776a/vue-fab/issues"
+    "url": "https://github.com/a62527776a/vue-floating-action-button/issues"
   },
-  "homepage": "https://github.com/a62527776a/vue-fab#readme",
+  "homepage": "https://github.com/a62527776a/vue-floating-action-button#readme",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.26.0",
