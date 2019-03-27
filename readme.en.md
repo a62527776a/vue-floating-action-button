@@ -1,6 +1,6 @@
 # Vue Floating Action Button
 
-##### a beautiful Floating Action Button 
+##### ❤❤❤❤ a beautiful Floating Action Button ❤❤❤❤
 
 <p align="center">
 	<a href="https://www.npmjs.com/package/vue-float-action-button">

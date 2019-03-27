@@ -1,6 +1,6 @@
 # Vue Floating Action Button
 
-##### a beautiful Floating Action Button 
+##### ❤❤❤❤ a beautiful Floating Action Button ❤❤❤❤
 ##### 支持iconfont以及material icons
 <p align="center">
 	<a href="https://www.npmjs.com/package/vue-float-action-button">
