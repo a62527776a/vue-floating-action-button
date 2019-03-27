@@ -1,6 +1,7 @@
 # Vue Floating Action Button
 
-##### a beautiful Floating Action Button 支持iconfont以及material icons
+##### a beautiful Floating Action Button 
+##### 支持iconfont以及material icons
 <p align="center">
 	<a href="https://www.npmjs.com/package/vue-float-action-button">
 		<img src="https://img.shields.io/npm/dm/vue-float-action-button.svg" alt="Monthly downloads">
@@ -32,13 +33,6 @@
 * **动画流畅复刻Material Design**
 
 ***
-
-## 注意
-
-* 由于safari浏览器的事件传递机制 window、document、body 不响应click事件**
-  如若出现**点击空白区域无法自动关闭子菜单的情况** 请检查html高度是否100% 
-  如果没有100% 请单独给html标签设置css属性 min-height: 100%
-  项目对safari浏览器做了单独处理 在safari浏览器中将点击事件挂载在了HTML标签上，除iOS系统外的浏览器挂载在window上
 
 ## Installation and use
 
@@ -207,7 +201,7 @@ Vue.use(VueFab, /* {
 | ------ | ------ | --------  | ------ | ----------  |
 | idx | Number | 0 | / | 下标 决定了位置以及clickItem事件返回的值(必须) |
 | title | String | '' | / | 菜单项标题 如果不填 将不显示title框 |
-| icon | String | 'add' | / | 子菜单项icon 仅支持[Material Icon](https://material.io/icons/)的icon |
+| icon | String | 'add' | / | Submenu item icon Supports [Material Icon] (https://material.io/icons/) and [iconfont](https://www.iconfont.cn/) icon |
 | color | String | '#FFF' | / | 支持css颜色标准 默认为白色 不填写该值将自动拥有一个值为0px 2px 8px #666的阴影 |
 | titleColor| String | #666 | / | 子菜单标题字体颜色 |
 | titleBgColor | String | #FFF | / | 子菜单背景颜色 |
@@ -219,6 +213,14 @@ Vue.use(VueFab, /* {
 | clickItem | {idx} | 当菜单项不为空且点击菜单项时，会返回该菜单项传入的idx值 |
 
 ## 
+
+
+## 注意
+
+* 由于safari浏览器的事件传递机制 window、document、body 不响应click事件**
+  如若出现**点击空白区域无法自动关闭子菜单的情况** 请检查html高度是否100% 
+  如果没有100% 请单独给html标签设置css属性 min-height: 100%
+  项目对safari浏览器做了单独处理 在safari浏览器中将点击事件挂载在了HTML标签上，除iOS系统外的浏览器挂载在window上
 
 ***
 ## LICENSE
