@@ -173,6 +173,7 @@ Vue.use(VueFab, /* {
 | Option |  Type  |  Default  | Params | Description |
 | ------ | ------ | --------  | ------ | ----------  |
 |  iconType  | String |  'MaterialDesign' | 'MaterialDesign'/'iconfont' |  根据您的使用习惯或开发依赖来决定使用哪种图标     |
+| autoHideDirection | String | 'up' | 'up' / 'down' | 滚动自动隐藏的方向控制，默认值up为向下展示向上隐藏down值为向上展示向下隐藏 |
 |  icon  | String |  'add' | / |  未激活的icon     |
 | activeIcon | String | 'add' | / | 激活后的icon |
 | size | String | 'Normal' | 'big' / 'normal' / 'small' | 主Fab的尺寸 子菜单会随之变化 |

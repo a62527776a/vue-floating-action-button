@@ -103,6 +103,10 @@ export default {
           delay: 0.1
         }
       }
+    },
+    autoHideDirection: {
+      type: String,
+      default: 'up'
     }
   },
   data () {
@@ -186,10 +190,18 @@ export default {
       // 偏移量等于当前距离顶部距离与改变方向时记录距离顶部距离值的差
       let offset = Math.abs(_scrollTop - this.changeDirectionScrollTop)
       // 偏移量
-      if ((this.scrollDirection === 'up' && this.hidden === true) ||
-      (this.scrollDirection === 'down' && this.hidden === false)) return
-      if (offset > this.autoHideThreshold) {
-        this.scrollDirection === 'up' ? this.hidden = true : this.hidden = false
+      if (this.autoHideDirection === 'up') {
+        if ((this.scrollDirection === 'up' && this.hidden === true) ||
+        (this.scrollDirection === 'down' && this.hidden === false)) return
+        if (offset > this.autoHideThreshold) {
+          this.scrollDirection === 'up' ? this.hidden = true : this.hidden = false
+        }
+      } else {
+        if ((this.scrollDirection === 'up' && this.hidden === false) ||
+        (this.scrollDirection === 'down' && this.hidden === true)) return
+        if (offset > this.autoHideThreshold) {
+          this.scrollDirection === 'up' ? this.hidden = false : this.hidden = true
+        }
       }
     },
     /**

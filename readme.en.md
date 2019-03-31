@@ -50,6 +50,7 @@ Vue.use(VueFab, /* {
 | Option |  Type  |  Default  | Params | Description |
 | ------ | ------ | --------  | ------ | ----------  |
 |  iconType  | String |  'MaterialDesign' | 'MaterialDesign'/'iconfont' |  Decide which icon to use based on your usage habits or development dependencies     |
+| autoHideDirection | String | 'up' | 'up' / 'down' | Rolling auto-hiding direction control, default value up to show up to hide down value to show up to hide down value |
 |  icon  | String |  'add' | / |  Inactive icon     |
 | activeIcon | String | 'add' | / | Activated icon |
 | size | String | 'Normal' | 'big' / 'normal' / 'small' | The size of the main Fab will change with the submenu. |
