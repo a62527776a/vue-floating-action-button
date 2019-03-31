@@ -229,10 +229,10 @@ export default {
     listenTouchMove: function (e) {
       this.touchEventInfo.offsetY = e.touches[0].clientY - this.touchEventInfo.startY
       if (this.touchEventInfo.offsetY > this.autoHideThreshold) {
-        this.hidden = false
+        this.hidden = this.autoHideDirection !== 'up'
         this.touchEventInfo.offsetY = 0
       } else if (this.touchEventInfo.offsetY < -this.autoHideThreshold) {
-        this.hidden = true
+        this.hidden = this.autoHideDirection === 'up'
         this.touchEventInfo.offsetY = 0
       }
     },
