@@ -19,8 +19,9 @@
 
 ![7.gif](http://upload-images.jianshu.io/upload_images/5738345-a13b5b7b511f8484.gif?imageMogr2/auto-orient/strip)
 
+**[English Doc](https://github.com/a62527776a/vue-floating-action-button/blob/master/readme.md)**
 
-**[live demo](http://htmlpreview.github.io/?https://github.com/a62527776a/vue-floating-action-button/blob/master/demo/dist/index.html)**
+**[live demo](https://dscsdoj.top/public/vue-fab/index.html)**
 
 **[demo代码](https://github.com/a62527776a/vue-floating-action-button/blob/master/demo/App.vue)**
 
