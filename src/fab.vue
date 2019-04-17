@@ -245,17 +245,23 @@ export default {
           this.removeScrollAutoHideListener()
         }
       }
+    },
+    initTouchEvent: function () {
+      // 区分PC和移动端 使用不同的动画交互方式
+      if (this.scrollAutoHide) {
+        if (this.testPCMobile()) {
+          this.listenTouchEvent()
+        } else {
+          document.addEventListener('scroll', this.scrollerEventListener)
+        }
+      }
     }
   },
   mounted () {
-    // 区分PC和移动端 使用不同的动画交互方式
-    if (this.scrollAutoHide) {
-      if (this.testPCMobile()) {
-        this.listenTouchEvent()
-      } else {
-        document.addEventListener('scroll', this.scrollerEventListener)
-      }
-    }
+    this.initTouchEvent()
+  },
+  activated () {
+    this.initTouchEvent()
   },
   destroyed () {
     this.unloadEvent()
