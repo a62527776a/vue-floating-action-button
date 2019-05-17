@@ -56,13 +56,15 @@
       <fab-item @clickItem="clickItem" :idx="0" title="add" icon="add" />
       <fab-item @clickItem="clickItem" :idx="1" title="https" icon="https" />
       <fab-item @clickItem="clickItem" :idx="2" title="edit" icon="edit" />
+      <fab-item @clickItem="clickItem" :idx="3" title="不传title参数则不显示title框" icon="https" />
+      <fab-item @clickItem="clickItem" :idx="4" icon="edit" />
     </vue-fab>
     <vue-fab icon-type="iconfont" icon="icon-jia" fabItemAnimate="default" fabAliveAnimateBezier="ease" :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#16C2C2'" style="right: 60%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
       <fab-item @clickItem="clickBABA" icon="icon-Rxing" :idx="0" title="iconfont.cn">
       </fab-item>
-      <fab-item @clickItem="clickBABA" icon="icon-huanyihuan1" :idx="1" title="交换">
+      <fab-item @clickItem="clickBABA" icon="icon-huanyihuan1" :idx="1">
       </fab-item>
-      <fab-item @clickItem="clickBABA" icon="icon-fangda1" :idx="2" title="聚焦">
+      <fab-item @clickItem="clickBABA" icon="icon-fangda1" :idx="2">
       </fab-item>
     </vue-fab>
     <vue-fab :style="{ transform: democode[0].isShow ? 'translateY(-30px)' : ''}" size="small" :mainBtnColor="'#ff9900'" :icon="'navigate_next'" @clickMainBtn="clickMainBtn" :menu="[]" style="right: 80%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
