@@ -197,7 +197,7 @@ describe('fab.vue', () => {
     expect(wrapper.vm.computedShowHideByOffset()).toBe(false)
   })
 
-  it('测试子菜单点击后自动关闭', (done) => {
+  // it('测试子菜单点击后自动关闭', (done) => {
     // wrapper.find('.fab').trigger('click')
     // wrapper.find('.fab-item').trigger('click')
     // setTimeout( _ => {
@@ -219,9 +219,9 @@ describe('fab.vue', () => {
     //   expect(wrapper.vm.active).toBe(true)
     //   done()
     // }, 600)
-  })
+  // })
   
-  it('测试子菜单props idx属性对top、transitionDelay属性的影响', (done) => {
+  // it('测试子菜单props idx属性对top、transitionDelay属性的影响', (done) => {
     // 给每个子菜单复制idx属性
     // for (let i = 1; i < 4; i++) {
     //   wrapper.vm.$children[i].idx = i - 1
@@ -240,6 +240,6 @@ describe('fab.vue', () => {
     //   }
     //   done()
     // }, 600)
-  })
+  // })
 
 })
