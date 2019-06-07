@@ -138,6 +138,26 @@ export default {
         background: this.mainBtnColor,
         boxShadow: this.shadow ? '0px 2px 8px #666' : ''
       }
+    },
+    // 是否无需改变隐藏状态
+    notChangeHideStatus: function () {
+      if (this.autoHideDirection === 'up') {
+        return (this.scrollDirectionUpAndHidden || this.scrollDirectionDownAndShow)
+      } else {
+        return (this.scrollDirectionUpAndShow || this.scrollDirectionDownAndHidden)
+      }
+    },
+    scrollDirectionUpAndHidden: function () {
+      return this.scrollDirection === 'up' && this.hidden === true
+    },
+    scrollDirectionDownAndShow: function () {
+      return this.scrollDirection === 'down' && this.hidden === false
+    },
+    scrollDirectionUpAndShow: function () {
+      return this.scrollDirection === 'up' && this.hidden === false
+    },
+    scrollDirectionDownAndHidden: function () {
+      return this.scrollDirection === 'down' && this.hidden === true
     }
   },
   methods: {
@@ -180,7 +200,7 @@ export default {
      */
     scrollerEventListener: function () {
       let _scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-      let direction = this.checkDirection()
+      let direction = this.checkDirection(_scrollTop)
       this.scrollTop = _scrollTop
       // 如果方向发生改变 则记录改变时滚动距离
       if (this.scrollDirection !== direction) {
@@ -189,27 +209,22 @@ export default {
       }
       // 偏移量等于当前距离顶部距离与改变方向时记录距离顶部距离值的差
       let offset = Math.abs(_scrollTop - this.changeDirectionScrollTop)
+      if (this.computedOffsetOver(offset)) return
+      if (this.notChangeHideStatus) return
       // 偏移量
-      if (this.autoHideDirection === 'up') {
-        if ((this.scrollDirection === 'up' && this.hidden === true) ||
-        (this.scrollDirection === 'down' && this.hidden === false)) return
-        if (offset > this.autoHideThreshold) {
-          this.scrollDirection === 'up' ? this.hidden = true : this.hidden = false
-        }
-      } else {
-        if ((this.scrollDirection === 'up' && this.hidden === false) ||
-        (this.scrollDirection === 'down' && this.hidden === true)) return
-        if (offset > this.autoHideThreshold) {
-          this.scrollDirection === 'up' ? this.hidden = false : this.hidden = true
-        }
-      }
+      this.hidden = this.computedShowHideByOffset()
+    },
+    computedOffsetOver: function (offset) {
+      return (offset < this.autoHideThreshold)
+    },
+    computedShowHideByOffset () {
+      return this.scrollDirection === this.autoHideDirection
     },
     /**
      * @method checkDirection 检测滚动方向
      * @return { String } up/down
      */
-    checkDirection: function () {
-      let _scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+    checkDirection: function (_scrollTop) {
       return _scrollTop > this.scrollTop ? 'up' : 'down'
     },
     removeScrollAutoHideListener: function () {

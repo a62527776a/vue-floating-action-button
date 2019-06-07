@@ -1,20 +1,7 @@
 import FAB from './fab.vue'
 import FABItem from './fab-item.vue'
 import FABCantainer from './fab-cantainer.vue'
-
-/**
- * @method testSafariBrower 处理safari浏览器body无法响应click事件
- * @return { Boolean } true / false
- */
-let testSafariBrower = (userAgent = null) => {
-  let UA = null
-  userAgent ? UA = userAgent : UA = window.navigator.userAgent
-  if (UA.match(/iPad/i) || UA.match(/iPhone/i) || UA.match(/Mac/i)) {
-    return true
-  } else {
-    return false
-  }
-}
+import { testSafariBrower } from './util'
 
 function install (Vue, options) {
   if (options && options.iconType) {

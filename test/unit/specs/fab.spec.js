@@ -49,6 +49,38 @@ describe('fab.vue', () => {
     expect(wrapper.vm.hidden).toBe(true)
   })
 
+  it('openMenu 函数在有子item的情况', () => {
+    expect(wrapper.vm.$children.length).toBe(4)
+    expect(wrapper.vm.active).toBe(false)
+    wrapper.vm.openMenu()
+    expect(wrapper.vm.active).toBe(true)
+  })
+
+  it('checkDirection 判断方向', () => {
+    wrapper.vm.scrollTop = 40
+    expect(wrapper.vm.checkDirection(80)).toBe('up')
+    expect(wrapper.vm.checkDirection(20)).toBe('down')
+  })
+
+  it('listenTouchStart', () => {
+    let mockEvent = {
+      touches: [
+        {
+          clientY: 8
+        }
+      ]
+    }
+    wrapper.vm.listenTouchStart(mockEvent)
+    expect(wrapper.vm.touchEventInfo.startY).toBe(8)
+  })
+
+  it('watch hidden', () => {
+    wrapper.vm.hidden = true
+    wrapper.vm.active = true
+    wrapper.vm.hidden = false
+    expect(wrapper.vm.active).toBe(true)
+  })
+
   it('测试主按钮点击事件', () => {
     // 有子菜单的情况下
     wrapper.find('.fab').trigger('click')
@@ -98,18 +130,70 @@ describe('fab.vue', () => {
     expect(wrapper.vm.active).toBe(false)
   })
 
-  it('测试滚动自动隐藏事件', () => {
-    // document.body.style.height = 3000 + 'px'
-    // for (let i = 0; i < 50; i++) {
-    //   window.scrollBy(0, 5)
-    // }
-    // for (let i = 0; i < 50; i++) {
-    //   window.scrollBy(0, -5)
-    // }
-    // setTimeout( _ => {
-    //   expect(wrapper.vm.hidden).toBe(false)
-    //   done()
-    // }, 600)
+  it('clickoutside', () => {
+    wrapper.vm.active = true
+    wrapper.vm.clickoutside()
+    expect(wrapper.vm.active).toBe(false)
+  })
+
+  it('scrollDirectionUpAndHidden', () => {
+    wrapper.vm.scrollDirection = 'up'
+    wrapper.vm.hidden = true
+    expect(wrapper.vm.scrollDirectionUpAndHidden).toBe(true)
+  })
+  
+  it('scrollDirectionDownAndShow', () => {
+    wrapper.vm.scrollDirection = 'down'
+    wrapper.vm.hidden = false
+    expect(wrapper.vm.scrollDirectionDownAndShow).toBe(true)
+  })
+
+  it('scrollDirectionUpAndShow', () => {
+    wrapper.vm.scrollDirection = 'up'
+    wrapper.vm.hidden = false
+    expect(wrapper.vm.scrollDirectionUpAndShow).toBe(true)
+  })
+
+  it('notChangeHideStatus', () => {
+    let vm = wrapper.vm
+    vm.autoHideDirection = 'up'
+    wrapper.vm.scrollDirection = 'up'
+    wrapper.vm.hidden = true
+    expect(vm.notChangeHideStatus).toBe(true)
+    wrapper.vm.scrollDirection = 'down'
+    wrapper.vm.hidden = false
+    expect(vm.notChangeHideStatus).toBe(true)
+    vm.autoHideDirection = 'down'
+    wrapper.vm.scrollDirection = 'up'
+    wrapper.vm.hidden = false
+    expect(vm.notChangeHideStatus).toBe(true)
+    wrapper.vm.scrollDirection = 'down'
+    wrapper.vm.hidden = true
+    expect(vm.notChangeHideStatus).toBe(true)
+  })
+  
+  it('scrollDirectionDownAndHidden', () => {
+    wrapper.vm.scrollDirection = 'down'
+    wrapper.vm.hidden = true
+    expect(wrapper.vm.scrollDirectionDownAndHidden).toBe(true)
+  })
+
+  // it('测试滚动自动隐藏事件', () => {
+
+  // })
+
+  it('computedOffsetOver', () => {
+    wrapper.vm.autoHideThreshold = 60
+    expect(wrapper.vm.computedOffsetOver(80)).toBe(false)
+    expect(wrapper.vm.computedOffsetOver(40)).toBe(true)
+  })
+
+  it('computedShowHideByOffset', () => {
+    wrapper.vm.scrollDirection = 60
+    wrapper.vm.autoHideDirection = 60
+    expect(wrapper.vm.computedShowHideByOffset()).toBe(true)
+    wrapper.vm.autoHideDirection = 50
+    expect(wrapper.vm.computedShowHideByOffset()).toBe(false)
   })
 
   it('测试子菜单点击后自动关闭', (done) => {
@@ -156,7 +240,5 @@ describe('fab.vue', () => {
       done()
     }, 600)
   })
-
-  it('')
 
 })
