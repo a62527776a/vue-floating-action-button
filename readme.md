@@ -12,6 +12,9 @@
 	<img src="https://img.shields.io/badge/min+gzip-5.8_kB-blue.svg" alt="5.8 kB min+gzip">
   <a href="https://github.com/a62527776a/vue-floating-action-button/blob/master/LICENSE"><img
             src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="License"></a>
+  <a href="#" id="status-image-popup" title="Latest push build on default branch: started" name="status-images" class="open-popup" data-ember-action="" data-ember-action-1386="1386">
+          <img src="https://travis-ci.org/a62527776a/vue-floating-action-button.svg?branch=master" alt="build:started">
+        </a>
   <br>
 </p>
 

@@ -1,9 +1,14 @@
-language: javascript
+language: node_js
 
 branches:
   only:
   - master
 
+node_js:
+  - stable
+
+install:
+  - npm install
+
 script:
-  - "npm install"
-  - "npm run test"
+  - npm run test
