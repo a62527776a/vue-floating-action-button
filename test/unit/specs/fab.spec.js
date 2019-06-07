@@ -21,6 +21,7 @@ describe('fab.vue', () => {
         default: [FabItem, FabItem, FabItem]
       }
     })
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 999999;
   })
 
   afterEach(() => {
