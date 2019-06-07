@@ -1,4 +1,9 @@
 language: javascript
+
+branches:
+  only:
+  - master
+
 script:
   - "npm install"
   - "npm run test"
