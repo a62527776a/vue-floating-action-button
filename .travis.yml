@@ -1,1 +1,3 @@
 language: javascript
+script:
+  - "npm run test"
