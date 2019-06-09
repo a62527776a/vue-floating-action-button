@@ -12,3 +12,5 @@ script:
   - npm run test
 
 after_success: "sbt coveralls"
+
+after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
