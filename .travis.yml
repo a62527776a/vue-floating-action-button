@@ -8,6 +8,7 @@ node_js:
   - v8.12.0
 
 script: 
-  - npm install && npm run test && npm run build
+  - npm install
+  - npm run test
 
 after_success: "sbt coveralls"
