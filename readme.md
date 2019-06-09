@@ -12,7 +12,7 @@
 	<img src="https://img.shields.io/badge/min+gzip-5.8_kB-blue.svg" alt="5.8 kB min+gzip">
   <a href="https://github.com/a62527776a/vue-floating-action-button/blob/master/LICENSE"><img
             src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="License"></a>
-  <img src="https://img.shields.io/travis/com/a62527776a/vue-floating-action-button.svg">
+  <img src="https://img.shields.io/travis/a62527776a/vue-floating-action-button.svg">
   <br>
 </p>
 
