@@ -12,5 +12,3 @@ script:
   - npm run test
 
 after_success: "sbt coveralls"
-
-after_script: "npm run cover"

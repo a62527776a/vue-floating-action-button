@@ -15,6 +15,7 @@
   <a href="https://travis-ci.org/a62527776a/vue-floating-action-button">
     <img src="https://img.shields.io/travis/a62527776a/vue-floating-action-button.svg">
   </a>
+  <a href='https://coveralls.io/github/a62527776a/vue-floating-action-button?branch=master'><img src='https://coveralls.io/repos/github/a62527776a/vue-floating-action-button/badge.svg?branch=master' alt='Coverage Status' /></a>
   <br>
 </p>
 
