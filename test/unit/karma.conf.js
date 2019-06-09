@@ -73,9 +73,15 @@ module.exports = function(config) {
     concurrency: Infinity,
 
     coverageReporter: {
-        repoToken: 'PYZjkMKDU2nZmTXPkj7NYIYDUPRdf1iMH',
-        type: 'lcov',
-        dir: 'coverage/'
+      reporters: [
+        {
+          repoToken: 'PYZjkMKDU2nZmTXPkj7NYIYDUPRdf1iMH',
+          type: 'lcov',
+          dir: 'coverage/'
+        },
+        {type: 'html', dir: 'coverage/'},
+        {type: 'text-summary'}
+      ]
       }
   })
 }
