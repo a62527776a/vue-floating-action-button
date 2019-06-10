@@ -1,34 +1,42 @@
-const path = require('path')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-  entry: {
-    main: path.resolve(__dirname + '/src/index.js')
-  },
+  entry: './src/index.ts',
   output: {
-    path: path.resolve(__dirname + '/dist'),
+    path: __dirname + '/dist',
     filename: 'vue-fab.js',
     libraryTarget: 'umd'
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.vue$/,
-      loader: "vue-loader"
+      use: "vue-loader"
     }, {
       test: /\.js$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/,
-      include: path.resolve(__dirname + '/src')
+      use: 'babel-loader'
     }, {
       test: /\.css$/,
-      loader: 'style!css!autoprefixer'
+      use: 'style!css!autoprefixer'
     }, {
       test: /\.less$/,
-      loader: 'style!less'
+      use: 'style!less'
+    }, {
+      test: /\.tsx?$/,
+      exclude: /node_modules/,
+      use: [
+        'babel-loader',
+        {
+          use: 'ts-loader',
+          options: {
+            appendTsSuffixTo: [/\.vue$/],
+            appendTsxSuffixTo: [/\.vue$/]
+          }
+        }
+      ]
     }]
   },
   plugins: [
+    new VueLoaderPlugin(),
     new UglifyJsPlugin({
       compress: {
         drop_console: true,

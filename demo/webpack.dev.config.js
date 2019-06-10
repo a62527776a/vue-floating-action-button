@@ -1,6 +1,6 @@
 const path = require('path')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   entry: {
@@ -10,8 +10,12 @@ module.exports = {
     path: path.resolve(__dirname + '/dist'),
     filename: 'vue-fab.js'
   },
+  resolve: {
+    // Add `.ts` as a resolvable extension.
+    extensions: ['.ts', '.js']
+  },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.vue$/,
       loader: "vue-loader"
     }, {
@@ -22,11 +26,12 @@ module.exports = {
       ],
       exclude: /node_modules/
     }, {
-      test: /\.css$/,
-      loader: 'style!css!autoprefixer'
-    }, {
       test: /\.less$/,
-      loader: 'style!less'
+      use: [
+        'vue-style-loader',
+        'css-loader',
+        'less-loader'
+      ]
     }, {
       test: /\.vue$/,
       enforce: 'pre',  // 在babel-loader对源码进行编译前进行lint的检查
@@ -37,6 +42,10 @@ module.exports = {
           formatter: require('eslint-friendly-formatter')   // 编译后错误报告格式
         }
       }]
+    }, {
+      test: /\.ts$/,
+      loader: 'ts-loader',
+      options: { appendTsSuffixTo: [/\.vue$/] }
     }]
   },
   devServer: {
@@ -44,13 +53,9 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   plugins: [
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        warnings: false
-      }
-    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, './index.html')
-    })
+    }),
+    new VueLoaderPlugin()
   ]
 }

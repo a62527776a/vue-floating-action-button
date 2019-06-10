@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "@": ["src"]
+    },
+    "experimentalDecorators": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "strictPropertyInitialization": false,
+    "noUnusedParameters": true,
+    "jsx": "preserve",
+    "jsxFactory": "h"
+  },
+  "compileOnSave": true
+}

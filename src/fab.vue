@@ -33,11 +33,34 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Vue, Component, Prop } from 'vue-property-decorator'
 import handleClass from './util'
 
-export default {
-  name: 'vue-fab',
+enum iconType {
+  MaterialDesign,
+  iconfont
+}
+
+enum fabAutoHideAnimateModel {
+  default
+}
+
+enum fabItemAnimate {
+  default,
+  
+}
+
+@Component
+export default class FabComponent extends Vue {
+  @Prop({default: 'add'}) icon!: string
+  @Prop({default: '#E64C3B'}) mainBtnColor!: string
+  @Prop({default: 'add'}) activeIcon!: string
+  @Prop({default: iconType[MaterialDesign]}) iconType!: string
+  @Prop({default: true}) shadow!: boolean
+  @Prop({default: 50}) autoHideThreshold!: number
+  @Prop({default: fabAutoHideAnimateModel[default]}) fabAutoHideAnimateModel!: fabAutoHideAnimateModel
+  @Prop({default: fabItemAnimate})
   props: {
     icon: {
       type: String,
