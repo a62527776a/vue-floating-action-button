@@ -1,6 +1,6 @@
 {
   "name": "vue-float-action-button",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "vue, float action button",
   "main": "/dist/vue-fab.js",
   "scripts": {
@@ -64,10 +64,11 @@
     "vue-template-compiler": "^2.5.13",
     "vue-test-utils": "^1.0.0-beta.11",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1"
-  },
-  "dependencies": {
+    "webpack-dev-server": "^2.11.1",
     "cross-env": "^5.2.0",
     "karma-coveralls": "^2.1.0"
+  },
+  "dependencies": {
+
   }
 }
