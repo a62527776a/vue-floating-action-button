@@ -4,7 +4,7 @@
     <fab-cantainer
       @click.native="clickItem"
       class="fab-item"
-      v-show="($parent.fabMenuAnimate === 'alive' || $parent.active) && $parent.hidden"
+      v-show="showItem"
       :style="fabItemStyle"
       :class="{ 'fab-shadow' : !color }">
         <div v-if="title" :style="titleStyle" class="fab-item-title">
@@ -53,6 +53,9 @@ export default {
     }
   },
   computed: {
+    showItem: function () {
+      return (this.$parent.fabMenuAnimate === 'alive' || this.$parent.active) && this.$parent.hidden
+    },
     /**
      * 根据不同的动画模式处理不同的css
      */
@@ -85,12 +88,21 @@ export default {
   },
   methods: {
     clickItem: function () {
-      if (this.$parent.clickAutoClose) {
-        setTimeout(() => {
-          this.$parent.active = false
-        }, 300)
-      }
       this.$emit('clickItem', {idx: this.idx})
+      this.handleAutoClose()
+    },
+    handleAutoClose: async function () {
+      if (this.$parent.clickAutoClose) {
+        await this.handleTimeout()
+        this.$parent.active = false
+      }
+    },
+    handleTimeout: function () {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(true)
+        }, 300)
+      })
     }
   },
   created () {
