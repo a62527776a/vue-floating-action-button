@@ -1,5 +1,10 @@
 <template>
   <div class="main">
+    <a data-v-d877a75c="" href="https://github.com/a62527776a/vue-fab">
+      <img 
+        src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" 
+        data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" style="position: absolute; top: 0px; right: 0px; border: 0px;">
+    </a>
     <svg style="margin-bottom: 50px" height="120px" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" version="1.1">
       <text stroke-dasharray="2000" stroke-dashoffset="-200" opacity="0" x="0" y="50"  fill="rgb(255, 153, 0)" stroke="rgb(255, 153, 0)" stroke-width="1" font-size="55" transform="">F
         <animate fill="freeze" attributeName="opacity" values="0; 1" begin="0s" dur="3s" repeatCount="1" /> 
