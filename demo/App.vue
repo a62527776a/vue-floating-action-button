@@ -17,8 +17,25 @@
         <animate fill="freeze" attributeName="stroke-dasharray" values="2000; 0" begin="1s" dur="3s" repeatCount="1" />
       </text>
     </svg>
-    <a href="https://github.com/a62527776a/vue-fab" target="_blank" class="btn btn-lg btn-block btn-sm btn-info">View on GitHub</a>
-    <a href="https://a62527776a.github.io/vue-fab/" target="_blank" style="display: flex;justify-content: center;align-items: center" class="btn btn-lg btn-block btn-sm btn-info"><i class="material-icons" style="margin-right: 6px;font-size: 14px">explore</i>Api文档</a>
+    <p align="center">
+      <a href="https://www.npmjs.com/package/vue-float-action-button">
+        <img src="https://img.shields.io/npm/dm/vue-float-action-button.svg" alt="Monthly downloads">
+      </a>
+      <a href="https://www.npmjs.com/package/vue-float-action-button">
+        <img src="https://img.shields.io/npm/v/vue-float-action-button.svg" alt="Version">
+      </a>
+      <img src="https://img.shields.io/badge/min+gzip-5.8_kB-blue.svg" alt="5.8 kB min+gzip">
+      <a href="https://github.com/a62527776a/vue-floating-action-button/blob/master/LICENSE"><img
+                src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="License"></a>
+      <a href="https://travis-ci.org/a62527776a/vue-floating-action-button">
+        <img src="https://img.shields.io/travis/a62527776a/vue-floating-action-button.svg">
+      </a>
+      <a href='https://coveralls.io/github/a62527776a/vue-floating-action-button?branch=master'><img src='https://coveralls.io/repos/github/a62527776a/vue-floating-action-button/badge.svg?branch=master' alt='Coverage Status' /></a>
+      <br>
+    </p>
+    <a href="https://github.com/a62527776a/vue-fab" target="_blank" class="btn btn-lg btn-block btn-sm btn-info" style="width: 40%;margin: auto;">
+      View on GitHub
+    </a>
     <!--<div class="btn btn-lg btn-block btn-sm btn-info" v-for="(code, idx) in democode" @click="showCode(code)">实例代码{{idx}}</div>-->
     <textarea ref="textarea" value="" style="position: absolute; top: -500px" />
     <div style="position: relative" v-for="code in democode" v-show="code.isShow">
