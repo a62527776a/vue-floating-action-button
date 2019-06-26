@@ -5,29 +5,37 @@
         src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" 
         data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" style="position: absolute; top: 0px; right: 0px; border: 0px;">
     </a>
-    <svg style="margin-bottom: 50px" height="120px" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" version="1.1">
-      <text stroke-dasharray="2000" stroke-dashoffset="-200" opacity="0" x="0" y="50"  fill="rgb(255, 153, 0)" stroke="rgb(255, 153, 0)" stroke-width="1" font-size="55" transform="">F
-        <animate fill="freeze" attributeName="opacity" values="0; 1" begin="0s" dur="3s" repeatCount="1" /> 
-        <animate fill="freeze" attributeName="stroke-dashoffset" values="-200; 0" begin="1s" dur="3s" repeatCount="1" />      
-        <animate fill="freeze" attributeName="stroke-dasharray" values="2000; 0" begin="1s" dur="3s" repeatCount="1" />      
-      </text>
-      <text stroke-dasharray="2000" stroke-dashoffset="-200" opacity="0" x="35" y="50" fill="rgb(53, 153, 219)" stroke="rgb(53, 153, 219)" stroke-width="1" font-size="55" transform="">A
-        <animate fill="freeze" attributeName="opacity" values="0; 1" begin="0s" dur="3s" repeatCount="1" /> 
-        <animate fill="freeze" attributeName="stroke-dashoffset" values="-200; 0" begin="1s" dur="3s" repeatCount="1" />
-        <animate fill="freeze" attributeName="stroke-dasharray" values="2000; 0" begin="1s" dur="3s" repeatCount="1" />
-      </text>
-      <text stroke-dasharray="2000" stroke-dashoffset="-200" opacity="0" x="75" y="50" fill="rgb(230, 76, 59)" stroke="rgb(230, 76, 59)" stroke-width="1" font-size="55" transform="">B
-        <animate fill="freeze" attributeName="opacity" values="0; 1" begin="0s" dur="3s" repeatCount="1" /> 
-        <animate fill="freeze" attributeName="stroke-dashoffset" values="-200; 0" begin="1s" dur="3s" repeatCount="1" />
-        <animate fill="freeze" attributeName="stroke-dasharray" values="2000; 0" begin="1s" dur="3s" repeatCount="1" />
-      </text>
-    </svg>
+    <div class="title">
+      <svg style="margin-bottom: 50px" height="120px" width="180px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" version="1.1">
+        <text stroke-dasharray="2000" stroke-dashoffset="-200" opacity="0" x="0" y="50"  fill="rgb(255, 153, 0)" stroke="rgb(255, 153, 0)" stroke-width="1" font-size="55" transform="">F
+          <animate fill="freeze" attributeName="opacity" values="0; 1" begin="0s" dur="3s" repeatCount="1" /> 
+          <animate fill="freeze" attributeName="stroke-dashoffset" values="-200; 0" begin="1s" dur="3s" repeatCount="1" />      
+          <animate fill="freeze" attributeName="stroke-dasharray" values="2000; 0" begin="1s" dur="3s" repeatCount="1" />      
+        </text>
+        <text stroke-dasharray="2000" stroke-dashoffset="-200" opacity="0" x="35" y="50" fill="rgb(53, 153, 219)" stroke="rgb(53, 153, 219)" stroke-width="1" font-size="55" transform="">A
+          <animate fill="freeze" attributeName="opacity" values="0; 1" begin="0s" dur="3s" repeatCount="1" /> 
+          <animate fill="freeze" attributeName="stroke-dashoffset" values="-200; 0" begin="1s" dur="3s" repeatCount="1" />
+          <animate fill="freeze" attributeName="stroke-dasharray" values="2000; 0" begin="1s" dur="3s" repeatCount="1" />
+        </text>
+        <text stroke-dasharray="2000" stroke-dashoffset="-200" opacity="0" x="75" y="50" fill="rgb(230, 76, 59)" stroke="rgb(230, 76, 59)" stroke-width="1" font-size="55" transform="">B
+          <animate fill="freeze" attributeName="opacity" values="0; 1" begin="0s" dur="3s" repeatCount="1" /> 
+          <animate fill="freeze" attributeName="stroke-dashoffset" values="-200; 0" begin="1s" dur="3s" repeatCount="1" />
+          <animate fill="freeze" attributeName="stroke-dasharray" values="2000; 0" begin="1s" dur="3s" repeatCount="1" />
+        </text>
+      </svg>
+      <div class="title-warpper">
+        <div class="main-title">
+          Floating Action Button
+        </div>
+        <br />
+        <div class="sub-title">
+          A Vue Component
+        </div>
+      </div>
+    </div>
     <p align="center">
       <a href="https://www.npmjs.com/package/vue-float-action-button">
         <img src="https://img.shields.io/npm/dm/vue-float-action-button.svg" alt="Monthly downloads">
-      </a>
-      <a href="https://www.npmjs.com/package/vue-float-action-button">
-        <img src="https://img.shields.io/npm/v/vue-float-action-button.svg" alt="Version">
       </a>
       <img src="https://img.shields.io/badge/min+gzip-5.8_kB-blue.svg" alt="5.8 kB min+gzip">
       <a href="https://github.com/a62527776a/vue-floating-action-button/blob/master/LICENSE"><img
@@ -37,8 +45,14 @@
       </a>
       <a href='https://coveralls.io/github/a62527776a/vue-floating-action-button?branch=master'><img src='https://coveralls.io/repos/github/a62527776a/vue-floating-action-button/badge.svg?branch=master' alt='Coverage Status' /></a>
       <br>
+      <a href="https://github.com/a62527776a/vue-floating-action-button/issues">
+        <img src="https://img.shields.io/github/issues-closed-raw/a62527776a/vue-floating-action-button.svg" />
+      </a>
+      <a href="https://github.com/a62527776a/vue-floating-action-button">
+        <img src="https://img.shields.io/github/stars/a62527776a/vue-floating-action-button.svg?style=social" />
+      </a>
     </p>
-    <a href="https://github.com/a62527776a/vue-fab" target="_blank" class="btn btn-lg btn-block btn-sm btn-info" style="width: 40%;margin: auto;">
+    <a href="https://github.com/a62527776a/vue-fab" target="_blank" class="btn btn-lg btn-block btn-sm btn-info" style="width: 30%;margin: auto;">
       View on GitHub
     </a>
     <!--<div class="btn btn-lg btn-block btn-sm btn-info" v-for="(code, idx) in democode" @click="showCode(code)">实例代码{{idx}}</div>-->
@@ -417,6 +431,29 @@ methods: {
 </script>
 
 <style lang="less" scoped>
+.title {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+  .title-warpper {
+    display: inline-block;
+  }
+  .main-title {
+    display: inline-block;
+    color: #333;
+    font-size: 26px;
+    text-align: center;
+    border-bottom: 1px dashed #333;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+  }
+  .sub-title {
+    display: inline-block;
+    color: #888;
+    font-size: 18px;
+    text-align: center;
+  }
+}
 .main {
   padding: 15px;
 }
