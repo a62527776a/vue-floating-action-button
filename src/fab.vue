@@ -47,8 +47,7 @@ enum fabAutoHideAnimateModel {
 }
 
 enum fabItemAnimate {
-  default,
-  
+  default
 }
 
 @Component
@@ -60,7 +59,7 @@ export default class FabComponent extends Vue {
   @Prop({default: true}) shadow!: boolean
   @Prop({default: 50}) autoHideThreshold!: number
   @Prop({default: fabAutoHideAnimateModel[default]}) fabAutoHideAnimateModel!: fabAutoHideAnimateModel
-  @Prop({default: fabItemAnimate})
+  @Prop({default: fabItemAnimate}) fabItemAnimate!: fabItemAnimate
   props: {
     icon: {
       type: String,
