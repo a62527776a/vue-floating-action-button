@@ -131,6 +131,10 @@ export default {
     }
   },
   computed: {
+    overflowThreshold: function () {
+      // 滑动不超过阈值
+      return (Math.abs(this.touchEventInfo.offsetY) > this.autoHideThreshold)
+    },
     fabClass: function () {
       return {
         transitionTimingFunction: /,/.test(this.fabAnimateBezier) ? `cubic-bezier(${this.fabAnimateBezier})` : this.fabAnimateBezier,
@@ -195,24 +199,27 @@ export default {
     openMenu: function () {
       this.$children.length > 1 ? this.active = !this.active : this.$emit('clickMainBtn')
     },
+    recordScrollTopByChangeDirection: function (_scrollTop) {
+      let direction = this.checkDirection(_scrollTop)
+      this.scrollTop = _scrollTop
+      if (this.scrollDirection !== direction) {
+        this.changeDirectionScrollTop = _scrollTop
+        this.scrollDirection = direction
+      }
+    },
     /**
      * @method scrollerEventListener 监听滚动事件
      */
     scrollerEventListener: function () {
       let _scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-      let direction = this.checkDirection(_scrollTop)
-      this.scrollTop = _scrollTop
-      // 如果方向发生改变 则记录改变时滚动距离
-      if (this.scrollDirection !== direction) {
-        this.changeDirectionScrollTop = _scrollTop
-        this.scrollDirection = direction
-      }
+      this.recordScrollTopByChangeDirection(_scrollTop)
       // 偏移量等于当前距离顶部距离与改变方向时记录距离顶部距离值的差
       let offset = Math.abs(_scrollTop - this.changeDirectionScrollTop)
-      if (this.computedOffsetOver(offset)) return
-      if (this.notChangeHideStatus) return
+      if (this.computedOffsetOver(offset)) return false
+      if (this.notChangeHideStatus) return false
       // 偏移量
       this.hidden = this.computedShowHideByOffset()
+      return true
     },
     computedOffsetOver: function (offset) {
       return (offset < this.autoHideThreshold)
@@ -243,13 +250,13 @@ export default {
     },
     listenTouchMove: function (e) {
       this.touchEventInfo.offsetY = e.touches[0].clientY - this.touchEventInfo.startY
-      if (this.touchEventInfo.offsetY > this.autoHideThreshold) {
+      if (!this.overflowThreshold) return
+      if (this.touchEventInfo.offsetY > 0) {
         this.hidden = this.autoHideDirection !== 'up'
-        this.touchEventInfo.offsetY = 0
-      } else if (this.touchEventInfo.offsetY < -this.autoHideThreshold) {
+      } else {
         this.hidden = this.autoHideDirection === 'up'
-        this.touchEventInfo.offsetY = 0
       }
+      this.touchEventInfo.offsetY = 0
     },
     // 根据PC还是移动端以及是否启用自动 隐藏来卸载不同的事件监听函数
     unloadEvent: function () {

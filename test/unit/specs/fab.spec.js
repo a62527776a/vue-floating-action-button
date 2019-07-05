@@ -63,6 +63,18 @@ describe('fab.vue', () => {
     expect(wrapper.vm.checkDirection(20)).toBe('down')
   })
 
+  it('recordScrollTopByChangeDirection', () => {
+    let tobeScrollTop = 80
+    wrapper.vm.scrollTop = 40
+    wrapper.vm.scrollDirection = 'down'
+    let _direction = wrapper.vm.checkDirection(tobeScrollTop)
+    expect(wrapper.vm.checkDirection(tobeScrollTop)).toBe(_direction)
+    wrapper.vm.recordScrollTopByChangeDirection(tobeScrollTop)
+    expect(wrapper.vm.scrollTop).toBe(tobeScrollTop)
+    expect(wrapper.vm.changeDirectionScrollTop).toBe(tobeScrollTop)
+    expect(wrapper.vm.scrollDirection).toBe(_direction)
+  })
+
   it('listenTouchStart', () => {
     let mockEvent = {
       touches: [
@@ -73,6 +85,49 @@ describe('fab.vue', () => {
     }
     wrapper.vm.listenTouchStart(mockEvent)
     expect(wrapper.vm.touchEventInfo.startY).toBe(8)
+  })
+
+  it('listenTouchMove', () => {
+    let mockTouchStartY = 4
+    let mockTouchMoveY = 8
+    let mockTouchstartEvent = {
+      touches: [
+        {
+          clientY: mockTouchStartY
+        }
+      ]
+    }
+    let mockTouchMoveEvent = {
+      touches: [
+        {
+          clientY: mockTouchMoveY
+        }
+      ]
+    }
+    wrapper.vm.listenTouchStart(mockTouchstartEvent)
+    wrapper.vm.listenTouchMove(mockTouchMoveEvent)
+    expect(wrapper.vm.touchEventInfo.startY).toBe(mockTouchStartY)
+    expect(wrapper.vm.touchEventInfo.offsetY).toBe(mockTouchMoveY - mockTouchStartY)
+    mockTouchStartY = 4
+    mockTouchMoveY = 88
+    mockTouchstartEvent.touches[0].clientY = mockTouchStartY
+    mockTouchMoveEvent.touches[0].clientY = mockTouchMoveY
+    wrapper.vm.listenTouchStart(mockTouchstartEvent)
+    wrapper.vm.listenTouchMove(mockTouchMoveEvent)
+    expect(wrapper.vm.hidden).toBe(false)
+    expect(wrapper.vm.touchEventInfo.offsetY).toBe(0)
+  })
+
+  it('overflowThreshold', () => {
+    expect(wrapper.vm.autoHideThreshold).toBe(50)
+    wrapper.vm.touchEventInfo.offsetY = -60
+    expect(wrapper.vm.overflowThreshold).toBe(true)
+    wrapper.vm.touchEventInfo.offsetY = -40
+    expect(wrapper.vm.overflowThreshold).toBe(false)
+    wrapper.vm.touchEventInfo.offsetY = 40
+    expect(wrapper.vm.overflowThreshold).toBe(false)
+    wrapper.vm.touchEventInfo.offsetY = 60
+    expect(wrapper.vm.overflowThreshold).toBe(true)
   })
 
   it('watch hidden', () => {
