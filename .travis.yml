@@ -10,10 +10,7 @@ node_js:
 before_deploy:
   - npm install
 
-jobs:
-  include:
-    - stage: unit tests
-      script: npm run test
+script: npm run test
 
 notifications:
   email:
