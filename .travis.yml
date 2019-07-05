@@ -15,10 +15,10 @@ jobs:
     - stage: unit tests
       script: npm run test
 
-deploy:
-  provider: npm
-  skip_cleanup: true
-  email: 'a13868300128a@gmail.com'
-  api_key: $NPM_API_KEY
-  on: 
-    all_branches: true
+notifications:
+  email:
+    recipients:
+      - a13868300128a@gmail.com
+      on_success: change
+      on_failure: always
+

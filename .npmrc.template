@@ -1,0 +1,3 @@
+always-auth=true
+registry=https://packagecloud.io/capotej/left-pad-example/npm/
+//packagecloud.io/capotej/left-pad-example/npm/:_authToken=${API_TOKEN}
