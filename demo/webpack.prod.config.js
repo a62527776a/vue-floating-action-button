@@ -4,10 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname + '/main.js')
+    main: path.resolve(__dirname, '/main.js')
   },
   output: {
-    path: path.resolve(__dirname + '/dist'),
+    path: path.resolve(__dirname, '../docs/'),
     filename: 'vue-fab.js'
   },
   module: {
