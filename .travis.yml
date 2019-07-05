@@ -12,10 +12,4 @@ before_deploy:
 
 script: npm run test
 
-notifications:
-  email:
-    recipients:
-      - a13868300128a@gmail.com
-      on_success: change
-      on_failure: always
 
