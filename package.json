@@ -17,6 +17,9 @@
     "vue",
     "floating action button"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "chenyu <a13868300128a@gmail.com>",
   "license": "ISC",
   "bugs": {

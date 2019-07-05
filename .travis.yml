@@ -14,11 +14,11 @@ jobs:
   include:
     - stage: unit tests
       script: npm run test
-    - stage: npm release
-        deploy:
-          provider: npm
-          skip_cleanup: true
-          email: 'a13868300128a@gmail.com'
-          api_key: $NPM_API_KEY
-          on: 
-            all_branches: true
+
+deploy:
+  provider: npm
+  skip_cleanup: true
+  email: 'a13868300128a@gmail.com'
+  api_key: $NPM_API_KEY
+  on: 
+    all_branches: true
