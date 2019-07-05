@@ -15,12 +15,10 @@ jobs:
     - stage: unit tests
       script: npm run test
     - stage: npm release
-      script: echo "Deploying to npm ..."
-      deploy:
-        provider: npm
-        api_key: $NPM_API_KEY
-        on: 
-          all_branches: true
-
-
-after_success: echo 'success!'
+        deploy:
+          provider: npm
+          skip_cleanup: true
+          email: 'a13868300128a@gmail.com'
+          api_key: $NPM_API_KEY
+          on: 
+            all_branches: true
