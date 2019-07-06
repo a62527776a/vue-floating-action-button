@@ -1,5 +1,10 @@
 {
   "presets": ["env", "stage-2"],
   "plugins": ["transform-runtime", "transform-function-bind"],
-  "comments": false
+  "comments": false,
+  "env": {
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  }
 }
