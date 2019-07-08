@@ -98,6 +98,9 @@ export default {
         let timeout = new Timeout()
         await timeout.handleTimeout()
         this.$parent.active = false
+        return true
+      } else {
+        return false
       }
     }
   },

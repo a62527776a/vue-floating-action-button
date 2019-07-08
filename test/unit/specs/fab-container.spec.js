@@ -18,7 +18,6 @@ describe('fab-cantainer.vue', () => {
 
   it('startAnimate', (done) => {
     let timeout = new Timeout()
-    console.log(wrapper.vm.mousedown)
     expect(wrapper.vm.touching).toBe(false)
     expect(wrapper.vm.animating).toBe(false)
     expect(wrapper.vm.mousedown).toBe(false)

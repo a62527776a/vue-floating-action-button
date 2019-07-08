@@ -24,12 +24,12 @@
         </i>
       </fab-cantainer>
     </transition>
-    <div v-click-outside="clickoutside"
-         class="fab-item-container"
-         :class="'fab-size-' + size">
+      <div v-click-outside="clickoutside"
+          class="fab-item-container"
+          :class="'fab-size-' + size">
           <slot></slot>
-      </transition>
-    </div>
+      </div>
+    </transition>
   </div>
 </template>
 
