@@ -24,8 +24,4 @@ describe('fab-item.vue', () => {
     // 废弃wrapper
     wrapper = null
   })
-  it('handleTimeout', async () => {
-    let resolve = await FabItem.methods.handleTimeout()
-    expect(resolve).toBe(true)
-  })
 })

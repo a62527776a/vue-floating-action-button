@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { Timeout } from './util'
+
 export default {
   name: 'fab-item',
   props: {
@@ -93,16 +95,10 @@ export default {
     },
     handleAutoClose: async function () {
       if (this.$parent.clickAutoClose) {
-        await this.handleTimeout()
+        let timeout = new Timeout()
+        await timeout.handleTimeout()
         this.$parent.active = false
       }
-    },
-    handleTimeout: function () {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          resolve(true)
-        }, 300)
-      })
     }
   },
   created () {

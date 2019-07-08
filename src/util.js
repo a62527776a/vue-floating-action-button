@@ -15,3 +15,18 @@ export const testSafariBrower = (userAgent = null) => {
     return false
   }
 }
+
+export class Timeout {
+  timer = null
+  handleTimeout () {
+    return new Promise(resolve => {
+      this.timer = setTimeout(() => {
+        resolve(true)
+      }, 300)
+    })
+  }
+  handleClearTimeout () {
+    clearTimeout(this.timer)
+    this.timer = null
+  }
+}

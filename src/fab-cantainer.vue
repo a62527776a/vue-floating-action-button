@@ -11,33 +11,33 @@
 </template>
 
 <script>
+import { Timeout } from './util'
+
 export default {
   name: 'fab-cantainer',
   data () {
     return {
       touching: false,
-      timing: null,
       animating: false,
-      mousedown: false
+      mousedown: false,
+      timeout: new Timeout()
     }
   },
   methods: {
-    startAnimate: function () {
+    startAnimate: async function () {
       this.touching = true
       this.animating = true
       this.mousedown = true
-      this.timing = setTimeout(() => {
-        this.animating = false
-        if (this.mousedown) return
-        this.touching = false
-        clearTimeout(this.timing)
-      }, 300)
+      await this.timeout.handleTimeout()
+      this.animating = false
+      if (this.mousedown) return
+      this.touching = false
     },
     endAnimate: function () {
       this.mousedown = false
       if (this.animating) return
       this.touching = false
-      clearTimeout(this.timing)
+      this.timeout.handleClearTimeout()
     }
   }
 }
