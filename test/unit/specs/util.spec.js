@@ -1,16 +1,18 @@
 import { Timeout } from '../../../src/util'
 
 describe('util.js', () => {
-  it('handleTimeout', async () => {
+  it('handleTimeout', (done) => {
     let timeout = new Timeout()
-    let resolve = await timeout.handleTimeout()
-    expect(resolve).toBe(true)
+    timeout.handleTimeout().then((res) => {
+      expect(res).toBe(true)
+      done()
+    })
   })
-  it('handleClearTimeout', async () => {
+  it('handleClearTimeout', () => {
     let timeout1 = new Timeout()
     timeout1.handleTimeout()
     expect(typeof timeout1.timer).toBe('number')
     timeout1.handleClearTimeout()
-    expect(timeout1.timer).toBeNull()
+    expect(timeout1.timer).toEqual(null)
   })
 })
