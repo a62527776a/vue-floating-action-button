@@ -30,3 +30,20 @@ export class Timeout {
     this.timer = null
   }
 }
+
+export const handleSafariBodyClickNotWorkEvent = (callBack, isSafari, obj) => {
+  if (isSafari) {
+    let html = document.querySelector('html')
+    html.setAttribute('class', 'setCursor')
+    html.addEventListener('click', (e) => callBack(obj, e))
+  } else {
+    window.addEventListener('click', (e) => callBack(obj, e))
+  }
+}
+
+export const listenClick = (obj, e) => {
+  if (obj.el.contains(e.target) || e.target.dataset.outside) {
+    return false
+  }
+  return obj.binding.value()
+}

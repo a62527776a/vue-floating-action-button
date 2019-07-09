@@ -8,7 +8,7 @@
           data-outside="true"
           :class="'fab-size-' + size"
           :style="fabClass">
-        <transition :name="activeIcon === icon ? 'fab-icon' : active ? 'fab-active-icon' : 'fab-icon'">
+        <transition :name="computedTransitionName">
           <i
           v-if="iconType === 'MaterialDesign'"
           data-outside="true"
@@ -16,7 +16,8 @@
           :class="{ 'fab-active' : active }"
           class="vue-fab-material-icons material-icons">{{activeIcon === icon ? icon : active ? activeIcon : icon}}</i>
         </transition>
-        <i v-if="iconType === 'iconfont'" @click.stop="openMenu"
+        <i v-if="iconType === 'iconfont'"
+           @click.stop="openMenu"
            class="icons iconfont vue-fab-material-icons vue-fab-iconfont-icons"
            style="font-size: 15px"
            :class="[active ? 'fab-active' : '', icon ]"
@@ -131,6 +132,13 @@ export default {
     }
   },
   computed: {
+    computedTransitionName: function () {
+      if (this.activeIcon === this.icon) {
+        return 'fab-icon'
+      } else {
+        return this.active ? 'fab-active-icon' : 'fab-icon'
+      }
+    },
     overflowThreshold: function () {
       // 滑动不超过阈值
       return (Math.abs(this.touchEventInfo.offsetY) > this.autoHideThreshold)

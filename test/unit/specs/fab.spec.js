@@ -252,6 +252,46 @@ describe('fab.vue', () => {
     expect(wrapper.vm.computedShowHideByOffset()).toBe(false)
   })
 
+  it('computedTransitionName', () => {
+    wrapper.setProps({activeIcon: 'add'})
+    wrapper.setProps({icon: 'add'})
+    expect(wrapper.vm.computedTransitionName).toEqual('fab-icon')
+    wrapper.setProps({icon: 'remove'})
+    wrapper.vm.active = true
+    expect(wrapper.vm.computedTransitionName).toEqual('fab-active-icon')
+    wrapper.vm.active = false
+    expect(wrapper.vm.computedTransitionName).toEqual('fab-icon')
+  })
+
+  it('iconType 切换 展示 界面样式', () => {
+    wrapper.setProps({iconType: 'MaterialDesign'})
+    expect(wrapper.contains('.material-icons')).toEqual(true)
+    wrapper.setProps({iconType: 'iconfont'})
+    expect(wrapper.contains('.vue-fab-iconfont-icons')).toEqual(true)
+  })
+
+  it('hidden 样式展示', () => {
+    wrapper.setData({ hidden : true })
+    expect(wrapper.contains('.fab')).toEqual(true)
+    wrapper.setData({ hidden : false })
+    expect(wrapper.contains('.fab')).toEqual(false)
+  })
+
+  it('size 样式展示', () => {
+    let sizeopt = ['normal', 'big', 'small']
+    sizeopt.map(item => {
+      wrapper.setProps({size : item})
+      expect(wrapper.contains('.fab-size-' + item)).toEqual(true)
+    })
+  })
+
+  it('active 影响样式', () => {
+    wrapper.setData({ active : true })
+    expect(wrapper.contains('.fab-active')).toEqual(true)
+    wrapper.setData({ active : false })
+    expect(wrapper.contains('.fab-active')).toEqual(false)
+  })
+
   // it('测试子菜单点击后自动关闭', (done) => {
     // wrapper.find('.fab').trigger('click')
     // wrapper.find('.fab-item').trigger('click')

@@ -1,7 +1,7 @@
 import FAB from './fab.vue'
 import FABItem from './fab-item.vue'
 import FABCantainer from './fab-cantainer.vue'
-import { testSafariBrower } from './util'
+import { testSafariBrower, handleSafariBodyClickNotWorkEvent, listenClick } from './util'
 
 function install (Vue, options) {
   if (options && options.iconType) {
@@ -12,21 +12,11 @@ function install (Vue, options) {
   Vue.component(FABCantainer.name, FABCantainer)
   Vue.directive('click-outside', {
     bind: (el, binding, vnode) => {
-      const listenClick = (e) => {
-        if (el.contains(e.target) || e.target.dataset.outside) {
-          return false
-        }
-        binding.value()
-      }
       el.__clickOutside__ = listenClick
       // 处理safari浏览器body对象无法响应click事件
-      if (testSafariBrower()) {
-        let html = document.querySelector('html')
-        html.setAttribute('class', 'setCursor')
-        html.addEventListener('click', listenClick)
-      } else {
-        window.addEventListener('click', listenClick)
-      }
+      handleSafariBodyClickNotWorkEvent(listenClick, testSafariBrower(), {
+        el, binding
+      })
     },
     unbind: (el, binding) => {
       if (testSafariBrower()) {
