@@ -32,8 +32,6 @@
 
 **[demo代码](https://github.com/a62527776a/vue-floating-action-button/blob/master/demo/App.vue)**
 
-![问题反馈群](https://img.rr.tv/fe/201979/微信图片_20190709115834.jpg)
-
 ***
 
 ## Features
