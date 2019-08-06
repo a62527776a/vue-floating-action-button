@@ -1,8 +1,8 @@
 {
   "name": "vue-float-action-button",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "vue, float action button",
-  "main": "/dist/vue-fab.js",
+  "main": "dist/vue-fab.js",
   "scripts": {
     "test": "cross-env BABEL_ENV=test karma start ./test/unit/karma.conf.js",
     "build": "webpack --config ./webpack.config.js",

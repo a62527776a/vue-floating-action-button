@@ -17,8 +17,7 @@ module.exports = {
     }, {
       test: /\.js$/,
       loader: [
-        'babel-loader',
-        'eslint-loader'
+        'babel-loader'
       ],
       exclude: /node_modules/
     }, {
@@ -30,13 +29,7 @@ module.exports = {
     }, {
       test: /\.vue$/,
       enforce: 'pre',  // 在babel-loader对源码进行编译前进行lint的检查
-      include: /src/,  // src文件夹下的文件需要被lint
-      use: [{
-        loader: 'eslint-loader',
-        options: {
-          formatter: require('eslint-friendly-formatter')   // 编译后错误报告格式
-        }
-      }]
+      include: /src/  // src文件夹下的文件需要被lint
     }]
   },
   devServer: {

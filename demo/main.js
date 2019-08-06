@@ -1,5 +1,5 @@
 import App from './App.vue'
-import Fab from '../src/index.js'
+import Fab from '../dist/vue-fab'
 import Vue from 'vue'
 
 Vue.use(Fab)
