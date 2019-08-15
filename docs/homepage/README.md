@@ -1,8 +1,9 @@
+<ClientOnly>
 <vue-fab mainBtnColor="#3eaf7c">
   <fab-item @clickItem="clickItem" :idx="0" color="#ff9900" title="good job!" icon="done" />
   <fab-item @clickItem="clickItem" color="#999" :idx="1" icon="toc" />
 </vue-fab>
-
+</ClientOnly>
 <script>
 export default {
   methods: {

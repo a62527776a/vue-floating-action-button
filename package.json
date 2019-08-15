@@ -8,8 +8,8 @@
     "build": "webpack --config ./webpack.config.js",
     "build:demo": "webpack --config ./demo/webpack.prod.config.js",
     "dev": "webpack-dev-server --inline --progress --config demo/webpack.dev.config.js",
-    "dev:docs:": "vuepress dev docs/homepage",
-    "build:docs": "vuepress build docs/homepage"
+    "docs:dev": "vuepress dev docs/homepage",
+    "docs:build": "vuepress build docs/homepage"
   },
   "repository": {
     "type": "git",
@@ -76,7 +76,9 @@
     "vue-test-utils": "^1.0.0-beta.11",
     "vuepress": "^1.0.3",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "^2.11.1",
+    "vue-float-action-button": "^0.6.4"
   },
-  "dependencies": {}
+  "dependencies": {
+  }
 }

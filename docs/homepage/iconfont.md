@@ -1,7 +1,8 @@
+<ClientOnly>
 <vue-fab :icon-type="currentSource" :icon="mainIcon[currentSource]" mainBtnColor="#3eaf7c">
   <fab-item v-for="(item, idx) in menu[currentSource]" :idx="idx" :color="item.color" :title="item.title" :icon="item.icon" />
 </vue-fab>
-
+</ClientOnly>
 <script>
 export default {
   data () {

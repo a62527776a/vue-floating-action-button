@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/vue-dialog-x/vuepress/',
+  base: '/vue-floating-action-button/homepage/',
   title: 'Hello VueFab',
   description: '好用的FloatingActionButton',
   head: [
@@ -14,7 +14,7 @@ module.exports = {
       href: 'http://at.alicdn.com/t/font_808119_6y2mme98u07.css'
     }]
   ],
-  dest: 'docs/homepage/dist',
+  dest: 'docs/homepage/homepage',
   themeConfig: {
     repo: 'a62527776a/vue-floating-action-button',
     repoLabel: 'Github',
@@ -22,6 +22,7 @@ module.exports = {
     sidebar: [
       ['/', '介绍'],
       ['/basic', '基本使用'],
+      ['/scrollAble', '关闭滚动自动隐藏'],
       ['/iconfont', '使用阿里巴巴iconfont']
     ]
   }
