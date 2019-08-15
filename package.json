@@ -6,10 +6,10 @@
   "scripts": {
     "test": "cross-env BABEL_ENV=test karma start ./test/unit/karma.conf.js",
     "build": "webpack --config ./webpack.config.js",
-    "demo-build": "webpack --config ./demo/webpack.prod.config.js",
+    "build:demo": "webpack --config ./demo/webpack.prod.config.js",
     "dev": "webpack-dev-server --inline --progress --config demo/webpack.dev.config.js",
-    "docs:dev": "vuepress dev docs/homepage",
-    "docs:build": "vuepress build docs/homepage"
+    "dev:docs:": "vuepress dev docs/homepage",
+    "build:docs": "vuepress build docs/homepage"
   },
   "repository": {
     "type": "git",
