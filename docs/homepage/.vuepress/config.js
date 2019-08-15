@@ -11,7 +11,7 @@ module.exports = {
     ['link', {
       async: 'async',
       rel: 'stylesheet',
-      href: '//at.alicdn.com/t/font_808119_6y2mme98u07.css'
+      href: 'http://at.alicdn.com/t/font_808119_6y2mme98u07.css'
     }]
   ],
   dest: 'docs/homepage/dist',
@@ -21,7 +21,8 @@ module.exports = {
     sidebarDepth: 2,
     sidebar: [
       ['/', '介绍'],
-      ['/iconfont', 'iconfont']
+      ['/basic', '基本使用'],
+      ['/iconfont', '使用阿里巴巴iconfont']
     ]
   }
 }
