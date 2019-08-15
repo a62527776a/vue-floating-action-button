@@ -1,11 +1,14 @@
-<vue-fab :icon="icon">
+<vue-fab :icon="icon" :size="size" :activeIcon="activeIcon">
+  <fab-item />
 </vue-fab>
 
 <script>
 export default {
   data () {
     return {
-      icon: 'add'
+      icon: 'add',
+      activeIcon: 'add',
+      size: 'normal'
     }
   }
 }
@@ -37,3 +40,24 @@ vue-fab 提供一系列自定义属性
 <template>
   <input class="form-input" v-model="icon">
 </template>
+
+### activeIcon
+
+展开之后的vue-fab展示的图标
+
+<template>
+  <input class="form-input" v-model="activeIcon">
+</template>
+
+### size
+
+展开之后的vue-fab展示的图标
+
+<template>
+  <div>
+    <label>小<input type="radio" v-model="size" value="small" ></label>
+    <label>中<input type="radio" v-model="size" value="normal"></label>
+    <label>大<input type="radio" v-model="size" value="big"></label>
+  </div>
+</template>
+
