@@ -1,6 +1,6 @@
 module.exports = {
   base: '/vue-dialog-x/vuepress/',
-  title: 'Hello VueFloatingActionButton',
+  title: 'Hello VueFab',
   description: '好用的FloatingActionButton',
   head: [
     ['link', {
@@ -16,18 +16,12 @@ module.exports = {
   ],
   dest: 'docs/homepage/dist',
   themeConfig: {
-    repo: 'a62527776a/vue-dialog-x',
+    repo: 'a62527776a/vue-floating-action-button',
     repoLabel: 'Github',
     sidebarDepth: 2,
     sidebar: [
-      '/',
-      '/getting-started',
-      ['/basic', '基础使用'],
-      ['/alert', 'Alert'],
-      ['/confirm', 'Confirm'],
-      ['/prompt', 'Prompt'],
-      ['/actions', 'Actions'],
-      ['/dialog', 'Dialog']
+      ['/', '介绍'],
+      ['/iconfont', 'iconfont']
     ]
   }
 }
