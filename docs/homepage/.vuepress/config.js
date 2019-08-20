@@ -14,6 +14,11 @@ module.exports = {
       href: 'http://at.alicdn.com/t/font_808119_6y2mme98u07.css'
     }]
   ],
+  plugins: [
+    ['@vuepress/google-analytics', {
+      ga: 'UA-145663310-4'
+    }]
+  ],
   dest: 'docs/homepage/homepage',
   themeConfig: {
     repo: 'a62527776a/vue-floating-action-button',
