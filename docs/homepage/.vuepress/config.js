@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/vue-floating-action-button/homepage/',
+  base: '/',
   title: 'Hello VueFab',
   description: '好用的FloatingActionButton',
   head: [
