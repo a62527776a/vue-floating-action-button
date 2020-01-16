@@ -10,14 +10,20 @@
         <div v-if="title" :style="titleStyle" class="fab-item-title">
           {{title}}
         </div>
-        <i v-if="$parent.iconType === 'MaterialDesign'" class="material-icons vue-fab-material-icons"
-          :style="{
-            color: color ? 'white' : '#999'
-      }">{{icon}}</i>
-        <i v-else class="vue-fab-material-icons iconfont" :class="icon" style="font-size: 10px" :style="{
-            color: color ? 'white' : '#999'
-      }">
-        </i>
+        <div class="fab-item-image">
+          <slot>
+          </slot>
+        </div>
+        <template v-if="!$slots.default">
+          <i v-if="$parent.iconType === 'MaterialDesign'" class="material-icons vue-fab-material-icons"
+            :style="{
+              color: color ? 'white' : '#999'
+          }">{{icon}}</i>
+            <i v-else class="vue-fab-material-icons iconfont" :class="icon" style="font-size: 10px" :style="{
+                color: color ? 'white' : '#999'
+          }">
+            </i>
+        </template>
     </fab-cantainer>
   </transition>
 </template>
@@ -105,6 +111,7 @@ export default {
     }
   },
   created () {
+    console.log(this.$slots)
   }
 }
 </script>
@@ -135,5 +142,11 @@ export default {
   white-space:nowrap;
   border-radius: 2px;
   text-align: center;
+}
+
+.fab-item-image {
+  height: 100%;
+  width: 100%;
+  overflow: hidden
 }
 </style>

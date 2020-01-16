@@ -94,6 +94,9 @@
       <fab-item @clickItem="clickItem" :idx="2" title="edit" icon="edit" />
       <fab-item @clickItem="clickItem" :idx="3" title="不传title参数则不显示title框" icon="https" />
       <fab-item @clickItem="clickItem" :idx="4" icon="edit" />
+      <fab-item @clickItem="clickItem" :idx="5" icon="edit">
+        <img src="http://ued.rr.tv/0.96058651790303660.png" style="width: 100%;border-radius: 50%" />
+      </fab-item>
     </vue-fab>
     <vue-fab icon-type="iconfont" icon="icon-jia" fabItemAnimate="default" fabAliveAnimateBezier="ease" :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#16C2C2'" style="right: 60%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
       <fab-item @clickItem="clickBABA" icon="icon-Rxing" :idx="0" title="iconfont.cn">
