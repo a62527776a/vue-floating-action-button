@@ -28,6 +28,8 @@
 
 **[English Doc](https://github.com/a62527776a/vue-floating-action-button/blob/master/readme.en.md)**
 
+**[Demo](https://vue-fab.github.io/)**
+
 **[homepage and document](https://a62527776a.github.io/)**
 
 **[demo代码](https://github.com/a62527776a/vue-floating-action-button/blob/master/demo/App.vue)**
