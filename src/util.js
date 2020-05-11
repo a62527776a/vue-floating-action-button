@@ -33,8 +33,14 @@ export class Timeout {
 
 export const handleSafariBodyClickNotWorkEvent = (callBack, isSafari, obj) => {
   if (isSafari) {
+    let setClassName = 'setCursor'
     let html = document.querySelector('html')
-    html.setAttribute('class', 'setCursor')
+    const currentHTMLClass = html.getAttribute('class')
+    if (currentHTMLClass) {
+      if (currentHTMLClass.indexOf('setCursor') > -1) return
+      setClassName = currentHTMLClass + ' setCursor'
+    }
+    html.setAttribute('class', setClassName)
     html.addEventListener('click', (e) => callBack(obj, e))
   } else {
     window.addEventListener('click', (e) => callBack(obj, e))
