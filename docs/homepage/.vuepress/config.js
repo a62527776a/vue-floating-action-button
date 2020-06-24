@@ -30,7 +30,8 @@ module.exports = {
       ['/scroll', '滚动配置'],
       ['/animate', '动画配置'],
       ['/scrollAble', '关闭滚动自动隐藏'],
-      ['/iconfont', '使用阿里巴巴iconfont']
+      ['/iconfont', '使用阿里巴巴iconfont'],
+      ['/customitem', '通过slot自定义图片']
     ]
   }
 }

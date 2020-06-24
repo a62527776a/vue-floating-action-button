@@ -94,7 +94,10 @@
       <fab-item @clickItem="clickItem" :idx="2" title="edit" icon="edit" />
       <fab-item @clickItem="clickItem" :idx="3" title="不传title参数则不显示title框" icon="https" />
       <fab-item @clickItem="clickItem" :idx="4" icon="edit" />
-      <fab-item @clickItem="clickItem" :idx="5" icon="edit">
+      <fab-item @clickItem="clickItem" :idx="5" title="不传title参数则不显示title框" icon="edit">
+        <img src="http://ued.rr.tv/0.96058651790303660.png" style="width: 100%;border-radius: 50%" />
+      </fab-item>
+      <fab-item @clickItem="clickItem" :idx="6" title="自定义图标，得自己配置好border-radius以及width" icon="edit">
         <img src="http://ued.rr.tv/0.96058651790303660.png" style="width: 100%;border-radius: 50%" />
       </fab-item>
     </vue-fab>
