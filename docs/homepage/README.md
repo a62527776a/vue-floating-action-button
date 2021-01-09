@@ -1,18 +1,44 @@
 <ClientOnly>
-<vue-fab mainBtnColor="#3eaf7c">
-  <fab-item @clickItem="clickItem" :idx="0" color="#ff9900" title="good job!" icon="done" />
-  <fab-item @clickItem="clickItem" color="#999" :idx="1" icon="toc" />
+<vue-fab
+  :mainBtnColor="mainBtnColor">
+  <fab-item 
+    v-for="(item, idx) in menu"
+    :idx="idx"
+    :title="item.title"
+    :color="item.color"
+    :icon="item.icon"
+    @clickItem="clickItem" />
 </vue-fab>
 </ClientOnly>
+
 <script>
-export default {
-  methods: {
-    clickItem (item) {
-      window.alert(item.idx)
+  export default {
+    name: 'example',
+    data () {
+      return {
+        menu: [
+          {
+            icon: 'done',
+            title: 'good job!',
+            color: '#ff9900'
+          },
+          {
+            icon: 'toc',
+            title: '',
+            color: '#999'
+          }
+        ],
+        mainBtnColor: '#3eaf7c'
+      }
+    },
+    methods: {
+      clickItem: function (item) {
+        window.alert(item.idx)
+      }
     }
   }
-}
 </script>
+
 
 # 介绍
 
@@ -115,15 +141,16 @@ new Vue({
 
 ``` html
 <template>
-  <vue-fab
-    :mainBtnColor="mainBtnColor">
-    <fab-item 
-      v-for="(item, idx) in menu"
-      :idx="idx"
-      :title="item.title"
-      :color="item.color"
-      :icon="item.icon"
-      @clickItem="clickItem" />
+<vue-fab
+  :mainBtnColor="mainBtnColor">
+  <fab-item 
+    v-for="(item, idx) in menu"
+    :idx="idx"
+    :title="item.title"
+    :color="item.color"
+    :icon="item.icon"
+    @clickItem="clickItem" />
+</vue-fab>
 </template>
 
 <script>

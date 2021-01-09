@@ -24,8 +24,6 @@
 
 ![7.gif](http://upload-images.jianshu.io/upload_images/5738345-a13b5b7b511f8484.gif?imageMogr2/auto-orient/strip)
 
-**[English Doc](https://github.com/a62527776a/vue-floating-action-button/blob/master/readme.en.md)**
-
 **[Demo](https://vue-fab.github.io/)**
 
 **[homepage and document](https://a62527776a.github.io/)**
@@ -109,18 +107,18 @@ new Vue({
 
 
 ```
-<template>
-  <vue-fab
-    :mainBtnColor="mainBtnColor"
-    @clickMainBtn="clickMainBtn">
-    <fab-item 
-      v-for="(item, idx) in menu"
-      :idx="idx"
-      :title="item.title"
-      :color="item.color"
-      :icon="item.icon"
-      @clickItem="clickItem" />
-</template>
+<ClientOnly>
+<vue-fab
+  :mainBtnColor="mainBtnColor">
+  <fab-item 
+    v-for="(item, idx) in menu"
+    :idx="idx"
+    :title="item.title"
+    :color="item.color"
+    :icon="item.icon"
+    @clickItem="clickItem" />
+</vue-fab>
+</ClientOnly>
 
 <script>
   export default {
@@ -139,15 +137,12 @@ new Vue({
             color: '#999'
           }
         ],
-        mainBtnColor: '#FF0099'
+        mainBtnColor: '#3eaf7c'
       }
     },
     methods: {
-      clickItem: function (idx) {
-        console.log('idx: ' + idx)
-      }
-      clickMainBtn: function () {
-        console.log('clickMainBtn')
+      clickItem: function (item) {
+        window.alert(item.idx)
       }
     }
   }
