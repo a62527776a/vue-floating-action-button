@@ -107,7 +107,7 @@ new Vue({
 
 
 ```
-<ClientOnly>
+<template>
 <vue-fab
   :mainBtnColor="mainBtnColor">
   <fab-item 
@@ -118,7 +118,7 @@ new Vue({
     :icon="item.icon"
     @clickItem="clickItem" />
 </vue-fab>
-</ClientOnly>
+</template>
 
 <script>
   export default {

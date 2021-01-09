@@ -51,5 +51,11 @@ export const listenClick = (obj, e) => {
   if (obj.el.contains(e.target) || e.target.dataset.outside) {
     return false
   }
-  return obj.binding.value()
+  if (obj.binding) {
+    if (obj.binding.value) {
+      if (typeof obj.binding.value == 'function') {
+        return obj.binding.value()
+      }
+    }
+  }
 }
