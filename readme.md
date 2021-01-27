@@ -20,15 +20,18 @@
   </a>
 </p>
 
-![8.gif](http://upload-images.jianshu.io/upload_images/5738345-8348ec8f54f0d160.gif?imageMogr2/auto-orient/strip)
-
-![7.gif](http://upload-images.jianshu.io/upload_images/5738345-a13b5b7b511f8484.gif?imageMogr2/auto-orient/strip)
-
 **[Demo](https://vue-fab.github.io/)**
 
 **[homepage and document](https://a62527776a.github.io/)**
 
 **[demo代码](https://github.com/a62527776a/vue-floating-action-button/blob/master/demo/App.vue)**
+
+**[English Doc](https://github.com/a62527776a/vue-floating-action-button/blob/master/readme.md)**
+
+![8.gif](http://upload-images.jianshu.io/upload_images/5738345-8348ec8f54f0d160.gif?imageMogr2/auto-orient/strip)
+
+![7.gif](http://upload-images.jianshu.io/upload_images/5738345-a13b5b7b511f8484.gif?imageMogr2/auto-orient/strip)
+
 
 ***
 
@@ -177,7 +180,7 @@ Vue.use(VueFab, /* {
 | ------ | ------ | --------  | ------ | ----------  |
 |  iconType  | String |  'MaterialDesign' | 'MaterialDesign'/'iconfont' |  根据您的使用习惯或开发依赖来决定使用哪种图标     |
 | autoHideDirection | String | 'up' | 'up' / 'down' | 滚动自动隐藏的方向控制，默认值up为向下展示向上隐藏down值为向上展示向下隐藏 |
-| unfoldDirection | String | 'up' | 'up' / 'down' | 展开方向，向上或者向下
+| unfoldDirection | String | 'up' | 'up' / 'down' | 展开方向，向上或者向下 |
 |  icon  | String |  'add' | / |  未激活的icon     |
 | activeIcon | String | 'add' | / | 激活后的icon |
 | size | String | 'Normal' | 'big' / 'normal' / 'small' | 主Fab的尺寸 子菜单会随之变化 |
