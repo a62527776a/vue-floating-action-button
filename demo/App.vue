@@ -57,12 +57,11 @@
     </a>
     <!--<div class="btn btn-lg btn-block btn-sm btn-info" v-for="(code, idx) in democode" @click="showCode(code)">实例代码{{idx}}</div>-->
     <textarea ref="textarea" value="" style="position: absolute; top: -500px" />
-    <div style="position: relative" v-for="code in democode" v-show="code.isShow">
+    <div style="position: relative" v-for="code in democode" :key="code" v-show="code.isShow">
       <button type="button" @click="copyCode(code.output)" class="btn btn-info btn-xs copy-code-btn">拷贝代码</button>
       <pre v-html="code.code">
       </pre>
     </div>
-    </transition>
     <vue-fab 
       :style="{ transform: democode[2].isShow ? 'translateY(-30px)' : ''}"
       ref="vuefab"
@@ -73,6 +72,32 @@
       style="transition: all .5s cubic-bezier(.18,.89,.58,1.26)"
       size="big"
       :globalOptions="{spacing: 50,delay: 0.1}"
+      :activeIcon="activeIcon"
+      :fabAnimateBezier="fabAnimateBezier"
+      :fabAutoHideAnimateModel="'alive'"
+      fabItemAnimate="alive">
+      <!--<i slot="icon" style="color: white" class="iconfont icon-guanbi2fill" />-->
+      <fab-item
+        v-for="(item, idx) in menu"
+        :key="idx"
+        :idx="idx"
+        :title="item.title"
+        :color="item.color"
+        :icon="item.icon">
+        <i v-if="idx === 1" slot="icon" style="color: white" class="iconfont icon-guanbi2fill" />
+      </fab-item>
+    </vue-fab>
+    <vue-fab 
+      :style="{ transform: democode[2].isShow ? 'translateY(-30px)' : ''}"
+      ref="vuefab"
+      @clickMainBtn="clickMainBtn"
+      icon="share"
+      :scrollAutoHide="false"
+      :mainBtnColor="mainBtnColor"
+      style="transition: all .5s cubic-bezier(.18,.89,.58,1.26);top: 150px"
+      size="big"
+      :globalOptions="{spacing: 50,delay: 0.1}"
+      unfoldDirection="down"
       :activeIcon="activeIcon"
       :fabAnimateBezier="fabAnimateBezier"
       :fabAutoHideAnimateModel="'alive'"
@@ -101,7 +126,28 @@
         <img src="http://ued.rr.tv/0.96058651790303660.png" style="width: 100%;border-radius: 50%" />
       </fab-item>
     </vue-fab>
+    <vue-fab autoHideDirection="down" unfoldDirection="down" fabItemAnimate="default" fabAliveAnimateBezier="ease" :style="{ position: 'absolute', top: '150px',  transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#3599DB'" style="right: 40%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
+      <fab-item @clickItem="clickItem" :idx="0" title="add" icon="add" />
+      <fab-item @clickItem="clickItem" :idx="1" title="https" icon="https" />
+      <fab-item @clickItem="clickItem" :idx="2" title="edit" icon="edit" />
+      <fab-item @clickItem="clickItem" :idx="3" title="不传title参数则不显示title框" icon="https" />
+      <fab-item @clickItem="clickItem" :idx="4" icon="edit" />
+      <fab-item @clickItem="clickItem" :idx="5" title="不传title参数则不显示title框" icon="edit">
+        <img src="http://ued.rr.tv/0.96058651790303660.png" style="width: 100%;border-radius: 50%" />
+      </fab-item>
+      <fab-item @clickItem="clickItem" :idx="6" title="自定义图标，得自己配置好border-radius以及width" icon="edit">
+        <img src="http://ued.rr.tv/0.96058651790303660.png" style="width: 100%;border-radius: 50%" />
+      </fab-item>
+    </vue-fab>
     <vue-fab icon-type="iconfont" icon="icon-jia" fabItemAnimate="default" fabAliveAnimateBezier="ease" :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#16C2C2'" style="right: 60%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
+      <fab-item @clickItem="clickBABA" icon="icon-Rxing" :idx="0" title="iconfont.cn">
+      </fab-item>
+      <fab-item @clickItem="clickBABA" icon="icon-huanyihuan1" :idx="1">
+      </fab-item>
+      <fab-item @clickItem="clickBABA" icon="icon-fangda1" :idx="2">
+      </fab-item>
+    </vue-fab>
+    <vue-fab unfoldDirection="down"  icon-type="iconfont" icon="icon-jia" fabItemAnimate="alive" fabAliveAnimateBezier="ease" :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : '', top: '150px'}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#16C2C2'" style="right: 60%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
       <fab-item @clickItem="clickBABA" icon="icon-Rxing" :idx="0" title="iconfont.cn">
       </fab-item>
       <fab-item @clickItem="clickBABA" icon="icon-huanyihuan1" :idx="1">

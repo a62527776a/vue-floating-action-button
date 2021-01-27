@@ -68,9 +68,22 @@ export default {
      * 根据不同的动画模式处理不同的css
      */
     fabItemStyle: function () {
+      let defaultY = '';
+      let aliveY = ''
+      if (this.$parent.unfoldDirection == 'up') {
+        defaultY = -40 - (this.idx * this.$parent.globalOptions.spacing) + 'px';
+        aliveY = 'translate3D(0, ' + -(this.idx + 1) * this.$parent.globalOptions.spacing + 'px, 0)'
+      } else if (this.$parent.unfoldDirection == 'down') {
+        defaultY = 50 + this.idx * this.$parent.globalOptions.spacing + 'px';
+        aliveY = 'translate3D(0, ' + ((this.idx + 1) * this.$parent.globalOptions.spacing + 7) + 'px, 0)'
+      } else {
+        console.error('unfoldDirection 参数异常');
+      }
+      console.log(this.$parent.unfoldDirection);
+      console.log(aliveY)
       let animateModel = {
         default: {
-          top: -40 - this.idx * this.$parent.globalOptions.spacing + 'px',
+          top: defaultY,
           transitionDelay: this.$parent.active ? this.idx * this.$parent.globalOptions.delay + 's' : '0s',
           background: this.color ? this.color : '#FFF'
         },
@@ -81,7 +94,7 @@ export default {
           transitionDelay: this.$parent.active ? this.idx * (this.$parent.globalOptions.delay / 3) + 's' : '0s',
           opacity: this.$parent.active ? 1 : 0,
           background: this.color ? this.color : '#FFF',
-          transform: this.$parent.active ? 'translate3D(0, -' + (this.idx + 1) * this.$parent.globalOptions.spacing + 'px, 0)' : 'translate3D(0, 0, 0)',
+          transform: this.$parent.active ? aliveY : 'translate3D(0, 0, 0)',
           zIndex: -this.idx
         }
       }

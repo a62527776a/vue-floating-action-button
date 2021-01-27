@@ -25,12 +25,11 @@
         </i>
       </fab-cantainer>
     </transition>
-      <div v-click-outside="clickoutside"
-          class="fab-item-container"
-          :class="'fab-size-' + size">
-          <slot></slot>
-      </div>
-    </transition>
+    <div v-click-outside="clickoutside"
+        class="fab-item-container"
+        :class="'fab-size-' + size">
+        <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -40,6 +39,10 @@ import handleClass from './util'
 export default {
   name: 'vue-fab',
   props: {
+    unfoldDirection: {
+      type: String,
+      default: 'up'
+    },
     icon: {
       type: String,
       default: 'add'
