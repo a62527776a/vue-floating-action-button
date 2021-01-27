@@ -79,8 +79,6 @@ export default {
       } else {
         console.error('unfoldDirection 参数异常');
       }
-      console.log(this.$parent.unfoldDirection);
-      console.log(aliveY)
       let animateModel = {
         default: {
           top: defaultY,
@@ -124,7 +122,6 @@ export default {
     }
   },
   created () {
-    console.log(this.$slots)
   }
 }
 </script>
