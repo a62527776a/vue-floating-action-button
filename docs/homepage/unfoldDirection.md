@@ -37,4 +37,4 @@ VueFab提供多样的动画配置
 
 | Option |  Type  | Default | Params | Description |
 | ------ | --------  | ------ | ----------  | ------ |
-| unfoldDirectionType  | String | 'up'	 | 'down' / 'up' | 向上展开或者向下展开 |
+| unfoldDirection  | String | 'up'	 | 'down' / 'up' | 向上展开或者向下展开 |
