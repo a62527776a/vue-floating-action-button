@@ -24,9 +24,9 @@
 
 **[homepage and document](https://a62527776a.github.io/)**
 
-**[demo代码](https://github.com/a62527776a/vue-floating-action-button/blob/master/demo/App.vue)**
+**[English Doc](https://github.com/a62527776a/vue-floating-action-button/blob/master/readme.en.md)**
 
-**[English Doc](https://github.com/a62527776a/vue-floating-action-button/blob/master/readme.md)**
+**[demo代码](https://github.com/a62527776a/vue-floating-action-button/blob/master/demo/App.vue)**
 
 ![8.gif](http://upload-images.jianshu.io/upload_images/5738345-8348ec8f54f0d160.gif?imageMogr2/auto-orient/strip)
 
