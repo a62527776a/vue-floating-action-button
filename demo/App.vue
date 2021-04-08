@@ -63,6 +63,23 @@
       </pre>
     </div>
     <vue-fab 
+      icon="menu" 
+      size="big" 
+      style="transform: translateY(-60px)"
+      :scrollAutoHide="false" 
+      :globalOptions="{ spacing: 50, delay: 0.05 }" 
+      :mainBtnColor="mainBtnColor" 
+      >
+      <fab-item 
+        v-for="(item, idx) in menu1"
+        :idx="idx"
+        :key="idx"
+        :title="item.title"
+        :color="item.color"
+        :icon="item.icon"
+        />
+    </vue-fab>  
+    <vue-fab 
       :style="{ transform: democode[2].isShow ? 'translateY(-30px)' : ''}"
       ref="vuefab"
       @clickMainBtn="clickMainBtn"
@@ -139,7 +156,7 @@
         <img src="http://ued.rr.tv/0.96058651790303660.png" style="width: 100%;border-radius: 50%" />
       </fab-item>
     </vue-fab>
-    <vue-fab icon-type="iconfont" icon="icon-jia" fabItemAnimate="default" fabAliveAnimateBezier="ease" :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#16C2C2'" style="right: 60%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
+    <vue-fab icon-type="iconfont" icon="icon-jia" fabItemAnimate="alive" fabAliveAnimateBezier="ease" :style="{ transform: democode[1].isShow ? 'translateY(-30px)' : ''}" size="normal" fabAnimateBezier=".24,.97,.81,1.2" :mainBtnColor="'#16C2C2'" style="right: 60%;transition: all .5s cubic-bezier(.18,.89,.58,1.26)">
       <fab-item @clickItem="clickBABA" icon="icon-Rxing" :idx="0" title="iconfont.cn">
       </fab-item>
       <fab-item @clickItem="clickBABA" icon="icon-huanyihuan1" :idx="1">
@@ -173,6 +190,34 @@
         isEdit: false,
         isAddChildMenuBtn: true,
         addChildMenuTiming: null,
+        menu1: [
+                {
+                    idx: 0,
+                    title: 'actionable',
+                    icon: 'whatshot',
+                    color: '#ff9900',
+                    titleColor: '#fff',
+                    titleBgColor: '#000',
+                },
+                {
+                    idx: 1,
+                    title: 'assets',
+                    icon: 'savings',
+                    color: '#729DCB'
+                },
+                {
+                    idx: 2,
+                    title: 'stats',
+                    icon: 'analytics',
+                    color: '#729DCB'
+                },
+                {
+                    idx: 3,
+                    title: 'profile',
+                    icon: 'perm_identity',
+                    color: '#729DCB'
+                }
+            ],
         menu: [
           {
             key: 'done',

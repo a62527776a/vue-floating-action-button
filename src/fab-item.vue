@@ -71,7 +71,15 @@ export default {
       let defaultY = '';
       let aliveY = ''
       if (this.$parent.unfoldDirection == 'up') {
-        defaultY = -40 - (this.idx * this.$parent.globalOptions.spacing) + 'px';
+        let defaultBaseY;
+        if (this.$parent.size == 'normal') {
+          defaultBaseY = 40;
+        } else if (this.$parent.size == 'big') {
+          defaultBaseY = 48
+        } else if (this.$parent.size == 'small') {
+          defaultBaseY = 32;
+        }
+        defaultY = -defaultBaseY - (this.idx * this.$parent.globalOptions.spacing) + 'px';
         aliveY = 'translate3D(0, ' + -(this.idx + 1) * this.$parent.globalOptions.spacing + 'px, 0)'
       } else if (this.$parent.unfoldDirection == 'down') {
         defaultY = 50 + this.idx * this.$parent.globalOptions.spacing + 'px';
