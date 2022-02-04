@@ -20,7 +20,7 @@
            @click.stop="openMenu"
            class="icons iconfont vue-fab-material-icons vue-fab-iconfont-icons"
            style="font-size: 15px"
-           :class="[active ? 'fab-active' : '', icon ]"
+           :class="active ? `fab-active ${activeIcon}` : icon"
            data-outside="true">
         </i>
       </fab-cantainer>
